@@ -130,6 +130,72 @@ enthalten sein kann.
 (Ich dachte dass auch Kategorien mengentheoretisch formuliert werden können).
 
 
+<!-- ----------------------------------------------------------------------- -->
+## Algebraische Methoden der Logik
+
+### Fragen
+
+Frage: Was?
+Was haben wir da eigentlich genau gemacht?
+Haben wir eine Art Denotationelle Semantik für verschiedene Logiken,
+unter anderem Aussagenlogik und Intensionale Logiken gesucht?
+Also KAL in einen Boolsche Algebra übersetzt und IAL in eine Heytingalgebra?
+
+Frage: Warum?
+Wenn ja was hat das ganze unternehmen gebracht?
+Was kann man mit der Semantik/Domäne eigentlich anfangen?
+Zwei seiten der Logik beleuchtet?
+
+Handelt es sich dabei um einen Isomorphismus, 
+sind also aus der Domäne/mathematischen Struktur in die Intperpretiert wurde
+Rückschlüsse auf unsere Sprache zu treffen?
+(Ich meine da stand sowas im Semantik-kapitel ...)
+
+Frage: Adäquatheit der Interpretation
+Wie konnten wir denn wissen, dass unsere Interpretation in diese Strukturen
+adäquat war?
+Gibts da im Allgemeinen ein Kriterium? Homomorphismus, Kompositionalität,
+Isomorphie? ...
+
+Frage: Axiomatisierung
+Axiome in der Modelltheorie müssen nicht immer Indentitäten sein?
+ich denke mal nicht ... 
+Unsere ganzen logischen Symbole entsprechen dann doch Ordnungsrelationen
+(Implikation) und Operationen auf diesen Mengen, oder?
+z.B. durch Axiome wie beim Hilberkalkül festgelegt werden?
+Nein, da es sich um ein Kalkül mit Schlussregeln handelt.
+
+Frage: Sind das jetzt Modelle?
+Sind die Strukturen in die da reininterpretiert wurde jetzt Modelle der KAL und
+IAL? Wenn ja warum ... Wenn nein welche Verbindung zur Modelltheorie.
+
+Frage: Verbindung zur Modelltheorie
+Welche Rolle spielt denn die Modelltheorie bei der ganzen Sache?
+Gibt es da überscheidungen und wenn ja wo?
+Bei der Übersetzung muss doch eigentlich auch das Kriterium T und die 
+Tarskische Wahrheitskonzeption zum Tragen gekommen sein...
+
+Frage: Verbindung mit der "alten" Semantik
+Warum war unsere alte Semantik modelltheoretisch?
+ich seh da iwi nirgends ein Wahrheitsprädikat ...
+haben wir mit unserem Adäquatheitsbeweis, also vollständigkeit und Korrektheit
+die von Tarski gestellten Kriterien erfüllt?
+
+Und gibt es eine Verbindung zwischen der 'neuen' Semantik also den Algebren
+und den 'alten' Semantiken (Wahrheitsfunktionen un möglichen Welten).
+
+Frage: Natur unserer alten Semantiken
+Was für eine Struktur sind eigentlich unsere Belegungsfunktionen?
+das ist doch im Prinzip nur eine unstrukturierte Menge...
+
+Frage: Kategoriale Modelle
+Gibts sowas?
+Die Heytingalgebra ist eine Cartesian Closed Category;
+Das Typisierte Lambdakalkül das sogar syntaktische gleich zur IAL ist
+ist die 'interne Sprache' der CCC und wird in die CCC interpretiert.
+Müssten dann CCC nicht allgemein auch Domänen für die IAL sein?
+
+
 
 <!-- ----------------------------------------------------------------------- -->
 ## Curry-Howard Isomorphismus
