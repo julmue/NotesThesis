@@ -1,0 +1,169 @@
+\section{Algebraische Strukturen}
+
+[Wiki](https://de.wikipedia.org/wiki/Mathematische_Struktur)
+Basieux
+Bourbaki
+
+\begin{definition}[mathematische Struktur]
+
+Eine mathematische Struktur ist eine Menge (mit Relationen über dieser Menge) 
+wo sowohl Menge als auch Relationen bestimmte Eigenschaften aufweisen.
+
+Diese Eigenschaften ergeben sich durch eine oder mehrere Relationen zwischen:
+\begin{itemize}
+\item den Elementen dieser Menge (Struktur erster Stufe)
+\item Teilmengen der Menge (Struktur zweiter Stufe)
+\end{itemize}
+
+Der \emph{Typ} einer Struktur wird durch \emph{Axiome} festgelegt;
+eine Menge ist Instanz eines bestimmten Strukturtyps, wenn ihre Relationen
+die Axiome des Typs erfüllen. (Modelltheorie?)
+
+Klassifikation der wichtigsten Strukturen (Bourbaki):
+\begin{itemize)
+\item algebraische Strukturen
+\item Ordnungsstrukturen
+\item topologische Strukturen
+\end{itemize}
+(manchmal noch geometrische Strukturen)
+
+\todo{Motivation Basieux}
+
+Eine Menge kann, auch klassenübergreifend, Instanz mehrere Strukturtypen sein.
+\todo{Terminologie so richtig?}
+
+
+
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+\subsection{Algebraische Strukturen}
+
+Eine algebraische Struktur (kurz: Algebra) ist eine Struktur (erster Stufe),
+die nur durch eine oder mehrere Verknüpfungen definiert ist.
+(Verknüpfungen = Funktionen = spezielle Relationen)
+
+
+
+%-------------------------------------------------------------------------------
+\subsubsection{Strukturen mit einer inner Verknüpfungen: Gruppen und ähnliche}
+
+Die fundamentalen algebraischen Strukturen besitzen ein oder zwei 
+zweistellige innere Verknüpfungen (Operationen).
+
+Die Klassifikation wird anhand der folgenden Axiomen vorgenommen:
+\begin{itemize}
+\item (E)  Abgeschlossenheit: 			$∀ a, b ∈ M: a ∘ b ∈ M$
+\item (A)  Assoziativität: 				$∀ a, b, c ∈ M: (a ∘ b) ∘ c = a ∘ (b ∘ c)$
+\item (N)  Existenz eines neutralen Elements: 	$∃ e ∈ M: ∀ a ∈ M: a ∘ e = e ∘ a = a$
+\item (I)  Existenz eines inversen Elements: 	$∀ a ∈ M: ∃ a^{-1} ∈ M: a ∘ a^{-1} = a^{-1} ∘ a = e$
+\item (K)  Kommutativgesetz: 			$∀ a, b ∈ M: a ∘ b = b ∘ a$
+\item (Ip) Idempotenzgesetz: 			$∀ a ∈ M: a ∘ a = a$
+\end{itemize}
+
+die folgenden Strukturen mit einer zweistelligen inneren Verknüpfung 
+verallgemeinern oder spezialisieren den fundamentalen Begriff der \emp{Gruppe}:
+
+\todo{Liste der Strukturen}
+
+
+
+%-------------------------------------------------------------------------------
+\subsubsection{Strukturen mit zwei inneren Verknüpfungen: Ringe, Körper und ähnliche}
+
+Die folgenden Strukturen haben zwei innere Verküpfungen, die gewöhnlich 
+als \emph{Addition} und \emph{Multiplikation} geschrieben werden;
+Diese Strukturen sind von den Zahlenbereichen $ℤ$, $ℚ$ und $ℝ$ abstrahiert,
+mit denen man gewöhlich rechnet.
+
+Die Verträglichkeit der additiven und multiplikativen Verknüpfung wird durch
+folgende Axiome sichergestellt:
+\begin{itemize}
+\item (Dl) Links-Distributivgesetz: $∀ a, b, c ∈ M: a * (b + c) = a * b + a * c$
+\item (Dr) Rechts-Distrubutivgesetz: $∀ a, b, c ∈ M: (a + b) * c = a * c + b * c$
+\item (D)  Distrubutivgesetz: es gelten Dl und Dr.
+\end{itemize}
+
+Weitere Axiome, die beide Verknüpfungen betreffen sind:
+\begin{itemize}
+\item (U) Ungleichheit: $1 ≠ 0$ 
+	(die neutralen Elemente der additiven und multiplikativen Operation sind ungleich)
+\item (T) Nullteilerfreiheit:
+	Wenn $0$ das neutrale Element der additiven Verknüpfung bezeichnet,
+	dann folgt aus $a * b = 0$ für alle $a, b ∈ M$, dass $a = 0$ oder $b = 0$ gilt.
+\item (I*) Inverses*:
+	$∀ a ∈ M\\\{0\}: ∃a^{-1} ∈ M: a * a^{-1} = a^{-1}a * a = e$
+	Für jedes Element, mit Ausnahme des neutralen Elements der additiven Verknüpfung,
+	existiert eine inverses Element bezüglich der multiplikativen Verknüpfung.
+\end{itemize}
+
+\todo{Liste der Strukturen}
+
+
+
+
+%-------------------------------------------------------------------------------
+\subsubsection{Strukturen mit zwei Verknüpfungen: Verbände, Mengenalgebren und ähnliche}
+
+Ein \emph{Verband} ist eine algebraische Struktur, dessen zwei inneren Verknüpfungen
+im Allgemeinen nicht als Addition und Multiplikation aufgefasst werden können.
+
+Folgendes Axiom ist relevant:
+\begin{itemize}
+\item Verschmelzung (Absorption): $a ∩ (a ∪ b) = a$
+\item Verschmelzung (Absorption): $a ∪ (a ∩ b) = a$
+\end{itemize}
+
+\todo{Liste der Strukturen: Verband, distributiver Verband}
+
+
+
+%-------------------------------------------------------------------------------
+\subsubsection{Strukturen mit inneren und äußeren Verknüpfungen: Vektorräume und ähnliche}
+
+\todo{ergänzen}
+
+
+\begin{comment}
+%-------------------------------------------------------------------------------
+\subsection{Zusätzliche algebraische Strukturen auf Vektorräumen}
+
+\todo{ergänzen}
+\end{comment}
+
+
+
+
+
+
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+\subsection{Ordnungsstrukturen}
+
+Eine Ordnungsstruktur ist eine Struktur (erster Stufe), die mit einer \emph{Ordnungsrelation}
+ausgestattet ist (relationale Struktur/Relativ).
+
+\todo{ergänzen}
+% Quasiordnung: reflexiv und transitiv
+% Teilordnung: (partielle Ordnung, Halbordnung) reflexiv, antisymmetrisch, transitv
+% strenge Halbordung: irreflexiv und transitiv
+% totale Ordnung (lineare Ordnung): totale Halbordnung
+% strenge Totalordnung: total, irreflexiv, transitiv
+% fundierte Ordnung
+% Wohlordnung
+
+
+
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+\subsection{Ordnungsstrukturen}
+
+Die generalisierung des geometrische Begriffs des \emph{Abstands} (der Metrik)
+ermöglicht es, in \emph{metrischen Räumen} das grundlegende Konzept der modernen
+Analysis, die \emph{Konvergenz} zu handhaben.
+
+\emph{Topologische Räume} sind aus dem Bemühen hervorgeganen,
+die Konvergenz in einem allgemeinen Sinn zu behandeln
+(jeder Metrische Raum ist ein topologischer Raum mit der Topologie die durch 
+die Metrik induziert wird.)
+
+

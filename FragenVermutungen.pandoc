@@ -1,0 +1,193 @@
+# Domain Theory / Denotational Semantics
+
+## Natürliche und künstliche Sprachen
+
+Frage: Sinn und Bedeutung in Formalen Sprachen
+Kann bei formalen Sprachen auch zwischen Sinn und Bedeutung unterschieden werden?
+Wie kann diese Unterscheidung vorgenommen werden?
+Gibts da einen Standardansatz?
+
+Beispiel
+1) 3 + 5, 8
+2) irgendwelche Lambdaausdrücke
+
+
+Frage: Unentscheidbarkeit der Extensionalen Gleichheit von Lambdaausdrücken
+Wenn mich nicht alles täuscht war das doch das erste erwiesenermaßen 
+unentscheidbare Problem?
+Ist das im Prinzip nicht das gleiche wie das Halteproblem 
+im Gewand des Lambdakalküls?
+
+
+<!-- ----------------------------------------------------------------------- -->
+## Kategorientheorie: Cartesian Closed Categories
+Vermutung: Cartesian Closed Categories
+Alle Kategorien die abgeschlossen sind unter dem kartesischen Produkt,
+die also sowohl das Diskursuniversum als auch den Funktionenraum enthalten.
+
+Anscheinend ist das einfach typisierte Lambdakalkül die 'interne Sprache'
+kartesisch geschlossener Kategorien was auch immer das heißen mag...
+
+## Vermutung: Undefined
+Keine 'Erfindung' von Haskell sondern schon von Scott in seinen Scott-Domänen.
+
+
+<!-- ----------------------------------------------------------------------- -->
+## Denotationale Semantik und Modelltheorie
+
+### Domänentheorie:
+
+#### Verständnis bislang:
+Künstliche/formale Sprachen können (beliebig) interpretiert werden;
+für eine Sprache sind auch verschiedene Interpretationen möglich.
+
+Domänentheorie ist die (kompositionale?) Interpretation einer formalen 
+Sprache in eine bestimme mathematische Struktur,
+um den Ausdrücken einer Sprache eine Bedeutung zu geben.
+(Damit wohl eine Referenztheorie)
+Dabei muss es sich denke ich erstmal gar nicht um eine Theorie,
+also um eine Aussagenmenge handeln deren Sätze wahr oder Falsch werden können.
+
+Ich denke auch dass bei der Domänentheorie erst einmal eine bestimmte 
+Struktur ausgewählt wird und dann eine Interpretationsfunktion definiert.
+
+#### Fragen
+Frage: Kriterium für adäquate Übersetzung
+An welchen Kriterien kann man ausmachen ob eine bestimmte Übersetzung/Interpretation
+adäquat oder nicht adäquat ist? Gibt es dafür irgendwelche Kriterien wie
+Kompositionalität und so weiter?
+
+Frage: implizite Axiome in Programmiersprachen
+Nach dem Eintrag in SEP über Philosophie der Informatik haben Programmiersprachen
+(also in gewissem Sinn auch das Lambdakalkül) ihre Axiome impliziet definiert...
+(nachprüfen)
+spielen diese implizit definierten Axiome eine Rolle; 
+wenn ist das ja eigentlich ein Fall für die Modelltheorie oder nicht?
+
+Frage: denotationale Semantik imperativer Programmiersprachen
+Können objektorientierte/imperative Programmiersprachen eine denotationale
+Semantik haben?
+
+
+### Modelltheorie
+
+#### Verständnis bislang:
+Die Modelltheorie beschftigt sich mit ganzen Klassen von Strukturen die einen
+Satz oder eine Theorie erfüllen (Mod(S) bzw. Mod(T)).
+
+Dabei geht es nicht nur um eine reine (konsistente) Bedeutungszuweisung
+für die Terme einer Sprache in einer Struktur sondern auch explizit darum,
+dass die Sätze/Theorien in dieser Struktur erfüllt werden.
+
+Da kommt dann wohl die Tarskische Wahrheitskonzeption mit in Spiel,
+in der das Wahrheitsprädikat in der Metasprache formuliert wird und so weiter.
+Eine Interpretationsfunktion brauch man denke ich auch hier.
+
+#### Fragen
+
+Frage: Nachweis, dass eine Struktur Modell einer Theorie ist?
+Wie kann nachgewiesen werden, dass eine Struktur Modell einer Theorie ist?
+In der Logik: 
+Nachweis der Extensionalitätsgleichheit,
+also vollständigkeit und Korrektheit des deduktiven Systems/der 
+gültigen Formel formalen Sprache mit den Formeln der Metasprache.
+Wie genau funktioniert das, wie wird denn dieses Wahrheitsprädikat definiert;
+vor diesem Hintergrund müsste man noch einmal die logikunterlagen durcharbeiten
+Brauchten wir da die Wahrheitstafeln als entscheidungsverfahren in der Metasprache?
+
+Frage: Was hat das mit den boolschen/heyting Algebren zu tun?
+In der AL haben wir ja am Anfang nicht in irgendeine algebraische Struktur
+übersetzt (oder doch)? War das dann eigentlich überhaupt eine Modelltheoretische
+sich oder nicht? Das Wahrheitskriterium haben wir ja auf jeden fall verwedent.
+
+Wenn mit nicht alles täuscht sind doch boolsche Algebren Modelle der KAL und 
+Heytingalgebren Modelle der Intuitionistischen Aussagenlogik.
+Wie lautet den die Theorie der KAL?
+Was haben die denn für eine Signatur?
+Wie wird denn der Nachweis geführt, dass das in den Strukturen so funktioniert?
+
+Frage: Was ist der unterschied zwischen denotationaler Semantik und Modelltheorie
+Beide weisen doch einer formalen Sprachen eine Bedeutung zu?
+Ne nicht ganz ... Modelltheorie ist ein bißchen anders?
+Modelle sind eine mögliche Interpretation. Denotationale Semantik legt sich auf
+ein Modell fest.
+Bedeutet das, das denotationale Semantik in ein bestimmtes Modell abbilden?
+Sozusagen eine Interpretationsfunktion/Compiler von Ausdrücken ins Modell?
+
+oder eher das Modelltheorie die (möglichen) Modelle einer Sprache beschreibt
+und denotationale Semantiken der Sprache eine Bedeutung gibt?
+
+
+Frage: was sind den Kategorieale Modelle?
+Ich dachte, dass die Kategorientheorie an die Mengenlehre gebunden ist ...
+ich habe aber gehört, dass es auch Mengentheoretische Formulierungen der
+Kategorientheorie gibt
+#### Vermutungen
+Vermutung: Denotationale Semantik & Modelltheorie
+Denotationale Semantik funktioniert bei funktionalen Programmiersprachen auf 
+jeden Fall nur mit Kategorien, da in Mengen deren Funktionenraum nicht
+enthalten sein kann.
+(Ich dachte dass auch Kategorien mengentheoretisch formuliert werden können).
+
+
+
+<!-- ----------------------------------------------------------------------- -->
+## Curry-Howard Isomorphismus
+
+### Fragen
+
+Frage: Variable Interpretation?
+Angenommen die Vermutung stimmt und Heytingalgebren sind ein Modell der 
+Intuitionistischen Logik.
+
+In der Domänentheorie:
+Andererseits ist das typsierte Lambdakalkül anscheinend die 'interne Sprache'
+der kartesisch geschlossenen Kategorien und wird in diese Domäne interpretiert.
+Was heißt das eigentlich genau?
+
+Müsste dann die Heytingalgebra nicht eigentlich auch ein Modell des 
+einfach typisierten Lambdakalküls sein?
+Wenn nein warum, und wenn ja wie passt das mit den kartesisch geschlossenen
+Kategorien zusammen? oder ist die Heytingalgebra eine kartesisch geschlossene
+Kategorie?
+
+Antwort:
+Laut Wiki ist das so!
+https://en.wikipedia.org/wiki/Cartesian_closed_category
+Ist dann jede kartesisch geschlossene Kategorie Modell des einfach typisierten
+Lamdakaklüls?
+Was bedeutet es überhaupt ein Modell von einem Lambdakalkül zu sein?
+Gibts für sowas Kriterien/Definitionen?
+
+Frage: Warum funktioniert das trotz anderer Interpretation?
+Wie kann es sein, dass manche Ergebnisse aus dem Curry-Howard isomorphismus
+beispielsweise die Programmimplementierung mit einem Kalkül funktionieren,
+wo doch auch undefined und die Domänentheorie der kartesisch geschlossenen 
+kategorien ihr unwesen treiben?
+Ist das da iwi eingebettet?
+
+<!-- ----------------------------------------------------------------------- -->
+## MISC
+
+### Fragen
+
+Frage: Zusammenhang zwischen Typentheorie und Modelltheorie
+Wie ist eigentlich der generelle Zusammenhang zwischen Typen und Modelltheorie?
+
+
+### Anmerkungen
+
+Schau mal noch bei Wiki: Definitions
+da wird auch zwischen intensionalen und extensionalen Definitionen unterschieden.
+Beschreibgung des Inhalts und nicht der Extension (Umfang)
+
+
+
+
+
+
+
+
+
+
+

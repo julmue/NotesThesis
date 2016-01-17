@@ -1,0 +1,165 @@
+# Lambda Kalkül
+
+Lambda-Kalkül: einfache Notation für Funktionen und ihre Anwendung
+(Formalisation von Funktionen und ihrer Anwendung)
+
+zentrale Idee, Idiome:
+* Anwendung einer Funktion auf ein Argument (Application)
+* Funktionen bilden durch Abstraktion (Abstraktion)
+
+Funktionen und Argumente sind gleichberechtigt.
+Daraus resultiert eine intensionale Theorie von Funktionen als
+Rechenregelen/Abbildungsvorschriften im Gegensatz zu einer extensionalen 
+Theorie von Funktionen als einer Menge von geordneten Paaren.
+
+Trotz (oder gerade wegen) seiner umfangsarmen Syntax,
+machen seine Ausdrucksstärke und Flexibilität das Kalkül zu einem Füllhorn
+für Logik und Mathematik.
+
+Anwendungen:
+* Philosophie
+* Linguistik
+* Informatik
+* Logik
+* Mathematik
+
+
+## Einleitung
+
+Lambda-Kalkül: einfache Notation für Funktionen und ihre Anwendung
+
+Beispiel: 
+
+Funktion := 2x + 5
+Argument := 3
+
+In Lambda-Notation: 
+
+(λx.2x + 5) 3 
+-> (Abstraktion zu anderem Term via Substitution) 
+2 * 3 + 5 
+-> (Arithmetik)
+11
+
+Der Lambdaoperator erlaubt es über x zu abstrahieren;
+er bindet die nach ihm angeführte Variable.
+
+"we apply a Lambda-expression to an argument to get a value"
+
+Lambdaausdrücke sind also Darstellungen von Funktionen in intensionaler Notation.
+
+zentrales Prinzip des Lambdakalküls: β-Reduktion (Substitution)
+
+(β) (λx.M) N -> M[x:=N]
+
+Idee: 
+Eine Substitution kann reduziert/kontrahiert werden in dem man alle freien
+Vorkommen der gebundenen Variable im Funktionsterm durch den Argumentterm ersetzt.
+Dieses Prinzip ist das Herz des Lambdakalküls.
+
+### n-äre Funktionen
+
+n-äre Funktionen können via Schönfinkeln/Currying auf unäre Funktionen
+extensional identische unäre Funktionen abgebildet werden (und umgekehrt).
+(Higher Order Functions).
+
+
+### Intensionalität
+
+Die vom Lambdakalkül gewählte Funktionsdarstellung ist intensional.
+Wie können einen Lambdaterm als die Beschreibung einer Operation ansehen,
+die angewandt auf ein Argument einen Wert produziert;
+der Körper der Abstraktion enthält die Schritte zur Berechnung des Werts.
+
+Intuitiv, gegeben zwei Lambdaterme M und N kann nicht immer entschieden werden
+ob die von M erzeugte Relation zwischen Eingabe und Ausgabewerten 
+extensional gleich ist zu der von N erzeugten Relation.
+(Halteproblem?).
+
+Kontrast:
+Die Definition einer Funktion in der Mengenlehre als Menge f geordneter Paare
+erfüllt die Eigenschaft, dass wenn (x,y) in f und (x,z) in f dann y = z.
+Die Identität von Funktionen wird als Identität von Mengen ausgedrückt.
+
+(Lambdakalkül kann eine Art Extensionalitätsprinzip bekommen, siehe später)
+
+
+## Syntax
+
+Die Syntax des Lambdakalküls ist sehr einfach:
+
+Λ :=
+1. x		Variable
+2. M N		Application terms
+3. λ M		Abstraktion terms
+
+und Klammern wo nötig;
+Applikation linksassoziativ
+
+
+### Freie und gebundene Variablen
+
+### Kombinatoren
+
+
+
+## Geschichte des Lambdakalküls
+
+1. Frege
+
+2. Moses Schönfinkel: Kombinatorenlogik
+Resultat: Alle Funktionen können durch die Kombinatoren K un S angegeben werden
+Theorem ...
+
+In den Anfangstagen wurde das Lambdakalkül für die Erforschung der Grundlagen
+der Mathematik eingesetzt:
+* Definition von Mathematischen Objekten
+* Beweise innerhalb des neuen Systems
+
+Die frühen Ansätze waren inkonsistent (Currys Paradoxon), die späteren 
+konsistenten Ansätze zu schwach.
+
+Das Lambdakalkül war die Grundlage des ersten Unentscheidbarkeitsproblems:
+Gegeben M und N entscheide ob M = N.
+Von diesem Problem konnte gezeigt werden, dass es unentscheidbar ist.
+
+Ein weiteres frühes Problem:
+Ist das Lambdakalkül konsistent?
+Inkonsistenz in diesem Rahmen bedeutet, dass alle Terme identisch sind. 
+(gibt es einen unterschied zwischen Äquivalenz und Identität?)
+Dies ist nicht der Fall.
+Später, wurde durch das mächtige Curch-Rosser-Theorem weitere
+Einsichten in die Natur der β-Reduktion erschlossen.
+
+Bis in die 1960er Jahre fristete das λ-Kalkül ein Schattendasein,
+bis eine 'mathematische' denotationale Semantik gefunden wurde.
+Weiter wurde seine beziehung zu Programmiersprachen herausgearbeitet.
+Bis dahin waren die einzigen Modelle des Lambdakalküls syntaktisch
+(was sind den syntaktische Modelle? Henkin-style) und bestanden 
+aus äquivalenzklassen von λ-Termen.
+
+Weiter verbreitet wurde das Kalkül durch die Verwendung in der Semantik
+natürlicher Sprachen von Montague et al.
+
+Seithin hat es in verschiedenen Feldern weite Verbreitung gefunden.
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Semantik des Lambdakalküls
+
+
+
+
+
+
+

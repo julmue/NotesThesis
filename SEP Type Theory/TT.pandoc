@@ -1,0 +1,231 @@
+# Typentheorie
+
+Typentheorie ist sowohl in der Informatik als auch der Logik von größter 
+Wichtigkeit. In diesem Artikel werden allerdings nur die logischen Aspekte
+der Typentheorie behandelt.
+
+Begriffe: Predikativität vs Impredikativität
+* Impredikative Definition:
+  Eine selbstreferentielle Definition;
+  eine Definition ist impredikativ wenn sie sich auf die zu definierende
+  Menge bezieht, oder über diese Menge quantifiziert,
+  oder eine andere Menge welche das zu definierende Ding enthält.
+* Prädikative Definition:
+  Prädikative Definitionen sind nicht selbstreferentielle Definitionen;
+  aus prädikativen Definitionen resultieren stratifizierte Hierarchien.
+  
+
+## Motivation: Paradoxa und Russells Typentheorie
+
+Typentheorie:
+Eingeführt von Russell als Werkzeug um mit einigen Widersprüche seines Entwurfs 
+der Mengenlehre zu vermeiden (Russell, 1903).
+
+Ursache der Widersprüche:
+Das Theorem Cantors, dass
+
+	keine Abbildung F:X -> Pow(X) ist sujektiv
+	(also kann auf alle Elemente von Pow(X) abbilden;
+	 Eine Menge hat mehr Untermengen als Elemente)
+
+Beweis:
+1. Betrachte folgende Untermenge von X: $A = \{ x ∈ X | x ∉ F(x) \}$
+2. Diese Untermenge kann nicht in der Zielmenge von $F$ liegen.
+	Wenn $A = F(a)$ für ein $a$ dann,
+	$a ∈ F(a)$ gdw. $a ∈ A$ gdw. $a ∉ F(a)$
+
+Anmerkung:
+* Dieser Beweis ist intuitionistisch gültig (kein LEM).
+* Verwendete Methode: Diagonalisierung.
+
+Russel untersuchte was passiert wenn dieses Theorem auf die Menge aller Mengen
+angewandt wird, angenommen eine solche Menge existiert.
+Dadurch musste er die speziellen Mengen berücksichtigen, die sich nicht selbst
+enthalten:
+
+	(*) $R = \{ w | w ∉ w \}$
+
+woraus folgt $R ∈ R gdw. R ∉ R$.
+
+Anmerkung:
+Es ist wahrscheinlich, dass sich schon Cantor der Tatsache bewusst war,
+dass die Menge aller Mengen nicht selber eine Menge sein konnte.
+
+
+(*) trifft auf Freges System direkt nicht zu:
+Der Ausdruck "Ein Prädikat ist ein Prädikat seiner selbst" ist nicht exakt.
+Frege unterscheidet *Prädikate* (Konzepte) und *Objekte*.
+Ein Prädikate (erster Ordnung) kann auf ein Objekt aber nicht auf ein 
+Prädikat angewandt werden.
+
+Die Formulierung in Freges System verwendet die Extension $εP$ eines Prädikates
+$P$. Die Extension eines Prädikates ist ein Objekt.
+Das wichtige Axiom V:
+
+	(Axiom V) $εP = εQ ≡ ∀x\[P(x) ≡ Q(x)\]$
+
+Dieses Axiom erzwingt, das die Extension von P und Q gleich ist,
+wenn P und Q material äquivalent sind.
+Damit kann Russells Paradoxon in Freges System übersetzt werden:
+
+	$R(x) gdw. ∃P[ ∧ ¬P(x)]$
+
+Daraus folgt unter Verwendung des Axiom V $R(εR) ≡ ¬R(εP)$ -- Kontradiktion.
+
+Anmerkung:
+Hier wurde eine impredikative Existenzquantifikation über Prädikaten verwendet;
+bei einer prädikativen Existenzquantifikation ist Freges System konsistent.
+
+Anmerkung:
+In Freges Arbeit war die Idee der Typen schon enthalten:
+Die Unterscheidung zwischen Objekten, Prädikaten, Prädikaten von Prädikaten, ...
+Diese Hierarchie wird von Russell Extentionale Hierarchie genannt,
+und wird von ihm als notwendige Konesquenz aus seinem Paradox angesehen.
+
+
+## Einfache Typentheorie und der Lambdakalkül
+
+Die Stratifikation der Entitäten in Objekte, Prädikate, Prädikate von Prädikaten,
+... scheint ausreichend zu sein um Russells Paradoxon zu vermeiden.
+
+Die Typentheorie wir in der Principia Mathematika formuliert:
+1. $i$ ist der Type von Objekten
+2. $()$ ist der Typ von Propositionen
+3. Wenn $A_1, ... ,A_n$ Typen sind,
+	dann ist $(A_1, ... ,A_n)$ der Type der n-ären Relationen 
+	über Objekten bzw. den Typen $A_1, ... ,A_n$.
+
+Beispiele:
+* $(i)$ der Typ unrärer Prädikate über Individuen
+* $(i, i)$ der Typ binärer Relationen über Objekten
+* $((),())$ der Typ binärer Konnektive
+* $((i))$ der Typ von Quantifikatoren über Individuen
+
+Um Propositionen zu bilden wird diese Typenstruktur verwendet:
+$R(a_1, ..., a_n)$ ist eine Proposition wenn
+$R$ vom Typ $(A_1, ... ,a_n)$ ist und die $a_i$ jeweils Instanzen des 
+dazugehörigen Typs.
+Diese Einschränkung macht es unmöglich eine Proposition der Form $P(P)$ zu
+bilden: $P : (A)$ damit kann P nicht auf sich selbst angewand werden. 
+(Ist das eigentlich auch der Grund warum man den Y-Kombinator nicht 
+typisieren kann?)
+
+Einfache Typentheorie ist nicht prädikativ;
+Man kann ein Objekt $Q(x,y)$ des Typs $(i,i)$ definieren: 
+
+	$∀P(P(x) ⊃ P(y))$ (???)
+
+1. Angenommen zwei Individuen $a$ und $b$ so dass $P(a,b)$
+2. Wir definieren $P(x)$ als $Q(x,a)$
+3. Damit ist klar, dass $P(a)$ da $Q(a,a)$.
+4. Damit ist klar, damit gilt auch $P(b,a)$.
+5. Wir haben auf imprädikative Art gezeigt, dass $P(a,b)$ impliziert $P(b,a)$.
+???
+
+(hier fehlt was, ... ist denk ich nicht soo wichtig)
+
+In diesen Versionen der Typentheorie, wie in der Megenlehre sind Funktionen
+keine primitiven Objekte, sondern als eine funktionale Relation präsentiert
+(extensional; auch nicht berechenbare Funktionen).
+
+Beispiel: 
+Die Additionsfunktion wir die folgt repräsentiert: $ (+) : (i,i,i)$
+
+
+Eine elegante Formulierung der Typentheorie mit Funktionen als primitiven
+Objekten (intensional; primitiv-rekursive Funktionen?) unter Verwendung
+des Lambdakalküls wurde von Church 1940 definiert.
+Diese Formulierung ist wichtig aufgrund ihrer Beziehung zur Kategorientheorie
+und ihrer Beziehung zum Per-Martin-Löf-Typentheorie.
+In dieser Formulierung werden Prädikate als spezielle Art von Funktionen
+gesehen (Propositionale Funktionen).
+Weiter ist das Konzept der Funktion primitiver als das der Prädikate und
+Relationen; es wird nicht weiter als eine spezielle Relation definiert.
+
+Die Typen dieses Systems werden induktiv definiert:
+1. Es gibt zwei basale Typen: 
+   * $i$ der Typ der Individuen
+   * $o$ der Type der Propositionen
+2. Wenn $A,B$ Typen sind, dann ist $A → B$ (Funktionen von A nach B) ein Typ.
+
+Beispiele:
+* $i → o$ Prädikate 
+* $(i → o) → o$ Typ von Prädikaten für Prädikate
+* $i → i$ Typ von Funktionen
+* $(i → i) → i$ Typ von Funktionalen
+
+Notation:
+$A_1, ..., A_n → B$ für $(A_1 → (A_2 → ... → (A_n → B))$.
+Damit korrespondiert $A_1, ..., A_n → B$ zu $(A_1, ..., A_n)$ .
+
+Die Prädikatenlogik erster Stufe erfasst nur die Typen:
+$i,...,i → i$ Typ der Funktionssymbole und
+$i,...,i → o$ Typ der Prädikate, Relationssymbolen.
+
+Terme dieser Logik: $Λ = v | Λ Λ | λ.Λ$
+
+(Diese Notation sollte mehr in der Mathematik verwendet werden)
+
+Einzige Gleichung/Axiomenschemata des Lambdakalküls: β-Konversion
+
+(β) $(λx.M) N = M[x:=N]$
+
+Diese Gleichung wird oft als Termersetzung (rewrite rule) angegeben:
+
+(β) $(λx.M) N → M[x:=N]$
+
+
+
+#### Termination im untypisierten Lambdakalkül
+
+Im untypisierten Lambdakalkül muss diese Termersetzung nicht zwingend 
+terminieren. Kanonisches Beispiel:
+
+M = λx. x x (Welcher Kombinator ist das genau?)
+
+T T → T T
+
+(Ähnlichkeit zu Russels Paradox)
+
+
+#### Typisiertes Lambdakalkül
+
+Idee Curry:
+Betrachte Typen als Prädikate über Lambdatermen, 
+geschrieben M:A um zu kennzeichnen, dass M das Prädikat/Typ A erfüllt.
+
+Die Bedeutung von $N:A→B$ ist dann:
+
+$M, wenn M:A dann ist N M:B$
+
+was die folgende Regel rechtfertigt:
+
+N:A→B  M:A		
+--------------
+   N M: B
+
+M: B [x:A]
+ -----------
+λ.xM : A→B
+
+Generell arbeitet man mit Urteilen der Form
+
+$x_1:A_1, ... ,x_n:A_n ⊢ M:A$
+
+Um zu Churchsch System zu kommen nimmt man einige Konstanten hinzu:
+* not:		o → o
+* imply: 	o → o → o
+* and : 	o → o → o
+* forall : 	(A→o)→o
+
+
+Russells Paradoxon kann nicht typsiert werden:
+λx. ¬(x x) ist das Prädikat der Prädikate 
+
+
+
+
+
+
+
+

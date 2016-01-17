@@ -1,0 +1,780 @@
+# Wahrheit
+
+Wahrheit ist ein zentrales Thema der Philosophie.
+
+Viele Probleme in der Philosophie haben eine enge Beziehung zur Wahrheit,
+entweder weil sie von einer bestimmte Wahrheitskonzpetion abhänging,
+oder weil sie eine bestimmte Wahrheitskonzeption implizieren.
+
+Dieser Abschnitt behandelt die gängigen kontemporären Entwürfe.
+
+zentrales Problem der Wahrheitstheorie:
+Was sind Wahrheiten und was macht sie wahr?
+
+Die moderne philosophische Behandlung der Wahrheit nimmt ihren Ausgangspunkt
+im Anfang des 20ten Jahrhunderts.
+In den damals diskutierten und bis heute entwickelten Ansätzen
+Korrespondenztheorie, Kohärenztheorie und pragmatische Wahrheitstheorie 
+wird die Frage "Was ist die Natur der Wahrheit?" untersucht.
+Die Existenz von Wahrheiten wird bei diesen Untersuchungen vorausgesetzt.
+Jede der Theorien versucht diese Frage durch die Einbettung des Wahrheitsbegriffs
+in ein umfangreiches metaphysisches oder erkenntnistheoretisches System zu 
+beantworten. Im folgenden werden die für den weiteren Inhalt relevanten
+Korrespondenztheorie und Tarskische Wahrheitstheorie vorgestellt.
+
+## Wahrmacher (truthmakers) und Wahrheitsträger (truthbearers)
+
+<!--
+SEP Truthmakers
+-->
+
+"x macht es wahr, dass y."
+ist eine Konstruktion die eine Relation zwischen einem Wahrmacher und 
+einem Wahrheitsträger angibt.
+Für die Natur von Wahrmachern, Wahrheitsträgern, ob und wie diese Relation
+vorliegt, gibt es verschiedene Ansätze.
+
+Fragen des Themenkomplexes:
+* Was heißt es ein Wahr-macher zu sein?
+* Welche Menge oder Mengen von Wahrheiten können wahr gemacht werden?
+* Welche Klassen von Entitäten sind Wahrmacher?
+* Was ist die Motivation eine Theorie der Wahrmacher anzunehmen?
+* Was sind Wahrheitsträger?
+
+Diese Fragen können nicht in Isolation beantwortet werden.
+
+Zwei der wichtigsten Konzepte in der Diskussion sind die Wahrmacher und die 
+Wahrheitsträger; beide Konzepte können nicht in isolation betrachtet werden.
+Viele Entitäten sind als Wahrheitsträger vorgeschlagen worden:
+Sätze, Urteile, Propositionen -- welche davon als konkrete Repräsentation
+für die Wahrheitsträger verwendet wird beeinflusst auch den gewählten 
+Wahrmacher.
+
+### Was ist ein Wahrmacher?
+
+Wahrmacher:
+Die Dinge die etwas wahrmachen.
+
+Wahrheitsträger:
+Die Dinge die von Wahrmachern wahr gemacht werden.
+
+Es gibt verschieden Theorien dazu was ein Wahrmacher ist und wie er etwas 
+wahrmacht.
+
+Drei Kandidaten für Wahrheitsträger:
+* Sätze
+* Propositionen
+* Überzeugungen
+Diese Definitionen sind selbst nicht unstrittig,
+werden im folgenden aber als Arbeitsypothese angenommen um 
+die Weitere Untersuchung des Gegenstands zu ermöglichen.
+
+Sätze
+ :  Sätze sind grammatikalisch Wohlgeformte Aneinanderreihungen von Wörtern;
+    Sätze sind nicht identische mit ihrer Bedeutung:
+	"Schnee ist weiß" und "snow is white" sind unterschiedliche Sätze 
+	mit der gleichen Bedeutung.
+
+Propositionen
+ :  Propositionen sind die Bedeutung von Sätzen.
+	Die Sätze "Schnee ist weiß" und "snow is white" sind verschieden,
+	drücken aber beide die selbe Proposition aus.
+	(Um Propositionen gibt es eine große Debatte)
+
+Überzeugungen
+ :  Überzeugungen sind Einstellungen gegenüber Propositionen;
+	welche Bedeutung man einem Satz zuspricht und ob man ihn
+	für wahr oder falsch hält.
+
+Theorien der Wahrmacher
+* Vermögen (virtue)
+* Folgebeziehung
+* Notwendigkeit
+* Essentielle Theorie
+* Axiomatische Theorie
+	
+#### Vermögen (Virtue)
+
+"Ein Wahrmacher ist das, vermöge dessen etwas wahr ist."
+
+Pro:
++ Einfache Konzeption
+Kontra:
+* es ist nicht klar was "vermöge dessen" bedeuten soll.
+
+#### Folgebeziehung (Entailment)
+
+"Ein Wahrmacher ist ein Ding aus dessen reiner Existenz folgt, das etwas 
+anderes wahr ist."
+
+Pro:
+* Folgerung ist ein klar definiertes logisches Konzept.
+
+Beispiel:
+Wenn ein bestimmter Zustand der Welt der Fall ist 
+(beispielsweise die Katze auf dem Stuhl sitzt)
+dann folgt daraus logisch, dass der Wahrheitsträger
+"die Katze sitzt auf dem Stuhl" wahr ist.
+
+Contra:
+Die logische Folgebeziehung (in der klassischen Logik) verhält sich seltsam. 
+(Paradoxa der materialen Implikation?):
+Eine Implikation ist falsch gdw das Antezedens wahr und das Sukzedens falsch ist:
+ist das Sukzedens/Konsequenz? wahr, ist die Implikation wahr.
+Daher werden folgen notwendige Wahrheiten aus allem.
+
+Dadurch folgt aus der Existenz einer Ameise an meiner Wand,
+dass das Gesetz vom ausgeschlossenen Dritten wahr ist.
+Konterituitiv.k
+
+Konsequenz aus der Distributivität:
+Alles was existiert macht jede wahre Aussage wahr.
+Sehr konterintuitiv.
+
+Versuch die Folgebeziehung zu retten:
+Relevanzkriterium
+Klappt aber nicht unbedingt.
+
+#### Notwendigkeit
+
+Armstrong:
+Das Scheitern des Ansatzes der Folgebeziehung liegt an einem Kategorienfehler:
+Beide Hälften der Folgebeziehungen sind Aussagen,
+während ein Wahrmacher aber ein Ding ist und ein Wahrheitsträger eine 
+Form von Aussage.
+Statt einer Aussage als Wahrmacher und dem materialen Konditional schlägt 
+er Notwendigkeit vor.
+
+"Ein Wahrmacher ist ein Ding das es notwendig macht, dass etwas wahr ist."
+
+Hier ist das modale Konzept von Notwendigkeit gemeint.
+In der Terminologie möglicher Welten:
+
+Ein Wahrmacher macht einen Wahrheitsträger notwendig wahr,
+wenn es keine Welt gibt ist der der Wahrmacher existiert und der Wahrheitsträger
+falsch ist, und wenn es keine mögliche Welt gibt in der der Wahrmacher 
+nicht existiert aber der Wahrheitsträger wahr ist.
+
+Die Existenz des Wahrmachers ist notwendige und hinreichende Bedingung
+für die Wahrheit des Wahrheitsträgers.
+
+Pro:
+* Ameisenproblem gelöst (alles kontigente)
+
+Kontra:
+Alle notwendigen Wahrheiten sind gegenseitig Wahrmacher und Wahrheitsträger,
+da sie alle in allen möglichen Welten existieren.
+(vgl. Semantic der natürlichen Sprachen, Versagen der Carnapschen Intension),
+Kontraintuitiv.
+
+#### Projektion
+"Ein Wahrmacher ist eine Sache die ein Urteil notwendigerweise wahrmacht
+und in die Projektion dieses Urteils fällt."
+
+Ab hier: Statt generischer Wahrheitsträger sind es jetzt Urteile;
+ein Urteil ist eine bestimmte Form von Überzeugung.
+
+Die Projektion eines Urteils:
+Die mereologische Fusion aller Objekte auf welche in dem Urteil bezug genommen
+wird.
+(der Wahrmacher muss eine Kombination aller Teile des Urteils sein)
+
+#### Essentialismus
+Komischer Kram.
+
+
+#### Axiomatik
+
+Idee:
+Vielleicht ist es unmöglich die Idee eine Wahrmachers durch ein anderes 
+Konzept zu definieren und Wahrmacher sind eine eigene Kategorie.
+
+Unter dieser Annahme muss nur das Zusammenspiel dieser Entitätsklasse mit
+anderen Konzepten wie Wahrheit und Existenz geklärt werden.
+
+Definition:
+Ein Wahrmacher ist ein TM so dass
+* TM wahr macht, dass "p impliziert p" (Wahrheit)
+* TM wahr macht, dass das TM existiert (Existenz)
+* wenn TM p wahr macht, und p impliziert q, macht TM q wahr (Folgebeziehung)
+
+In den Axiomen wird nur die Beziehung zu anderen Konzepten definiert.
+
+Selbst dieser minimale Weg führt zu Komplikationen:
+* Wenn Wahrmacher abgeschlossen sind unter der Folgebeziehung
+	kommen wir wieder zu dem Punkt wo ein Glas Gurken 
+	das LEM wahr macht. (Ähnlich wie bei der Kausalitätsrelation).
+
+#### Grundierung
+
+Wahrmacher können durch die primitiven Konzepte von Fundamentiertheit
+und Grundierung definiert werden.
+
+Verspulter Kram.
+
+
+Das war die letzte Theorie.
+Bislang kann keine Theorie eine zufriedenstellende Definition eines Wahrmachers
+geben.
+
+
+### Wahrheitsträger
+
+Hier geht es nicht darum was für eine Klasse von Entitäten Wahrheitsträger sind
+sondern
+Gibt es einen Wahrmacher für alle möglichen Wahrheiten?
+Gibt es Wahrheiten ohne Wahrmacher?
+
+Ansätze:
+* Maximalismus
+* Optimalismus
+* Wahrheit superveniert auf Existenz
+
+#### Maximalismus
+
+Der intuitivste Ansatz.
+
+Für alle Wahrheitsträger die faktisch wahr sind (Korresponendztheorie?) 
+gibt es auch einen Wahrmacher;
+Jeder Wahrheitsträger hat mindestens einen Wahrmacher.
+
+Pro:
+* Intuitiv
+
+Kontra
+* Version des Lügnerparadoxons:
+"Diese Aussage hat keinen Wahrmacher"
+
+* Wenn die Aussage NU "Nichts existiert" wahr wäre,
+  müsste es etwas geben damit sie wahr gemacht wird.
+	Naja ...
+
+
+## Korrespondenztheorie
+
+Die Korrespondenztheorie findet im aktuellen Diskurs große Unterstützung.
+Korrespondenztheoretische Ansätzle lassen sich schon bis Aristoteles zurück
+verfolgen. 
+
+Die moderne Entwicklung der Korrespondenztheorie fällt mit der Entwicklung
+der analystischen Philosophie zusammen (Russell).
+
+Die Grundlegende Idee der Korresponendztheorie:
+Was wir glauben oder sagen ist wahr wenn es mit den tatsächlichen Fakten
+übereinstimmt.
+Wahrheitsträger (bearers of truth) in der Korrespondenztheorie sind
+Überzeugungen: 
+"Eine Überzeugung ist wahr gdw. sie mit einem Fakt übereinstimmt."
+
+Theorien dieser Art müssen die Beziehung zwischen Überzeugungen und Fakten
+bestimmen, sowie erklären was sie unter einem Fakt verstehen.
+
+Die Korrespondenztheorie ist in ihrem Kern eine ontologische These:
+Eine Überzeugung ist wahr wenn eine Entität existiert -- ein Fakt --
+zu dem sie korrespondiert.
+Wenn solch eine Entität nicht existiert ist die Überzeugung falsch.
+In einer mit der Korrespondenztheorie vereinbare Metaphysik müssen Fakten in 
+dieser Form enthalten sein. 
+
+Anmerkung:
+Eine geläufige Auffassung ist, dass Fakten zusammengesetzt sind:
+aus Partikularen (Objekten/Indiviuden), Prädikaten, Relationen und 
+Universalien (vgl. auch strukturierte Propositionen).
+
+Anmerkung:
+Die Existenz von Fakten als erste Wahrheit -- Wittgensteins Tractatus hat bis 
+heute großen Einfluss auf die Korrespondenztheorie.
+
+### klassische Korrespondenztheorie
+Anmerkung:
+Die Korrespondenzrelation ist eine binäre Relation über Aussagen und Fakten:
+$Korrespondenz ⊆ Überzeugungen × Fakten$
+Beispiel:
+* Fakten der Welt: {(Ramsey, singen)}
+* Überzeugung "Ramsey singt" ist wahr.
+* Überzeugung "Ramsey tanzt" ist falsch.
+
+
+### Moderne Korrespondenztheorie
+
+Die moderne Korrespondenztheorie erweitert die klassiche Korrespondenztheorie 
+um strukturierte Propositionen um die Korrespondenzrelation genauer zu 
+erklären:
+Propositionen sind die Inhalte von Überzeugungen und Behauptungen;
+die Struktur einer Proposition gleicht der logischen Form eines Satzes
+(?ist sie nicht dasselbe?).
+
+Mit strukturierten Propositionen kann die Korrespondenzrelation formalisiert 
+werden: Proposition und Fakt stehen in Korrespondenz gdw. sie die gleiche
+Struktur haben.
+
+Beispiel:
+Proposition: 	Ramsey singt
+		   V	 V
+Fakt:		(Ramsey, singen)
+
+Wahre Propositionen korrespondieren zu einem Fakt,
+falsche Propositionen korrespondieren zu keinem Fakt.
+Überzeugungen und Behauptungen sind wahr oder falsch vermittels 
+der Wahrheit oder Falschheit der von ihnen ausgedrückten Propositionen.
+
+Diese neo-klassische Wahrheitskonzeption behandelt Wahrheit als eine 
+Korrespondenz zwischen (strukturierten Propositionen) und (strukturierten) 
+Fakten über die Welt.
+
+
+## Korhärenztheorie
+
+Die Kohärenztheorie ist eng mit dem britischen Idealismus verbunden;
+die Korrespondenztheorie wurde als ihr nicht idealistischer Gegenentwurf 
+entwickelt.
+
+
+## Tarskis semantische Wahrheitstheorie
+
+(Es ist nicht komplett klar was Tarski überhaup mit semantisch gemeint hat;
+er hat das Ding trotz allem so genannt.)
+
+Tarskis Wahrheitskonzeption ist die Grundlage für einen wichtigen Zweig der 
+mathematischen Logik -- die Modelltheorie.
+
+(??? Überprüfen Steinacker ???)
+Im Gegensatz zu der vorgestellten Korrespondenztheorie und den andere 
+neo-klassischen Wahrheitskonzeptionen wurde sie ursprünglich nur durch für die 
+Verwendung mit formalen Sprachen intendiert (Das ist nicht mehr so ...).
+
+Wahrheitstheorien:
+Korrespondenztheorie, Kohärenztheorie, ...
+Einteilung aller Aussagen in zwei Mengen: 
+Die wahren und die falschen. (kann zu unterschiedlichen Ergebnissen führen).
+
+Tarskis semantische Wahrheitstheorie (ne nur Konvention T):
+Einteilung aller Wahrheitstheorien in zwei Mengen:
+Die der adäquaten und die der nicht-adäquaten.
+Werkzeug/Kriterium hierfür: Konvention T.
+(ursprüglich gedacht für formale Sprachen)
+
+
+Tarskis Wahrheitskonzeption besteht aus verschiedenen Teilen:
+* Sätze als Wahrheitsträger
+* Konvention T:
+	Ein Kriterium zur einteilung möglicher Kandidaten für eine Wahrheitstheorie
+* Rekursive Wahrheitsdefinition
+* Referenz und Erfüllung ?
+
+### Sätze als Wahrheitsträger
+
+Die Frage, welcher Entitätenklasse die Funktion von primären Wahrheitsträgern 
+zukommt ist für die Wahrheitstheorien von zentraler Bedeutung.
+In der klassischen Korrespondenztheorie übernehmen Überzeugungen diese Funktion,
+in der neoklassischen Propositionen;
+in Tarskis Wahrheitskonzeption sind Sätze die Träger von Wahrheiten.
+
+Während in der klassischen Debatte der Frage nach der metaphysischen Natur 
+der Wahrheitsträger eine große Bedeutung beigemessen wird, und Tarski diese 
+Wichtigkeit auch anerkennt, behandelt er diesen Gegenstand in seiner Theorie 
+rein pragmatisch: Sätze als Träger von Wahrheiten sind zweckmäßig.
+
+In der folgenden Diskussion sind Sätze vollständig interpretiert -- 
+sie tragen eine festgelegt, kontextunabhängige Bedeutung.
+(vgl. rigid denoters)
+Die Wahrheit von Sätzen wird in Tarskis Theorie durch ihre Referenz und 
+Erfüllbarkeit, welche eng mit Eigennamen und Prädikaten verbunden sind,
+vermittelt.
+
+#### Frage:
+
+wie ist das in der Aussagenlogik? 
+Da ist doch die Bedeutung des Satzes auch von seiner Belegung abhängig --
+also von so etwas wie kontexten -- 
+oder ist das hier irgendwie schon mit eingebaut?
+
+Inwiefern äußert sich das, dass sätze Wahrheitsträger sind?
+Auch bei den anderen Theorien müssen die doch ab irgendeinem Punkt mal wahr
+gemacht werden.
+Wie ist dem Kontext eigentilch die Einteilung 
+* Satz
+* Proposition (Inhalt) (Intension/strukturierte Proposition/Sinn)
+* Bedeutung (Umfang) (Extension)
+
+Werden Propositionen als primäre Wahrheitsträger behandelt,
+dann kommt den Sätzen nur modulo der von ihnen ausgedrückten Proposition
+Wahrheit oder Falschheit zu ...
+
+Sind Sätze primäre Wahrheitsträger kommt ihnen ohne Vermittlung durch eine
+Proposition ein Wahrheitswert zu.
+(Aber geschieht das eigentlich nicht durch die Übersetzung in die Metasprache?
+ "Snow is white" gdw. Schnee weiß ist.
+ "Schnee ist weiß" gdw. Schnee weiß ist.
+Durch diese Übersetzung wird ihnen doch eine Art Proposition zugeschrieben.)
+
+
+### Konvention T (1 mit Beispielen)
+
+Konvention T ist ein Kriterium, dass adäquate Wahrheitstheorien für eine formale 
+Sprache von nicht-adäquaten Wahrheitstheorien unterscheiden soll.
+
+Es geht hier folglich nicht um die dichotome Einteilung zwischen gültigen
+und nicht gültigen Formeln einer Sprache, sondern in die Einteilung 
+zwischen passende und nicht-passende Theorien für diese Sprache
+anhand derer diese Einteilung überhaupt vorgenommen werden kann.
+
+#### Ansatz:
+
+Das Wahrheitsprädikat über Sätzen kann nicht in der Objektsprache
+formuliert werden.
+Sobald es in der Objektsprache ausgedrückt wird wird es von Paradoxa
+wie dem Lügnerparadoxon befallen.
+Daher ist Tp ein Prädikat der Metasprache, welches 
+über Beschreibungen der Aussagen in Objektsprache definiert ist.
+
+Dafür zu unterscheiden:
+* Objektsprache
+* Metasprache
+um Paradoxa wie das Lügnerparadoxon zu umgehen.
+
+Es ist also auch eine (expressivere) Metasprache für jede Objektsprache
+erforderlich in der das Wahrheitsprädikat formuliert werden kann.
+
+Die Metasprache besteht aus der Objektsprache (bzw deren Überseztung in die
+Metasprache) (vermutlich noch einem Entscheidungskriterium) und 
+den Werkzeugen der Prädikatenlogik.
+
+##### Fragen:
+(Es geht also natürlich nur um Aussagen in der Objektsprache,
+ also Identitäten, Relationen, ...)
+
+(Irgendwie kommt mir das mit Hinblick auf die Aussagenlogik und besonders die 
+Prädikatenlogik trotzdem irgendwie zirkulär vor)
+
+Das bedeutet also auch, dass die intuitionistische Logik erstmal nicht als 
+Metalogik (zumindest im Modelltheoretischen Sinn) für die untersuchung 
+der kl. Aussagenlogik verwendet werden kann, da sie diese nicht enthält?
+ne nochmal überdenken.
+
+#### Definition: Konvention T
+
+Annahme: L ist eine vollständig interpretierte Sprache.
+Tarskis Frage: Wie sieht eine adäquate Wahrheitstheorie für eine formale Sprache
+		Überhaupt aus?
+Tarskis Antowrt: Konvention T (Tarski) -- Kriterium für die Theorie,
+	nicht die Theorie selbst.
+
+Eine formal korrekte Definition der Symbols Tp (des Wahrheitsprädikats),
+formuliert in einer Metasprache, 
+wird eine adäquate Definition der Wahrheit genannt, 
+wenn sie folgende Konsequenzen hat:
+
+1) Alle Instanzen des folgenden Schemas aus ihr abgeleitet werden können:
+
+	Schema: Tp(y) ≡ p
+	wobei das Symbol y durch die  objektsprachliche Beschreibung eines 
+	Satzes ersetzt wird und das Symbol p durch die Übersetzung dieses Satzes 
+	in die Metasprache.
+
+	Wenn die Übersetzung eines Satzes von der Objektsprache in die 
+	Metasprache in der Metasprache bewiesen werden kann,
+	dann ist der Satz wahr (gilt für diesen Satz das Wahrheitsprädikat).
+
+2) für alle Sätze der Objektsprache x gilt:
+	Kann Tp(x) in der Metasprache bewiesen werden, 
+	dann ist x eine gültige Formel, Satz, Theorem in der Objektsprache.
+
+Unter der Bedingung, dass alle Sätze der Sprache L vollständig interpretiert
+sind, kann angenommen werden, das jedem Satz φ ein Wahrheitswert zugewiesen 
+werden kann. 
+Die Konvention garantiert dabei, dass das von der Theorie realisierte 
+Wahrheitsprädikat extensional korrekt ist, das bedeutet, dass es als 
+Extension exakt die wahren Sätze aus L hat.
+
+(wie das genau realisiert wird wird nicht angegeben; das ist dann sache der 
+jeweiligen Theorie)
+
+#### Tarski Bikonditionale
+
+Bikonditionale der Form
+
+""φ" ist wahr gdw φ"
+
+siehe MacFarlane
+
+ist das jetzt objektsprachlich ausgedrückt?
+Warum geht das und was soll das?
+
+##### Fragen
+Was ist denn durch die Forderung nach metasprachlichkeit gewonnen?
+Nur die Vermeidung des Lügnerparadoxons?
+und geht dass dann nicht unendlich weiter? Also die Metasprache der Metasprachen
+etc? wohl nicht bei der Prädikatenlogik muss es ja auch klappen.
+
+Frage: Extensionale Äquivalenz?
+Ja, dass war doch das was wir immer mit korrektheit und vollständigkeit eines
+Kalküls nachzuweisen versucht haben.
+Die Objektsprache wird durch das Kalkül festgelegt -- die Menge der gültigen
+Formeln. 
+
+<!-- 
+Beispiel Aussagenlogik
+
+Sprache der Aussagenlogik ist klar.
+(Identität wäre hier semantische Äquivalenz bzw. Wertverlaufsgleichheit)
+
+Objektsprachliche Seite 
+Sprache der Aussaglenlogik sowie Regeln die festlegen 
+wie man die Menge der gültigen Zeichenketten erzeugt.
+
+Metasprachliche Seite (Semantische Wahrheit?)
+Semantisches Entscheidungsverfahren sind Wahrheitstabellen o. ä.
+Über dieses Verfahren wird festgelegt, welche wohlgeformte Formeln
+gültige Formeln der Aussagenlogik sind. Es gibt hier kein Kalkül.
+Modelle sind Belegungen.
+
+Dann muss gezeigt werden, dass die Menge der Objektsprache und die Menge
+der Metasprachlich gültigen Formeln extensional gleich sind.
+-->
+
+<!--
+Beispiel:
+Objektsprache BA (Basic Addition): 
+	Σ = {0,1,2,3,4,5,6,7,8,9,+,=}
+	Formeln: 
+	  (Many(Int) | 0) + (Many(Int) | 0) = (Many(Int) | 0)
+	| (Many(Int) | 0) = (Many(Int) | 0) + (Many(Int) | 0)
+
+	Angenommen es handelt sich um ein formales system,
+	nicht nur eine formale Sprache, 
+	mit der sich alle Theoreme dieser kleinen Arithmetik ableiten lassen.
+
+Metasprache MBA:
+	Enthält alle Theoreme der Objektsprache,
+	sowie die Mechanik der Prädikatenlogik um über diese zu sprechen,
+	und ein Wahrheitsprädikat T.
+
+	Um den Unterschied zwischen Objektsprache und Metasprache zu 
+	verdeutlichen werden die Nummern in Wörter übersetzt:
+	
+	'3 + 3 = 6' → 'drei plus drei gleich sechs'
+	
+	Konvention T gilt für unser Wahrheitsprädikat 
+	wenn alle Theoreme von BA übersetzt Theoreme von MBA sind. 
+
+	T(2=2+0) ist wahr, da 'zwei plus zwei gleich null'.
+	T('zwei gleich zwei plus null') ist unzulässig, 
+	da es sich um ein Theorem der Metasprache handelt.
+	Kategorienfehler
+-->
+
+
+#### Rekursive Wahrheitsdefinition
+
+Tarski schlägt nicht nur ein Kriterium für eine Wahrheitstheorie vor,
+er zeigt auch wie dieses Kriterium erfüllt werden kann.
+
+Erkenntnis:
+Wenn die Sprache L die richtige Struktur hat, dann kann die Wahrheit von L
+rekursiv definitert werden.
+(Sowas wie Kompositionalität eingeschränkt auf Wahrheitswerte? 
+Wahrheit des Satzes ergibt sich aus der Wahrheit der Konstituenten...)
+
+Beispiel:
+L ist eine einfache formale Sprache;
+sie enthält die beiden Sätze "Schnee ist weiß" und "Gras ist grün"
+sowie die Konnetkive $¬$ und $∨$.
+
+Trotz seiner simplizität enthält L unendlich viele verschiedene Sätze.
+Wahrheit kann für jeden dieser Sätze rekursiv definiert werden.
+
+1. Basissätze (Atome):
+    1. "Schnee ist weiß" ist wahr gdw. Schnee weiß ist.
+    2. "Gras ist grün" ist wahr gdw. Gras grün ist.
+2. Rekursive Sätze. Für Sätze φ und ψ von L:
+    1. "φ ∨ ψ" ist wahr gdw "φ" wahr ist oder "ψ" wahr ist.
+    2. "¬φ" ist wahr gdw. es nicht der Fall ist, dass "φ" wahr ist.
+
+Diese Theorie erfüllt Konvention T.
+
+##### Fragen
+gibt es noch andere (bekannte) Theorien die das Konvention T erfüllen?
+
+
+
+#### Referenz und Erfüllung (Sprung zur Prädikatenlogik)
+
+Das angeführt Beispiel mag einfach erscheinen,
+aber die Definition eines extensional korrekten Wahrheitsprädikats
+für eine unendliche Sprache ist eine bescheidene Anwendung für eine
+sehr mächtige Technik.
+
+(??? Ich glaub ich versteh das Problem immer noch nicht so ganz???
+ Was soll denn da überhaupt gelöst werden???)
+
+Tarskis Technik lässt sich auch auf atomare Sätze erweitern:
+Die Wahrheit jedes atomaren Satzes kann durch zwei eng verwandte Konzepte
+definiert werden: Referenz (reference) und Erfüllung (satisfaction).
+
+Beispiel:
+Sprache L' die L gleicht, wobei allerdings atomare Sätze eine aus 
+Termen und Prädikate aufgebaute innere Struktur haben:
+L' enthält die Terme "Schnee" und "Gras" sowie die Prädikate
+"ist weiß" und "ist grün".
+
+L' enthält neben den Sätzen von L auch die Sätze "Schnee ist grün" und 
+"Gras ist weiß".
+
+
+Wahrheitsdefinition für L':
+1. Basissätze
+	1. "Schnee" referenziert Schnee
+	2. "Gras" referenziert Gras
+	3. a erfüllt "ist weiß" gdw. a weiß ist.
+	4. a erfüllt "ist grün" gdw. a grün ist.
+2. Für einen Atomaren Satz "t ist P":
+	"t ist P" ist wahr gdw. die Referenz von "t" "P" erfüllt.
+3. siehe L
+
+Eine der Haupterkrenntnisse Tarskis:
+Der Mechanismus der Erfüllung erlaubt die rekursive Definition der Wahrheit
+von Sätzen mit Quantifikatoren (wird hier nicht weiter untersucht).
+
+Die Tarskische Wahrheitstheorie ist eine rekursive Theorie 
+(Wittgensteins logische Räume?) die Ähnlich zur Wahrheitstheorie von L'
+aufgebaut ist.
+(Wahrheitstheorie für was jetzt? ich dachte natürliche Sprachen sind da raus?)
+
+
+Anwendungen der Tarskischen Wahrheitstheorie:
+Mit einer tarskische Wahrheitstheorie für eine Sprache L 
+kann gezeigt werden, dass Theorien in L konsistent sind.
+(Theorien im Sinn von gültigen Sätzen?)
+Die wahr für Tarski von größter Wichtigkeit, da er befürchtete,
+dass Sprachen mit einem Wahrheitsprädikat vom Lügnerparadoxon inkonsistent
+gemacht werden.
+
+(siehe unbedingt: Axiomatische Wahrheitstheorien)
+
+
+
+
+## Nocheinmal Korrespondenztheorie 
+
+Die Korrespondenztheorie der Wahrheit drückt die natürliche Idee aus,
+dass es sich bei Wahrheit um eine Inhalt-zu-Welt oder Wort-zu-Welt relation
+handelt:
+Was wir sagen oder denken ist wahr oder falsch in Abetracht der Welt (?).
+
+Braucht Korrespondenztheorie Fakten?
+In einem metaphysischen Rahmen der die Existenz von Fakten postuliert 
+ist dieser Ansatz sehr direkt.
+
+Allerdings ist ein solcher Rahmen für eine Korrespondenztheorie nicht zwingend
+notwendig. Es wird kontrovers diskutiert ob eine Korrespondenztheorie überhaupt
+einen bestimmten metaphysischen Rahmen voraussetzten soll.
+
+Die grundlegende Idee der Korrespondenz wird durch ein Zitat aus Aristoteles
+Metaphysik eingefangen:
+
+"Von dem, was ist, zu sagen es sei nicht,
+ oder von dem, was nicht ist, zu sagen es sei, ist falsch,
+ hingegen von dem, was ist, zu sagen, es sei,
+ oder von dem, was nicht ist, zu sagen es sei nicht, ist wahr."
+	(Aristoteles, Metaphysik)
+
+"Was ist" ist natürlich ein Fakt,
+aber diese Feststellung verlangt nicht nach einer ausgewachsenen Metaphysik
+der Fakten. (???)
+
+Ohne eine Metaphysik der Fakten verliert die in Abschnitt X und Y 
+beschriebene Korrespondenztheorie an Substanz.
+Dies führte zu zwei unterschiedlichen Strömungen der kontemporären 
+Korrespondenztheorie:
+* Eine Strömung versucht die Korrespondenztheorie auf eine weise zu formulieren,
+	dass sie ohne die Bindung an eine bestimmte Ontologie auskommt.
+* Eine andere Strömung versucht eine für die Korrespondenztheorie geeignete 
+	Ontologie zu ermitteln, entweder mit Fakten oder anderen geeigneten
+	Entitäten.
+
+
+### Korrespondenztheorie ohne Fakten
+
+Tarskis Theorie: Korrespondenz + Kohärenz (durch Rekursion)
+
+Um es sich bei Tarskis Theorie um eine Korrespondenztheorie handelt ist 
+umstritten.
+Einige Philosophen sehen in seiner Theorie zumindest den Kern einer 
+Korresopndenztheorie die sich von der metaphysischen Voraussetzung von
+der Entitätenklasse Fakten löst.
+
+Tarskis Theorie zeigt wie die Wahrheit eines Satzes von bestimmten Eigenschaften
+seiner Konstituen (und seiner Struktur) determiniert wird:
+insbesondere den Eigenschaften Referenz und Erflülltheit
+(und den logischen Konstanten).
+
+(??? Vgl. strukturierte Propositionen)
+Die Referenz wird dabei im allgemeinen als Wort-zu-Welt-Relation verstanden.
+Die Erfülltheit wird ebenso als Wort-zu-Welt-Relation verstanden, 
+welches ein Prädikat in die Objekte der Welt übersetzt, denen es zukommt
+(Extensionalität).
+Die Tarskische rekursive Wahrheitsdefinition zeigt wie Wahrheit von
+Referenz und Erfüllung determiniert wird und damit auch zu den Dingen 
+in der Welt auf die wir referenzieren und deren Eigenschaften.
+
+Ein Vorschlag ist, dass dies all die Referenz ist die man braucht;
+Es handelt sich nicht um die Korrespondenz von Sätzen oder Propositionen
+zu Fakten, vielmehr ist es eine Korrespondenz unserer Ausdrücke zu
+Objekten und deren Eigenschaften.
+
+Dies ist nicht die neo-klassische Korrespondenztheorie.
+Da es nicht die Existenz eines einzelnen Objekts postuliert zu dem eine
+wahre Proposition oder ein wahrer Satz in Korrespondenz steht;
+vielmehr zeigt sie wie die Wahrheit eines Satzes aus basalen 
+Wort-zu-Welt-Beziehungen aufgebaut werden kann.
+
+(ist das nicht eigentlich auch die idee strukturierter Propositionen und 
+der Referenztheorie? Hörti sich doch irgendwie extrem gleich an.)
+
+(Schaffen wir uns durch die Interpretation in der Prädikatenlogik eigentlich
+so etwas wie eine künstliche Welt?
+Hat die Interpretation eigentlich irgendeinen Einfluss auf ein Kalkül?
+die Sachen die wir untersucht hatten wahren ja alle uninterpretiert und
+auch nur gültige Formeln)
+
+(Wie wird hier eigentlich die Mathematik von der Philosophie entkoppelt?
+ (sowieso, wie klappt das im Allgemeinen, zumindest so, dass philosophiesche
+  Fragestellungen sich nicht ständig in den täglichen Betrieb einmischnen?
+Warum exakt ist Tarskies Wahrheitstheorie mit anderen 
+(nicht korrespondenztheoretischen) verträglich?)
+
+#### Gegenargumente
+
+Einwand 1:
+Tarskis Entwurf ist auch mit Theorien Kompatibel bei denen es sich nicht im
+Korrespondenztheorien handelt.
+
+Einwand 2 (Field):
+Damit es sich um eine wirkliche Theorie handelt,müssen Ansätze für die Konzepte 
+Referenz und Erfülltheit/Erfüllung weiter ausformuliert werden,
+da sich Tarskis Begriff von Korrespondenz darauf stützt.
+Solch eine Theorie würde sich nicht auf die metaphysische Existenz von Fakten
+stützen.
+
+Diese Erklärung wird durch Tarskis Theorie nicht gegeben.
+
+Sie müsste erklären wie sich das Wort "Schnee" auf Schnee bezieht.
+
+
+
+### Repräsentation und Korrespondenz
+
+
+
+
+
+
+
+
+
+
+
+
+
+

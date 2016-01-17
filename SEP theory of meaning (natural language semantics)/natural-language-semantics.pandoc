@@ -1,0 +1,1187 @@
+# Semantik natürlicher Sprachen
+
+## Bedeutungstheorie (theories of meaning)
+
+Unter *Bedeutungstheorie* wird in der Philosophie eine Vielzahl verschiedener
+Theorien verstanden;
+in dieser Einführung wird sie als semantische Theorie verstanden --
+eine Theorie die Ausdrücken einer Sprache bedeutungstragenden Inhalt zuweist
+(a theory that assigns semantic contents to expressions of a language).
+
+Bedeutungstheorien können unterteilt werden:
+
+* Theorien die Sätzen keine Propositionen (propositions) als Bedeutung zuweisen.
++ Theorien die Sätzen Propositionen als Bedeutung zuweisen.
+  Dieser Ansatz fasst verschiedene Theorien zusammen die eine 
+  unterschiedliche Auffassung von der Natur der Propositionen haben.
+
+Eine Semantik/Bedeutungstheorie ist eine Spezifikation der Bedeutung
+von Ausdrücken (Wörtern, Sätzen) eines Symbolsystems (Namen, Terme, Sätze).
+
+Eine Semantik beantwortet die Frage:
+*"Was ist die Bedeutung von diesem oder jenem Ausdruck?"*
+
+
+### Grundlegende Probleme der Bedeutungstheorie
+
+#### Problem: Keine zwei natürlichen Sprachen haben die selbe Semantik
+
+Keine zwei natürlichen Sprachen haben die gleiche Semantik --
+sie bestehen nicht aus den gleichen Wörten mit denselben Bedeutungen.
+Wie kann trotz dieser Tatsache etwas Allgemeines über die Semantik/Bedeutung
+natürlicher Sprachen ausgesagt werden?
+
+Lösung:
+Es ist korrekt das sich die Semantiken natürlicher Sprachen unterscheiden.
+Es wird allerdings meistens angenommen, dass für alle natürlichen Sprachen
+Bedeutungstheorien einer ähnlichen Form konstruiert werden können --
+dies ist eine grundlegendes Prinzip der Bedeutungstheorie natürlicher Sprachen.
+
+(Bedeutungsgleiche Sätze verschiedener Sprachen auf eine gemeinsame logische
+Form abgebildet werden können
+Können verschiedene logische Formen die gleiche Bedeutung haben?)
+
+
+#### Problem: Was genau sind die Entitäten denen eine Semantik Bedeutung zuweisen soll?
+
+Was genau sind die Entitäten denen eine Semantik Bedeutung zuweisen soll?
+
+Die semantische relevanten Teile eines Satzes zu bestimmen 
+und ihre Komposition zu einem Satz zu beschreiben ist eine nicht-triviale
+Aufgabe mit wesentlichen Auswirkungen für die Bedeutungstheorie
+(Gemeint ist die generelle syntaktische/logische Form eine Satzes 
+und deren Zusammenhang zur Semantik).
+
+Die meisten Debatten über eine adäquate Semantik für bestimmte Klassen von 
+Ausdrücken (expressions) sind vermischt mit Fragen über 
+die syntaktische Form von Sätzen in denen diese Ausdrücke vorkommen.
+(sind damit syntaktische Kategorien gemeint? 
+Was genau sind syntaktische Kategorien?
+Geht es dabei um die richtige Zuordnung von semantischen zu syntaktischen 
+Kategorien?)
+
+Theorien die den Zusammenhang zwischen logischer Struktur eines Satzes
+und seiner Bedeutung beschreiben wollen werden in diesem Abschnitt nicht behandelt.
+Siehe Montague.
+
+
+### Semantikmodell 0: Referenztheorie (Extensionale Semantik)
+
+Bei einer Referenztheorie handelt es sich nicht um eine Semantik (???):
+
+* Gemeinsamkeit zu Semantik/Bedeutungstheorie:
+    	Wie bei einer Semantik bildet eine Referenztheorie 
+    	Ausdrücke einer Sprache auf eine Wertemenge ab.
+   	(sind dann Semantiken von Programmiersprachen nicht eher Referenztheorien?) 
+* Unterschied zu Semantik/Bedeutungstheorie:
+    	Eine Referenztheorie bildet einen Ausdruck nicht auf seine Bedeutung ab.
+	(Dafür muss ich doch genau wissen das der Wert keine Proposition ist ...
+	 	kommt mir iwi komisch vor ...)
+
+Referenztheorien gehen auf Freges Versuch zurück
+eine für die Mathematik ausreichend ausdrucksmächtige Logik zu konstruieren.
+
+
+#### Beispiel: Referenz von Eigennamen
+	
+1. Barack Obama ist der 44te Präsident der USA.
+2. John McCain ist der 44te Präsident der USA.
+
+1) ist wahr, 2) ist falsch.
+
+(Wahrheitskonzeption ist vermutlich irgendwas korrespondenztheoretisches?)
+
+Offensichtlich kann der Unterschied in den Wahrheitswerten auf einen Unterschied 
+zwischen "Barack Obama" und "John McCain" zurück geführt werden:
+"Barack Obama" bezeichnet den 44ten Präsidenten der USA,
+"John McCain" bezeichnet nicht den 44ten Präsident der USA.
+
+Das deutet darauf hin, 
+dass die Referenz eines Eigennamens (proper name) 
+das Objekt/der Wert ist für die der Name steht (Millianismus?).
+
+Dieses Objekt/dieser Wert tragen zu der Bestimmung der Wahrheitsbedingungen (???)
+eines Satzes bei.
+
+#### Beispiel: Referenz von Prädikaten
+
+3. Barack Obama is a Democrat.
+4. Barack Obama is a Republican.
+
+Eigennamen sind Referenzen auf Objekte.
+Prädikate sind Referenzen auf Funktionen die Objekte auf Wahrheitswerte abbilden.
+(Aber werden Prädikate dann nicht auch durch Eigennamen bezeichnet?)
+
+Diese Referenztheorie kann auch auf andere Klassen von Ausdrücken erweitert werden:
+Relationen ...
+
+(Ist die Referenztheorie also die Interpretationsfunktion/Interpretation
+der Prädikatenlogischen Semantik? Symbole bekommen ihre Referenz zugewiesen?
+Was ist eigentlich genau eine Interpretation?)
+
+#### Implementierung einer Referenztheorie
+
+( Was bedeutet das eigentlich wenn ich die Theorien implementiere?
+Falls Haskell nur eine extensionale Semantik besitzt (nein?)
+kann ich damit eine intensionale simulieren?
+)
+
+#### Eignung der Referenztheorie als semantische Theorie
+
+Frage:
+Angenommen zu einer Sprache existiert eine Referenztheorie.
+Wäre diese Theorie eine adäquate Semantik?
+
+Antwort: Nein. Es folgen Gegenargumente.
+
+##### Gegenargument 1: Versagen bei Termen
+
+Unvollständigkeit beim Austausch von Eigennamen/Termen mit gleicher Referenz
+in Sätzen.
+
+Die Referenztheorie bildet Terme in einem Satz auf Werte ab.
+
+Folgendes Beispiel:
+
+5. Alle Lebewesen mit einem Herz sind Lebewesen mit einem Herz.
+6. Alle Lebewesen mit einem Herz sind Lebewesen mit einer Niere.
+
+Aus Sicht der Referenztheorie sind 5. und 6. gleich
+da die Referenzen der Terme "Lebewesen mit einem Herz"
+und "Lebewesen mit einer Niere" übereinstimmen -- ihre Extension ist gleich.
+
+Intuitiv gibt es aber einen Unterschied zwischen 5. und 6. --
+die Sätze scheinen unterschiedeliche Dinge auszusagen:
+5. ist eine Tautologie, notwendige Wahrheit und a priori
+6. hingegen ist kontingent, synthetisch und informativ.
+
+Diesen wichtigen unterschied erfasst eine reine Referenztheorie nicht.
+
+##### Gegenargument 2: Versagen bei Sätzen
+
+Unvollständigkeit der Referenztheorie beim Austausch von Termen/Eigennamen 
+mit gleicher Referenz in Teilsätzen.
+
+Die Referenztheorie bildet Sätze auf die Wahrheitswerte "Wahr" oder "Falsch" ab.
+
+Propositionale Einstellungszuschreibungen (propositinal attitude ascriptions)
+
+ :  Propositionale Einstellungszuschreibungen 
+    sind Zuschreibungen von Einstellungen gegenüber bestimmten Propositionen:
+	* Zuschreibung von Wissen
+	* Zuschreibung von Begierde
+	* Zuschreibung von Urteilen
+
+Propositionelle Eintellungszuschreibungen sind ein wichtiges Werkzeug
+zur Untersuchung semantischer Theorien.
+Viele relevante Gegenbeispiele lassen sich durch Einstellungszuschreibungen
+konstruieren.
+
+(Verbindung zu modalen Interpretationen? modal, deontisch, temporal, epistemisch?
+Was heißt eigentlich genau modal? und hat Modalität einen dualen Gegenbegriff?)
+
+Die Unvollständigkeit der Referenztheorie kann durch Beispiele mit 
+Überzeugungszuschreibungen, einer Art von propositioneller Einstellungszuschreibung,
+(belief ascriptions) weiter verdeutlicht werden.
+
+7. John glaubt, dass alle Lebewesen mit einem Herz Lebewesen mit einem Herz sind.
+8. John glaubt, dass alle Lebewesen mit einem Herz Lebewesen mit einer Niere sind.
+
+7. und 8. unterscheiden sich nur durch Substitution der Eigennamen 
+"Lebewesen mit einem Herz" und "Lebewesen mit einer Niere" --
+diese Eigennamen sind koreferentiell, und nehmen die gleiche Stelle 
+innerhalb der Struktur des Satzes ein:
+dennoch können sich diese Sätze in ihrem Wahrheitswert unterscheiden.
+
+7. und 8. beinhalten nicht-extensionale Inhalte (Bestandteile?):
+Stellen innerhalb der Struktur eines Satzes,
+bei denen die Substitution eines Ausdrucks mit der gleichen Referenz
+eine Änderung des Wahrheitswertes nach sich ziehen kann.
+
+Das hat eine wichtige Konsequenz:
+**Referenzen allein können nicht erklären, 
+welchen Beitrage Ausdrücken für die Bestimmung 
+des Wahrheitswerts eines Satzes leisten.
+
+Aus diesem Grund müssen Ausdrücke eine andere Art von Werten haben,
+welche über reine Referenzen herausgeht.**
+
+(Für eine Klasse einfacher Sätze ist diese Form der Semantik 
+allerdings ausreichend.)
+
+(Frage:
+Was hat das genau mit den Semantiken von Aussagen und Prädikatenlogik zu tun?
+Schon klar, dass es sich dabei um künstliche/formale Sprachen handelt.
+Trotzdem ... handelt es sich dabei um eine reine Referenztheorie?
+Wahrscheinlich schon ... aber warum wird das dann Semantik genannt?
+Oder ist diese Einteilung vom Autor des Artikels willkürlich getroffen?
+Außerdem wird doch die Prädikatenlogik für die modellierung 
+natürlichsprachlicher Semantiken verwendet - ist sie da nur für den 
+extensionalen Teil zuständig und das Lambdakalkül für den intensionalen Teil?)
+
+
+##### Gegenargument 3
+
+Unvollständigkeit der Referenztheorie beim Austausch von Teilsätzen mit 
+gleicher Referenz.
+
+9. Marie glaubt, dass Barack Obama der Präsident der USA ist.
+10. Marie glaubt, dass John Hay der Premierminister von Neuseeland ist.
+
+Beide Sätze sind wahr. 
+Beide Sätze unterscheiden sich nur durch die Substitution der Teilsätze
+"Barack Obama ist der Präsident der USA" und 
+"John Hay ist der Premierminister von Neuseeland".
+
+Trotzdem könnten sich 9. und 10. in ihrem Wahrheitswert unterscheiden.
+
+Dieses Gegenargumente zeigt, 
+das eine adäquate semantische Theorie/Bedeutungstheorie (als Sprachmodell) 
+Sätze in eine andere Zielmenge als die Menge der Wahrheitswerte abbilden muss.
+
+
+### Propositionale Bedeutungstheorie/propositinale Semantik
+
+Ein moderner Ansatz der Bedeutungstheorie: Propositionale Bedeutungstheorie.
+
+Wichtige Klasse moderner semantischer Theorien: 
+propositionale Bedeutungstheorie (propositional theory of meaning).
+
+Zentrale These (propositionaler semantischer Theorien):
+*Die Bedeutung* eines Ausdrucks ist eine bestimmte Art von Entität 
+-- ihre *Proposition* (proposition, hier als linguistischer Fachterminus),
+nicht ihre Referenz.
+Aufgabe einer Semantik ist es einem Ausdruck eine Proposition zuzuordnen;
+diese ist seine Bedeutung.
+(Semantik ist hier eine (Interpretations-)funktion von Ausdrücken in Propositionen)
+(Warum ist die Referenz nicht auch Teil der Bedeutung?)
+
+Zentrale Frage (propositionaler semantischer Theorien): 
+*"Was ist die Natur von Propositionen/ 
+	Was für eine Art von Entität ist eine Proposition?"*
+
+(Sind propositionale Theorien inhärent intensional?)
+
+Diese Klasse von Theorien wird im weiteren untersucht.
+(Sind propositionale Semantiken immer intensional bzw. nicht extensional?)
+
+Propositionale Bedeutungstheorien versuchen die beiden Probleme der 
+Referenztheorie zu lösen:
+
+* Die Tatsache, das Sätze, die sich nur in der Substitution 
+    	eines Teilausdrucks mit der selben Referenz unterscheiden
+    	einmal a priori und einmal synthetisch sein können.
+* Die Tatsache, das Sätze, die sich nur in der Substitution
+   	von Teiltermen oder Teilsätzen mit der selben Referenz unterscheiden
+   	unterschiedliche Wahrheitswerte annehmen können.
+
+Die propositionale (intensionale?) Semantik/Bedeutungstheorie verwirft
+die (extensionale) Referenztheorie nicht;
+sie erweitert diese um weitere "Bedeutungsebenen" (kann man das so schreiben?).
+
+Substantielle Ausdrücke haben, neben einer Referenz/Umfang (Extension) (reference)
+auch einen Inhalt (Intentsion) (content).
+
+Der Inhalt von Sätzen (Ausdrücken?) -- was ein Satz ausdrückt --
+wird als *Proposition* bezeichnet.
+
+
+#### Generelle Aussagen über die Beziehung zwischen Inhalt und Referenz/Umfang
+
+(Die Beziehung zwischen Intension und Extension?
+Wohl nicht, da sich Intension -- zumindest in diesem Artikel --
+nur auf Russels Intensionen bezieht.
+Allerdings ist die Modallogik ja auch schon eine intesionale Logik
+also muss man diese Unterscheidung so wohl nicht treffen.)
+
+konkrete Antworten auf die Frage 
+*"Was für eine Klasse von Entitäten sind Inhalte/Propositionen"*
+soll in den Abschnitten über die konkreten propositionalen Semantiken
+(Mögliche-Welten-Semantik, Russelnianistische Intension, Freges Sinn)
+gegeben werden.
+
+In diesem Abschnitt sollen generelle Fragen gestellt (und beantwortet)
+werden über die Funktion die Inhalte (contents) erfüllen sollen.
+
+
+##### Beziehung zwischen Inhalt und Referenz: Inhalt determiniert Umfang
+
+**Generelle Aussage (1): Inhalt determiniert Umfang.**
+
+(Die Beziehung zwischen Ausdruck und Inhalt ist die Semantik,
+wie heißt denn dann die Beziehung zwischen Inhalt und Referenz?)
+
+Frage: Was ist die Beziehung zwischen Inhalt und Referenz?
+Beantwortung der Frage mit Bezug auf Sätze:
+Hier reduziert sich die Frage auf die Beziehung 
+zwischen der Proposition die ein Satz ausdrückt und seinem Wahrheitswert.
+
+(Verschiedene) Sätze können 
+verschiedene Propositionen und den gleichen Wahrheitswert haben.
+(Verschiedene) Sätze können 
+nicht die gleiche Proposition und verschiedene Wahrheitswerte haben;
+Wenn Sätze die gleiche Proposition/ den gleichen Inhalt haben, 
+müssen sie den gleichen Wahrheitswert habe.
+
+Nach Frege: *"Inhalt determiniert Referenz"*
+(also der Inhalt legt den Umfang fest).
+
+(Okay, habs verstanden ...
+bei einem Satz heißt der Inhalt Proposition, 
+Terme können auch Inhalte haben,
+diese sind dann aber keine Propositionen.)
+
+(in dem Artikel steht auch:
+Propositionen (in diesem Sinn) sind auch Gegenstand von Überzeugungen ...
+hat Inhalt und Umfang dann auch etwas mit Subjektivität und Objektivität 
+zu tun?)
+
+Frage:
+Wenn der Fakt "Inhalt determiniert Umfang" für Sätze gilt, 
+gilt er dann auch für Teilsätze/Teilausdrücke?
+
+Antwort:
+Ja. Angenommen $e$ und $e^*$ sind Teilsätze mit dem gleichen Inhalt
+aber unterschiedlichen Referenzen. Das überträgt sich dann auf den Satz.
+Widerspruch.
+
+Ergebnis: (content determines reference)
+Der Inhalt legt den Umfang fest, der Inhalt determiniert die Referenz.
+
+Ausdruck -> Inhalt -> Umfang.
+
+##### Notwendigkeit einfach indizierter Semantiken: Indexikale
+
+Ausdrücke mit variablem Inhalt im Zustand der Welt zum (Zeit-)Punkt der Äußerung.
+(Damit natürlich auch variabel in allen Auswertungszuständen/Welten).
+
+Notwendigkeit des ersten Indexes/der ersten relativierung des Ausdrucks:
+Indexikale, deren Inhalt kontextabhängig (in einer Welt) ist.
+
+<!--
+(character and content, context and circumstance)
+character = Inhaltsdisposition (Funktion von allen Kontexten in jeweiligen Inhalt)
+context = Kontext/Zusammenhang/Äußergunszustand,
+content = Inhalt
+circumstances = Sachverhalt/Auswertungszustand/Auswertungsumstand
+-->
+
+Es gibt natürlichsprachliche Ausdrücke denen kein fester Inhalt zugewiesen 
+werden kann oder alternativ formuliert, die einen variablen Inhalt haben.
+
+Indexikale (indexicals) (kontextabhängige Ausdrücke)
+
+ :  Ausdrücke deren Inhalt variabel/situationsabhängig ist.
+
+Kontextabhängige Indexikale sind daran zu erkennen, dass die Ausdrücke in 
+verschiedenen (Äußerungs-)Situationen verschiedene Referenzen haben. 
+Damit können sie aber nicht immer den gleichen Inhalt haben.
+Beispiel: "Ich", "hier", ...
+
+Um diese Variabilität zu formalisieren muss eine weitere 
+Entitätenklasse eingeführt werden -- Äußerungskontexte:
+
+Äußerungskontexte/Kontexte (context)
+
+ :  Situationen/Umstände in denen verschiedene Sprecher Ausdrücke 
+    mit variablen/situationsabhängigen Referenzen (wie *"ich"* oder *"hier"*)
+    äußern.
+
+<!--
+(Ist man sich über die Natur dieser Äußerungskontexte im klaren?)
+-->
+
+Verknüpfung von Kontext und Ausdruck durch Dispositionen
+(Weitere Notwendige Entitätenklasse, erster Index):
+Die Inhaltsdisposition eines Ausdrucks ist ein Katalog aller mit einem Ausdruck
+assoziierten Inhalte in den verschiedenen Äußerungskontexten;
+also eine Funktion von Kontext zu Inhalt.
+
+Dispositionen (character) ((Inhalts-)Vermögen/Zuweisung in einer Welt) 
+
+ :  Indexikale werden mit ihren Bedeutungsdispositionen assoziiert.
+    Bedeutungsdispositionen sind Funktionen von Kontexten zu Inhalten.
+)
+
+
+Bedeutung eines Ausdruck
+
+ :  Ausdrücke haben (Inhalts-) Dispositionen die gegeben einen Kontext
+    einen Inhalt festlegen;
+    Inhaltsdisposition und (konkreter) Inhalt sind die Bedeutung 
+    eines Ausdrucks.
+
+(Ich würd ja sagen das das so ein bißchen eine Unterscheidung ist 
+zwischen globalem und lokalem Inhalt;
+außerdem haben doch nur Indexikale einen Character)
+
+character + context -> content -> reference
+
+##### Anteil der Indexikale an den Ausdrücken
+Wie groß ist der Anteil der Indexikale an der Gesamtmenge der Ausdrücke?
+
+Es gibt einige offensichte Fälle: "ich", "hier", "gestern".
+Der Status vieler weitere Ausdrücke steht zur Debatte;
+allerdings gibt es Argumente die zeigen, 
+dass ein großer Anteil der Ausdrücke zu den Indexikalen gerechnet werden kann.
+
+##### Notwendigkeit doppelt indiziierter Semantiken: Auswertungszustände
+
+Durch Einbezug der Zeitachse bzw weiterer Welten in denen 
+ein Ausdruck ausgewertet werden kann, wird ein zweiter Index notwendig:
+Einige Ausdrücke die in Zustand der Welt zum Zeitpunkt der Äußerung
+einen festen Inhalt haben, können im Verlauf der Zeit (also in versch.
+Auswertungszuständen) eine variable Bedeutung haben.
+Ausdrücke im letzten Abschnitt welche nur einen Index hatten, 
+haben jetzt zwei Indizes, und einige Ausdrücke die vorher keinen Index hatten
+haben jetzt einen (variablen) Index.
+
+Beispiel:
+"Die zweitgrößte Stadt der USA"
+
+Auf den ersten Blick sieht dieser Term nicht kontext-sensitiv aus;
+doch er ist es:
+Jetzt: LA, vor einhundert Jahren: Chicago.
+
+Ausdrücke können also (vorerst) in drei Klassen eingeteilt werden:
+1. stetig Bezeichner (rigid designators) 
+	Ausdrücke die in allen Auswertungswelten und innerhalb 
+	der Äußerungswelt in allen Kontexten die gleiche Bedeutung haben.
+	"2", ... (außer Zahlen fällt mir da kaum was ein)
+2. einfache Indexikale (äußerungskonstante Indexikale):
+	Ausdrücke mit festem Inhalt im Äußerungszustand aber 
+	variablem Inhalt in den Auswertungszuständen.
+	"die größte Stadt in Deutschland"
+3. doppelte Indexikale (äußerungsvariable Indexikale)
+	Ausdrücke mit variablem Inhalt im Äußerungszustand (Index 1) und
+	variablem Inhalt in den Auswertungszuständen
+	"ich", "hier", ...
+
+Diese Unterteilung erklärt, 
+wie die Referenz von "Die zweitgrößte Stadt der USA" 
+in 11. Chicago sein kann ohne ein Indexikal wie "Ich" zu sein:
+Innerhalb eines Weltzustandes bleibt die Referenz (in allen Kontexten) von 
+"die zweitgrößte Stadt der USA" gleich;
+die von "ich" kann sich abhängig vom Sprecher ändern
+(Kontexte können damit innerhalb einer Welt verschieden sein).
+
+Die Referenz von "die zweitgrößte Stadt der USA" kann sich aber 
+über verschieden Welten/Auswertungszustände ändern.
+
+"die zweitgrößte Stadt der USA ist kein *fester Bezeichner* (rigid designator)
+
+fester Bezeichner (rigid designator)
+
+ :  ein Ausdruck der (mit Bezug auf einen Kontext) das gleiche Objekt 
+	in jedem Auswertungszustand referenziert, sofern es existiert.
+
+<!--
+(Am besten: 
+alle Ausdrücke als doppelt indizierte Indexikale modellieren,
+mit zwei konstanten, einem variablen und einem konstanten,
+und zwei variablen Indizes.)
+-->
+
+##### Doppelte Indexikale und Auswertung
+
+11. "Vor 100 Jahren war die zweitgrößte Stadt der USA Chicago"
+
+Dieser Satz ist (jetzt) wahr. Doch um wahr zu sein muss 
+"Die zweitgrößte Stadt der USA vor 100 Jahren" Chicago als Referenz haben.
+Diese Aussage ist ein Indexikal -- ihre Referenz ist abhängig
+vom 'Zustand der Welt' in dem sie ausgewertet wird.
+
+Was passiert hier genau?
+Es scheint als würde der der Teilsatz "vor 100 Jahren" den Kontext
+verändern: "the second largest city in the USA" hat dann die gleiche 
+Referenz als wäre dieser Satz vor 100 Jahren geäußert worden.
+Das ist aber falsch:
+
+12. "In einhundert Jahren werde ich nicht mehr existieren".
+
+Angenommen "Vor einhundert Jahren" verändert den Kontext,
+dann muss "In einhundert Jahren" auch den Kontext verändern.
+Angenommen 12. ist wahr dann hat "ich" bis dahin keine Referenz mehr.
+Intuitiv hat "ich" natürlich eine Referenz -- mich zum Zeitpunkt der Äußerung.
+
+Neben einem Äußerungskontext (Zustand der Welt zum Zeitpunkt der Äußerung) 
+ist damit ein weiterer Auswertungszustand (Zustand zum Zeitpunkt der Auswertung)
+notwendig -- ein zweiter Referenzindex: der Auswertungszustand.
+
+Auswertungsumstand 
+
+ :  Zustand der Welt zum Zeitpunkt der Auswertung.
+
+<!-- 
+da ist noch ein bißchen was unklar ...
+mann müsste mal die genaue Auswertung eines solchen Satzes aufschreiben.
+-->
+
+Daraus ergeben sich doppelt Indizierte Semantiken (double indexed semantics):
+
+ :  Character + Content -> Content + Circumstance of Evaluation -> Reference
+    * Character: Index 2
+    * Circumstance of Evaluation: Index 2
+
+
+
+#### Representation von Propositionen 1: Mögliche Welten Semantik
+
+Bislang:
+
+* Ausdrücke werden mit Dispositionen assoziiert,
+  welche Funktionen von Kontexten zu Inhalten sind.
+* Inhalte sind Entitäten, 
+  die für jeden Auswertungsgegenstand eine Referenz festlegen.
+
+Zentrale Frage (propositionaler) semantischer Theorien:
+Um was für eine Art von Entitäten handelt es sich bei Propositionen?
+
+Mögliche Antwort 1:
+Da Inhalte Entitäten sind 
+welche gemeinsam mit Auswertungsumständen eine Referenz determinieren,
+sind Inhalte nur Funktionen von Auswertungsumständen auf Referenzen.
+
+type Content = Circumstance -> Universe
+
+Idee:
+Der Inhalt/die Bedeutung eines Ausdrucks ist nicht eine reine Referenz 
+sondern eine Regel/Funktion durch die abgeleitet werden kann
+wofür ein Ausdruck, gegeben einen bestimmten Zustand der Welt, steht.
+
+Die Bedeutung von "Der größte Mensch der Welt" ist nicht die Person,
+der kontingent der größte Mensch der Welt ist,
+sondern eine Funktion die jeder möglichen Welt ihren größten Menschen zuordnet
+(oder nichts, falls dieser nicht existiert).
+
+(Die Bedeutung eines Ausdrucks ist sein Inhalt und 
+ die Bedeutung eines Inhalts ist seine Referenz).
+
+Das passt zu der intuitiven Idee,
+dass es zum Verständnis eines Ausdrucks nicht zwingend notwendig ist
+zu wissen welche tatsächliche Referenz/Extension er hat 
+-- aufgrund relevanter eptistemischen Lücken über den Zustand der Welt.
+
+Diese Funktionen werden (Carnap folgend) Intensionen genannt:
+Mögliche Welten Semantik ist die modellierung von Inhalten
+durch Intensionen (Funktionen von Auswertungskontexten auf Referenzen).
+
+Somit sind Dispositionen Funktionen von Kontexten zu Intensionen,
+also Funktionen von Kontexten auf Funktionen von Auswertungsumständen 
+nach Referenzen.
+
+'Intension' wird manchmal verallgemeinert als ein Synonym für 'Inhalt' verwendet; 
+diese Verwendung ist irreführend.
+Die Bezeichnung 'Intension' sollte nur für Funktionen von Auswertungsumständen
+in Referenzen verwendet werden.
+
+Anwendung der Mögliche-Welten-Semantik auf natürliche Sprachen:
+
+* Intension eines Satzes:
+	Die Intension eines Satzes -- die Proposition die ein Satz ein einem 
+	bestimmten Äußerungskontext ausdrückt -- ist dann eine Funktion
+	von Welten in Wahrheitswerte. (verwandt: UCLA propositions)
+	
+	Diese Funktion wird dann den Wahrheitswert 'Wahr' für Welten zurückgeben,
+	in denen die Aussage zutrifft, und 'Falsch' für Welten in denen die
+	Aussage nicht zutrifft.
+* Intension eines Prädikats:
+	Die Intension eines Prädikates ("x ist rot", ...) 
+	ist dann eine Funktion von Welten auf unäre Funktionen von
+	Objekten auf Wahrheitswerte.
+
+Die mögliche Welten Semantik versteht unter der Bedeutung von Ausdrücken --
+ihrem Inhalt -- Funktionen von Welten zu den Werten, 
+die den Ausdrücken in dieser Welt von der Referenztheorie zugeordnet worden wäre.
+
+In diesem Sinn sind Intensionen eine zusätzliche Ebene über der Referenztheorie.
+
+
+##### Welche Probleme werden durch die Mögliche-Welten-Semantik gelöst?
+
+1. Probleme mit nicht-extensionalen Inhalten
+
+* "Lebewesen mit einem Herz"
+* "Lebewesen mit eine Niere"
+
+Die Bedeutung dieser Terme sind nur in der rein extensionalen Referenztheorie 
+nicht unterscheidbar, da in dieser Welt zufälligerweise die Menge der 
+Lebewesen mit einem Herz mit der Menge der Lebewesen mit einer Niere 
+übereinstimmt.
+
+Da dies in anderen Welten/Außwertungszuständen nicht notwendigerweise der Fall
+ist, haben beide Ausdrücke andere Intensionen.
+
+
+##### Welche Probleme bleiben ungelöst durch die Mögliche-Welten-Semantik?
+
+Was ist das Prinzip der Mögliche-Welten-Semantik?
+
+Propositionen werden mit Intensionen identifiziert -- 
+Funktionen welche die konkrete Welten, in denen ein Ausdruck ausgewertet wird,
+auf die Referenz des Ausdrucks in dieser Welt abbildet.
+
+Dadurch werden Sätze/Aussagen identifiziert welche in jedem Auswertungskontext
+auf den gleichen Wahrheitswert abgebildet werden, 
+aber intuitiv eine unterschiedliche Bedeutung haben.
+Ein Beispiel sind notwendige Wahrheiten (hier der Mathematik):
+
+13. 2+2=4.
+14. Die Anzahl der Primzahlen ist unendlich.
+
+<!-- 
+Das ist auch der Grund warum klassische, nicht modale Aussagenlogik
+für die Mathematik ausreicht.
+-->
+
+Aussage 13. ist eine triviale Wahrheit, 
+Aussage 14. ist wesentlich substantieller und ohne Beweis nicht offensichtlich.
+Da beide Aussagen wahr sind, und diese Wahrheit nicht von dem Zustand einer
+Welt abhängig ist, wird ihnen unter der Möglichen-Welten-Semantik 
+die gleiche Proposition zugeordnet, der Inhalt und damit auch die Bedeutung 
+beider Aussagen ist gleich.
+
+Diese Gleichsetzung widerspricht der Intuition.
+
+Dieser intuitive Wiederspruch kann durch die Einbettung in 
+propositinale Eigenschaftszuschreibungen soweit verschärft werden,
+dass das dadurch entstandene Satzpaar der These widerspricht,
+dass Sätze mit dem gleichen Inhalt die gleiche Referenz haben müssen:
+
+15. John glaubt, dass 2+2=4.
+16. John glaubt, dass die Anzahl der Primzahlen unendlich ist.
+
+Der Inhalt der unterliegenden Sätze ist der Möglichen-Welten-Semantik gleich,
+15. und 16. unterscheiden sich nur durch Substitution inhaltsgleicher Aussagen.
+Allerdings können sich die beiden Sätze offensichtlich in ihrem Wahrheitswert
+unterscheiden und müssen daher auf unterschiedliche Propositionen abgebildet 
+werden.
+
+
+Das Problem kann weiter verschärft werden (Soames 1988):
+
+17. Gras ist grün.
+18. Gras ist grün und die Anzahl der Primzahlen ist unendlich.
+
+17. ist wahr gdw. 18. wahr ist; damit haben sie die gleiche Intension und
+gemäß der Möglichen-Welten-Semantik den gleichen Inhalt.
+Das folgende Satzpaar darf sich daher nicht in seinem Wahrheitswert unterscheiden:
+
+19. John glaubt, dass Gras grün ist.
+20. John glaubt, dass Gras grün ist und dass die Anzahl der Primzahlen undendlich ist.
+
+Es scheint aber als wäre "x glaubt, dass y" distributiv über Konjunktion:
+"x glaubt, dass r und s" = "x glaubt, dass r und x glaubt, dass s".
+Damit muss jede Person, die zumindest an eine Proposition glaubt,
+auch an alle notwendigen Wahrheiten der Mathematik glauben.
+
+Eine adäquate Semantik sollte diese Konsequenz nicht haben.
+
+
+
+#### Representation von Propositionen 2: Russelsche Propositionen
+
+Eine adäquate Semantik muss einen höheren Auflösungsgrad haben als die 
+Mögliche-Welten-Semantik: nicht alle Aussagen mit der gleichen Intension 
+sollen die gleiche Proposition bedeuten.
+
+
+Erste Idee:
+
+"2+2=4" und "Die Anzahl der Primzahlen ist unendlich" haben unterschiedliche
+Inhalte weil sie Aussagen über unterschiedliche Dinge sind.
+Eine adäquate semantische Theorie muss solche Unterschiede erfassen können:
+Sätze unterscheiden zu können die einen unterschiedlichen Gegenstandsbereich
+haben.
+
+Umsetzung: strukturierte Propositionen
+Eine Lösungs ist es, den Propositionen eine Struktur aufzuprägen:
+Der Inhalt des Satzes ist die Komposition der Inhalte von Satzkonstitutenten.
+(Satz hier als logische Form eines natürlichsprachlichen Satzes).
+Unterschiede im Inhalt der Konstituenten resultieren dann in Unterschieden im 
+Inhalt der Sätze.
+Propositionen haben damit selber Konstituenten.
+
+
+Aus diesem Ansatz ergeben sich zwei wichtige Frage:
+1. Metaphysisch:
+	Was bedeutet es, für ein abstraktes Objekt wie eine Proposition
+	strukturiert zu sein und Konstituenten zu haben?
+	Wird hier nicht weiter diskutiert da außerhalb des Rahmens)
+	(Sep eintrag: structured propositions)
+2. semantisch:
+	Was für eine Klasse von Entitäten sind die Konstituenten 
+	von Propositionen (also die Inhalte von Ausdrücken im Allgemeinen)?
+
+Antwort Russelianismus:
+* Objekte (Individuen)
+* Eigenschaften (Prädikate)
+* Beziehungen (Relationen)
+* Abbildungen (Funktionen)
+
+(Also Ausdrucksumfang der Prädikatenlogik:
+Russellianismus ist also der übergang von einer (modalen) Aussagenlogik,
+zu einer (modalen?) Prädikatenlogik, zumindest was die Expressivität der 
+Logiken betrifft.)
+
+So aufgefasst ist Russellianismus nur eine Aussage bezüglich der Konsituenten
+einer Proposition und trifft keine Aussage über die Struktur einer bestimmten
+Satzart.
+
+Verbindung mit dem Millianismus (Extensionale Inhaltsauffassung für Eigennamen):
+Russellianismus wird oftmals durch den Millianismus ergänzt.
+Millianismus ist die These, dass die Bedeutung eines Eigennamens für das 
+Objekt steht (das Objekt als Extension hat) für das es steht.
+(Also keine Extraschicht zwischen (atomarem) Ausdruck und Extension).
+
+(Jetzt müssen auf jeden Fall irgendwelche modellierungen kommen,
+ und gelöste Probleme, und eine Implementierung, und ...).
+
+
+##### Welche Probleme werden durch die Millianismus/Russellianismus gelöst?
+
+1. 
+Es löst das Problem notwendiger Wahrheiten an dem die 
+Mögliche-Welten-Semantik gescheitert ist.
+
+Beweis:
+
+2. 
+Sie passt gut zu der intuitiven Idee, 
+dass es die Funktion von Namen ist Objekte zu denotieren, 
+dass es die Aufgabe von Prädikaten ist diesen Objekten Eigenschaften zu prädizieren, 
+dass es die Aufgabe von Relationen ist Objekte in Beziehungen/Strukturen zu setzen
+(also das Diskursuniversum zu strukturieren).
+
+
+
+##### Welche Probleme bleiben durch Millianismus/Russellianismus ungelöst?
+
+1. Leere Namen: Namen ohne Referenzen
+Leere Namen sind Namen ohne Referenzen.
+Beispiel: Vulcan, der nicht-existente Planet zwischen Merkur und der Sonne.
+
+Da im Millianismus/Russellianismus postuliert wird, 
+dass die Referenz eines Namens das Objekt ist für das sie steht
+scheint es als hätten leere Namen keinen Inhalt.
+(Diskussion siehe Braun 1993).
+
+<!--
+Wie stehts denn mit dem "lifting" des Diskursuniversums - 
+ein spezielles leeres individuum das eine Art defaultwert für namen ist?
+ähnlich 'undefined' in Haskell?
+Welche Probleme gibt es denn eigentlich genau mit 'undefined'?
+Das sind doch eine ganze Menge oder nicht?
+-->
+
+
+2. Identität modulo Denotation: Freges Puzzle
+
+Ein weiteres schweres Problem von Millianismus/Russellianismus ist die 
+die gleiche Bedeutung von Eigennamen mit gleicher Referenz:
+
+21. Clark Kent ist Clar Kent
+22. Clark Kent ist Supermann.
+
+Nach dem Millianismus/Russellianismus unterscheiden sich 21. und 22. 
+nur durch die Substitution bedeutungsgleicher atomarer Konstituenten:
+der Eigennamen "Clark Kent" und "Supermann".
+
+Problem: 
+21. ist a priori wahr und trivial, 22. synthetisch und informativ.
+
+(Analog 21. 22 für die MR analog zu 15. 16. MWS und X Y RT -- gleiches Prinzip)
+
+Wieder Einbettung in propositionale Eigenschaftszuschreibungen:
+23. Lois glaubt, dass Clark Kent Clark kennt ist.
+24. Lois glaubt, dass Clark Kent Supermann ist.
+
+<!--
+(Das bedeutet beim Millianismus auch wieder nur denotation mit Referenz
+auf eine Welt. 
+Würde der Kram wieder über alle Welten laufen dann wäre es ja wieder kein Problem.
+Lässt sich da nicht wieder eine referentielle Unterscheidung über einen 
+Auswertungskontext treffen?
+-->
+
+Beide Sätze unterscheiden sich wiederum nur durch Substitution 
+inhaltsgleicher Teilausdrücke. Beide Sätze können wieder 
+unterschiedliche Wahrheitswerte annehmen,
+obwohl diese von RM als semantische Synomyme betractet werden.
+
+Damit ist die unvollständigkeit von RM belegt.
+Es gibt gute Gründe dafür zumindest den Millianismus aufzugeben.
+
+<!--
+(Es gibt einige Antworten darauf ...)
+-->
+
+
+#### Representation von Propositionen 3: Fregesche Propositionen
+
+Wieder ist der Auflösungsgrad der Semantik (diesmal RM) zu gering.
+
+RM: Zwei Sätze mit der gleichen Intension können einen unterschiedlichen
+	Inhalt/ eine unterschiedliche Bedeutung haben.
+
+FS: Zwei Eigennamen mit der gleichen Referenz können eine unterschiedlichen
+	Inhalt/ eine unterschiedliche Bedeutung haben.
+
+Dies ist die Antwort die Frege auf das Fregesche Puzzle gegeben hat;
+der Millianismus wird hier aufgegeben.
+
+Übereinstimmung mit dem Russellianismus:
+Sowohl Russelianisten als auch Fregisten modellieren die Propositionen
+eines Satzes als ein durch seine Konstituenten strukturiertes Objekt.
+
+
+Gegensatz zum Russellianismus:
+Im Fregismus ist der Inhalt dieser konstituenten nicht direkt 
+das Objekt für das sie stehen;
+statt dessen begreifen Fregeianer Inhalte als "Moden der Repräsentation" --
+bestimmte Arten über Objekte, Eigenschaften und Relationen zu denken.
+
+Diese Repräsentationsmoden als *Sinn* bezeichnet.
+
+(Wie 'Intension' wird 'Sinn' manchmal synonym zu 'Inhalt' verwendet.
+Aber wie bei 'Intension' wird durch die Identifikation von 
+'Sinn' mit 'Repräsentationsmodus' disambiguiert.)
+
+Im Fregeianismus ist 'Sinn' also der Inhalt (die Bedeutung) eines Ausdrucks:
+der Repräsentationsmodus eines Objekts.
+
+
+Welche Art von Entität ist ein Sinn?
+Frege gibt als Erklärung eine Analogie (Sinn und Bedeutung, 9):
+
+Die Bedeutung eines Eigennamens ist der Gegenstand selbst,
+den wir damit bezeichnen;
+die Vorstellung, welche wird dabei haben, ist ganz subjektiv;
+dazwischen liegt der Sinn, der zwar nicht mehr subjektiv wie die Vorstellung,
+aber doch auch nicht der Gegenstand selbst ist.
+
+Folgendes Gleichnis ist vielleicht geeignet, diese Verhältnisses zu verdeutlichen.
+Jemand betrachtet den Mond durch ein Fernrohr.
+Ich vergleiche den Mond selbst mit der Bedeutung;
+er ist der Gegenstand der Beobachtung, 
+die vermittelt durch das reelle Bild, 
+welches vom Objektivglase im Inneren des Fernrohres entworfen wird,
+und durch das Netzhautbild des Betrachtenden.
+Jenes vergleiche ich mit dem Sinne, dieses mit der Vorstellung oder Anschauung.
+Das bild im Fernrohre ist zwar nur einseitig:
+es ist abhängig vom Standorte: aber es ist doch objektiv,
+insofern es mehreren Beobachtern dienen kann.
+Es ließe sich allenfalls einrichten, daß gleichzeitig mehrere es benutzen.
+Von den Netzhautbildern aber würde jeder doch sein eigenes haben.
+
+Objekt: Mond
+Sinn (Modus der Repräsentation): 
+    objektives Bild im innerern des Fernglases (standortabhängig)
+Idee: subjektives Bild im inneren des Auges
+
+"Sinn" ist folglich objektiv, 
+somit ist es möglich, dass mehr als eine Person Ideen mit einem gemeinsamen Sinn 
+ausdrücken (Ideen sich einen Repräsentationsmodus teilen).
+
+Damit ist der Fregeianismus feiner Aufgelöst als die Russelschen 
+Strukturierten Propositionen in verbindung mit dem Millianismus und damit
+auch feiner Aufgelöst als die Intensionen.
+
+##### Vereinheitlichung der drei semantischen Theorien und der Refernztheorie
+
+Der Auflösungsgrad der vorgestellten Theorien
+Referenztheorie, Proposition als Intension, Strukturierte Propositionen,
+Propositionen als Moden der Repräsentation, nimmt in dieser Reihenfolge zu.
+
+Dabei sind schließen sie sich nicht gegenseitig aus, 
+sondern können zu einer gemeinsamen, stratifizierten Theorie kombiniert werden:
+(Bzw. Abbildungen unter Komposition)
+
+(Abbildungen Homomorphismen)
+
+FregeanSemantics :: Expression -> Sense
+RusselianSemantics :: Sense -> SturcturedProps
+PWSemantics :: StructuredProps -> Intensions
+Eval :: Circumstance -> Intension -> Universe
+
+<!--
+Ein bißchen wie beim Kompiliervorgang ... 
+und der überseztung in zwischensprachen.
+
+Bei jeder Ebene geht Information verloren:
+Die Funktionen sind injektiv aber nicht bijektiv.
+Aus der Kenntnis der Objekts lässt sich nicht eindeutig eine Intension gewinnen,
+aus einer Intension keine strukturierte Proposition
+und aus einer strukturierten Proposition nicht eindeutig ein Sinn.
+-->
+
+1. Bedeutungsebene: Propositionen als Moden der Repräsentation
+
+2. Bedeutungsebene: Strukturierte Propositionen
+
+3. Bedeutungsebene: Propositionen als Intensionen
+
+0. Extensionale Ebene: Referenz (mit Umstand)
+
+
+##### Probleme die von Fregesschen Propositionen als Sinn gelöst werden
+
+1. Lösung von Freges Puzzle:
+
+23. Lois glaubt, dass Clark Kent Clark kennt ist.
+24. Lois glaubt, dass Clark Kent Supermann ist.
+
+Intuitiv gibt es zwischen 23 und 24 einen Bedeutungsunterschied:
+die Fregessche Semantik erfasst diesen.
+
+Die Eigennamen "Clark Kent" und "Supermann" teilen zwar eine Referenz,
+unterscheiden sich aber in den Modi der Representation ihrer gemeinsamen
+Referenz.
+
+
+
+#### Probleme die von Fregeschen Propositionen nicht gelöst werden
+
+1. Was sind Sinne als Propositionen?
+
+Die in XXX angegebene Analogie ist keine Erklärung dafür was für eine 
+Art von Entität ein Fregescher Sinn ist.
+
+Frege gibt ein Differenzkriterium:
+
+Zwei Ausdrücke e und e* unterscheiden sich in ihrem Sinn gdw.
+es ein paar von Sätzen S und S* gibt welche 
+1) sich nur in der Substitution von e durch e* unterscheiden
+2) so sind, dass ein rationaler Agent der beide Sätze versteht
+	zu dem Urteil kommen, dass S wahr ist 
+	ohne das damit zwingend S* wahr ist.
+
+Das klappt auf jeden Fall für "Clark Kent" und "Supermann".
+(wobei dass dann doch eigentlich nur auf eine Art von syntaktische
+Äquivalenz hinausläuft.)
+
+Dieses Kriterium erklärt allerdings nicht was Sinn ist;
+es schränkt nur den Lösungsraum möglicher Entitätenklassen ein.
+* Ein Inhalt muss ein Objekt sein welches als seine Referenz
+	das Objekt festlegt für die ein Name steht.
+* Sollte der Fregeianismus wahr sein, muss es sich um ein anderes 
+	Objekt als den Gegenstand selbst handeln.
+
+##### Lösung 1: Fregescher Desrkiptivismus
+
+<!--
+Terme sind dann doch nach dem Fregeschen Deskriptivismus Sinne oder?
+Eindeutige Beschreibungen einer bestimmten Entität.
+Termvereinfachungen und α, β ... Äquivalenz sind dann doch einfach
+Äquivalenzklassen von Beschreibungen.
+
+so wie ich es verstehe schon.
+im ersten Schritt wird ein Eigenname durch die definierende Beschreibung
+_in der selben Sprache_ ersetzt.
+
+In den nächsten schritten wird dann ausgewertet.
+
+ist also so wie wenn ich meine Sprache um die syntaktische 
+kategorie 'Eigennamen' reduziere, dafür aber Identitätsausdrücke zulasse.
+
+Ist doch prinzipiell das gleiche wie in der Programmierung
+bzw im Lambdakalkül:
+
+-- definition/sprachliche Beschreibung der Funktion fac
+fac n 
+    | n == 0 = 1
+    | otherwise = n * fac (n-1)
+
+myfun = ... fac ...
+
+einziger einwand:
+Was ist mit sprachlichen primitiven die irgendwas bezeichnen/reifizieren
+wie Variablennamen?
+
+unterschied zwischen Beschreigung als Kondition und Beschreibung als 
+Constraintmenge: 
+Bei einer Constraintmenge ist nicht klar das sie ein Singleton ist.
+-->
+
+Idee: Fregescher Deskriptivismus
+Der Inhalt eines Namens -- sein Sinn -- 
+ist eine Bedingung (condition) die nur die Referenz des Namens erfüllt.
+Koreferentielle Namen können sich in ihrem Sinn unterscheiden
+da es immer mehr als eine Bedingung gibt deren einzige Instanz ein bestimmtes
+Objekt ist
+
+(Beispiel Superman:
+"Clar Kent" ist der Zeitungsreporter den Lois Lane am wenigsten bewundert.
+"Supermann" ist der Held den Lois Lane am meisten bewundert.
+)
+
+In dem Modell des Fregeschen Deskriptivismus ist der Sinn eines Namens einer 
+eindeutigen Beschreibung (definite description).
+
+(Über die Art de Beschreibung: 
+
+
+
+##### Probleme mit dem Fregeschen: Deskriptivismus
+
+Gegenargument von Saul Kirpke: modales argument
+(wichtig: naming and necessity von Kripke
+dieses Paper hat dazu geführt, dass der einstmals als orthodox angenommene
+Ansatz von Frege kritisch hinterfragt wurde.)
+
+Annahme: der Name "Aristoteles" hat den Sinn "der größte Philosoph der Antike"
+
+25. Notwendigerweise, wenn Aristoteles existiert, dann ist Aristoteles Aristoteles.
+26. Notwendigerweise, wenn Aristoteles existiert, 
+	dann ist Aristoteles der größte Philosoph der Antike.
+
+Nach dem Fregeschen Deskriptivismus unterscheiden Sätze 23. und 24.
+nur durch die Substitution bedeutungsgleicher Ausdrücke.
+Dann drücken 25 und 26 die gleichen Propositionen aus und referenzieren
+damit den gleichen Wahrheitswert. 
+
+Das ist ein Problem -- eine Welt in der Aristoteles Hufschmied 
+gewesen ist ist durchaus denkbar.
+(Problem hier: Identitätskriterium über verschiedene Welten ...)
+
+(Viele Antworten von Fregeschen Descriptivisten)
+
+Das oben genannte Argument ist stark genug den Fregeschen Deskriptivismus
+zu verwerfen.
+Weitere Strömungs: 
+Nicht-deskriptiver Fregeianismus.
+
+
+
+#### Problem ???
+
+Freges Lösungs von Freges Puzzle:
+Differenzen im Sinn führen zu Differenzen des Wahrheitswerts.
+
+Generalisiert führt die Annahme zum überraschenden Ergebnis,
+Das keine zwei unterschiedlichen Ausdrücke den gleichen 
+Inhalt haben (also nur syntaktisch äquivalente Beschreigungen
+den gleichen Inhalt haben).
+
+Beispiel:
+Zwei Beschreibungen die den gleichen Inhalt haben:
+'Catsup' und 'Ketchup'
+
+Angenommen Bob glaubt, dass 'Ketchup' und 'Catsup' unterschiedliche Substanzen sind.
+
+27. Bob glaubt dass Catsup Catsup ist.
+28. Bob glaubt dass catsup Ketchup ist.
+
+27. und 28. haben unterschiedliche Wahrheitswerte, unterscheiden sich aber 
+weiterhin nur in der substitution vermeintlich Inhaltsgleicher Ausdrücke.
+
+1. Einwand:
+Catsup sollte den gleichen Inhalt haben wie Ketchup.
+2. Einwand
+Satzpaare wie diese sollten für jedes paar von synonymen konstruiert werden
+können.
+(das argument find ich komisch ... ist das nicht genau die stärke des Fregeschen
+Ansatzes? 
+
+Ist Inhalt (zumindest russell, frege) nicht auch primär ein Hilfsmittel um 
+epistemische Lücken zu modellieren? Wenn jedem genau der zustand der Welt
+und die extension eines begriffes in dieser Welt bekannt wäre,
+ist doch nach der Intension schon schluss ... dann brauchts ja auch gar 
+keine propositionellen Einstellungszuschreibungen)
+
+(mehr Beispiele dieser Art Kripke 1979)
+
+
+#### Problem des zu großer Auflösungsgrads
+
+<!--
+nicht mal nur Kritik an Fregeschem Deskriptivismus sondern schon an dem
+Differenzkriterium
+-->
+
+Freges Differenzkriterium für Sinn löst zu fein auf,
+und erkennt Unterschiede im Sinn wo keine sind.
+
+Angenommen ich äußere:
+"Hammurabi dachte, dass Hesperus nur am Morgen sichtbar war"
+
+Was ich sage ist wahr gdw. einer von Hammurabis Gedanken den gleichen Inhalt hatte
+wie "Hesperus ist nur am Morgen sichtbar" wie von mir verwendet.
+
+Aus Russellscher Sicht ist dies eine sinnvolle Einschränkung:
+Sie verlangt nur, dass Hammurabi von einem bestimmten Objekt glaubte,
+dass es die Eigenschaft 'nur am morgen sichtbar zu sein' instantiierte.
+
+Aus Fregescher Sicht
+Einschränkung verlangt, das Hammurabi unter dem gleichen Operationsmodus über
+den Planeten Venus nachdachte, den ich dem Term 'Hesperuns' anhänge.
+
+Das erscheint unplausibel, da es scheint, das ich selbst ohne Kenntnisse
+des konkreten Representationsmodus von Hammurabi wahrheiten über dessen
+Glauben aussagen kann.
+
+(Ansatz der das löst: Chalmers 2011, zweidimensionale Semantiken
+<!--
+Auf der Wikipediaseite zu dem steht noch viel mehr
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ---------------------------------------------------------------------------
+
+Fragen:
+Ist die Semantik der klassischen Aussagen/ Prädikatenlogik eine reine Referenzsemantik?
+Wenn ja warum ist das so?
+Argumente dafür:
+Bei dem Untersuchungsgegenstand (der Mathematik) handelt es sich um rein
+notwendige Wahrheiten -- die müssen in allen Welten gleich sein.
+Allerdings gilt das Gegenargument der Satzpaare 5. und 6. weiterhin:
+6 = 6 und 6 = 3 + 3 haben ja eigentlich auch nicht die gleiche Bedeutung.
+
+Was hat eigentlich die finitisierung des transfiniten damit zu tun?
+ist solch eine Darstellung nicht immer intensional 
+(siehe intensionale vs extensionale Mengendefinition)?
+
+Was hat das damit zu tun?
+
+
+Unterschiede zwischen formalen und natürlichsprachlichen Semantiken:
+* Syntax der Sprache ist eindeutig (damit auch die logische Form?)
+
+* Was die konkrete Repräsentation angeht:
+	zumindest das universum der Zeichenketten ist diskret und 
+	abzählbar unendlich.
+	das müsste mindestens bei operationalen Semantiken einen 
+	großen Unterschied machen, wenn nicht sogar für semantiken im 
+	allgemeinen ... doch auch für semantiken im allegemeinen,
+	auch die Sätze einer Sprache sind diskret und abzählbar unendlich.
+
+-->

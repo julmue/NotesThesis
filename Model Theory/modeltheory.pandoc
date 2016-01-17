@@ -1,0 +1,276 @@
+# Modeltheorie
+
+Ursprünge:
+Die Modelltheorie hat ihre Ursprünge in 
+der Untersuchung formaler Sprachen und ihrer Interpretationen
+und den Arten von Klassifikationen die eine bestimmte formale Sprache treffen kann.
+???
+
+Modelltheorie im engeren Sinn:
+Die Hauptströmung der Modelltheorie ist ein wichtiger Zweig der Mathematik.
+(siehe first-order model theory)
+
+Modelltheorie im weiteren Sinn:
+Im weiteren Sinn ist die Modelltheorie die Studie von Interpretationen
+irgendeiner Sprache, formal oder natürlich, 
+vermittels mengentheoretischer Strukturen,
+mit Alfred Tarskis Wahrheitskonzeption als Paradigma.
+
+
+## Basale Konzepte der Modelltheorie
+
+Manchmal sagen oder schreiben wir einen Satz $S$ 
+der weder etwas wahres noch etwas falsches ausdrückt,
+da entscheidenende Informationen darüber fehlen was die Wörter des Satzes bedeuten.
+
+Wenn wir diese Informationen ergänzen *interpretieren* wir $S$,
+die ergänzten Informationen sind die *Interpretation* von $S$.
+
+Wenn die Interpretation $I$ $S$ wahr macht,
+sagen wir dass $I$ ein *Modell* von $S$ ist, 
+("S ist wahr in I" / I erfüllt (satisfies) S),
+geschrieben $I ⊨ S$.
+
+Das ist die modelltheoretische Wahrheitskonzeption;
+es handelt sich um Wahrheit in einer bestimmten Interpretation.
+
+("S ist wahr in I" ist nur paraphrasiert für "S ist wahr wenn es in I interpretiert wird.")
+Damit ist modelltheoretische Wahrheit parasitär am gewöhnlichen Wahrheitsbegriff;
+er kann immer wegparaphrasiert werden.
+
+Beispiel:
+
+$S$ := "He is killing all of them"
+
+$I$ := { (he, Alfonso Alabaster), (them, the pigeons in his loft) } ??? nicht korrekt
+
+diese Interpretation erklärt:
+* Auf welche Objekte ein Ausdruck referenziert
+* Über welche Klassen von Objekten die Quantoren quantifizieren.
+
+Interpretationen bestehend aus Objekten (Objektzuordnungen???) und Klassen
+heißen in der Modelltheorie "Strukturen".
+
+Verschiedene Arten von Modelltheorien verwenden verschiedene Strukturen:
+* mathematische Modelltheorie verwendet *Strukturen erster Ordnung*
+* Modelltheorie der Modallogiken verwendet *Kripkestrukturen*
+
+(Also gibt es auch verschiedene Modelltheorien?
+genau herausarbeiten was diesen Modelltheorien gemein ist;
+am besten mit ein paar Beispielen)
+
+
+Die Struktur $I$ im ob genannten Beispiel enthält einen fixierten Namen
+und eine fixierte Klasse.
+
+Interpretationen können indexikalisch relativiert werden:
+$I ⊨_t S$ indiziiert den Zeitpunkt wenn es sich um eine kontigent Wahrheit handelt
+(Vgl. auch indexikale in der natürlichsprachlichen Semantik
+indiziiert werden können Welten, Orte, Zeitpunkte, ...)
+(sowas haben wir doch auch mit den Belegungen gemacht, oder?)
+
+Außer der Mengentheorie ist die Modelltheorie komplett agnostisch gegenüber
+den Dingen die existieren. 
+(das ist wichtig oder? wie kommt das denn dann eigentlich mit der Typentheorie
+hin? hat das überhaupt irgendeinen Einfluss?
+man spricht da ja auch von Modellen)
+
+Grundpfeiler der Modelltheorie:
+* Tarskis Wahrheitsdefinition
+* Mengenlehre
+* formale Sprachen
+* Sätze
+* Interpretationen
+* Strukturen
+
+(Strukturen == Interpretationen?)
+
+
+Die Objekte und Klassen in einer Struktur tragen Kennzeichnungen,
+die sie mit den richtigen Ausdrücken eines Satzes verknüpfen. (????)
+Diese Kennzeichnungen sind essentielle Teile der Struktur.
+(Mach mal ein Beispiel ...)
+(Mit Klassen werden hier mengen gemeint oder?)
+
+Wenn alle Quantoren über die selbe Klasse quantifizieren,
+wird diese Klasse Domäne (domain) oder Universum einer Strukture genannt.
+Manchmal quantifizieren Quantoren über unterschiedliche Klassen:
+
+"Eine dieser Krankheiten hat alle Vögel getötet"
+
+Hier wird eine Interpretation gesucht die "diesen Krankheiten" eine Klasse 
+von Krankheiten zuweist und "Vögel" eine Klasse von Vögeln.
+
+Interpretationen mit zwei oder mehr Klassen werden *mehrsortig (many-sorted)*
+genannt; die Klassen werden dann *Sorten* genannt.
+
+(Was ist hier eigentlich mit Typentheorie?)
+(Wie ist eigentlich generell der Zusammenhang zwischen Typen und Modelltheorie?)
+
+
+Die hier angeführten Ideen sind auch dann hilfreich,
+wenn schon ein Satz vorliegt der etwas wahres oder falsches aussagt
+(voll interpretiert, fully-interpretet).
+
+Beispielsweise können *Mißinterpretationen* eines voll interpretierten Satzes 
+betrachtet werden; solche *Mißinterpretationen* werden als *Nichtstandardmodelle*
+oder *unintendierte Modelle* bezeichnet.
+
+Weiter werden modelltheoretische Semantiken von natürlichen Sprachen untersucht.
+Dies ist eine Methode die Bedeutung von Sätzen zu beschreiben,
+und nicht ihnen Bedeutung zu geben.
+
+(Ist das nicht immer so bei natürlichsprachlicen Semantiken;
+die sind doch generell deskriptiv und nicht normativ)
+(Verbindung etwas indirekt siehe Montague)
+
+
+
+
+
+
+## Modelltheoretische Definition
+
+### Sätze definieren Modellmengen (Strukturmengen)
+
+Ein Satz teilt alle möglichen Interpretationen in zwei Klassen:
+* die Klasse der Interpretationen die ein Modell von S sind
+* die Klasse der Interpretationen die kein Modell von S sind
+
+Mod(S) := die Klasse aller Modelle eines Satzes.
+
+Beispiel:
+
+S := "Die erste Person hat das Eigentum auf die zweite Person übertragen,
+      welche das Eigentum zum Nutzen der dritten Person hält."
+
+definiert eine Klasse von Strukturen welche die Form von gekennzeichneten
+4-Tupeln haben.
+
+Das ist eine typische Modelltheoretische Definition,
+die eine Klasse von Strukturen definiert.
+
+
+### Theorien (Menge von Sätzen) definieren Modellmengen (Strukturmengen)
+
+Modelltheoretische Definition kann von einem einfachen Satz $S$ 
+auf Mengen von Sätzen $T$ erweitert werden;
+$Mod(T)$ ist die Klasse aller Interpretationen der Satzmenge die aus 
+dem Schnitt der Modelle der Sätze besteht.
+
+Wenn eine Satzmenge auf diese Art verwendet wird um eine Modellklasse auf diese
+Art zu erzeugen heißt sie *Theorie* oder *Axiomenmenge*,
+und das $T$ die Klasse $Mod(T)$ axiomatisiert.
+
+Beispiel: Abelsche Gruppen / kommutative Gruppen
+
+* ∀x∀y∀z (x+(y+z) = (x+y)=z)	Assoziativität
+* ∀x (x + 0 = x)		Neutrales Element
+* ∀x (x + (-x) = 0)		Inverses Element
+* ∀x∀y (x+y = y+x)		Kommutativität
+
+Hier sind die Kennzeichnungen:
+* das Additionssymbol $+$
+* das Subtraktionssymbol $-$
+* das konstante Symbol $0$
+
+Darüberhinaus muss eine Interpretation noch eine Domäne für die Quantoren
+spezifizieren.
+
+Mit einer Bedingung sind die Modelle dieser Satzmenge die Abelschen Gruppen;
+Bedingung ist, das die Domäne das Nullelement $0$ enthält und abgeschlossen
+ist unter $+$ und $-$ (Operationen).
+In der mathematischen Modelltheorie werden diese Bedingungen in die Definition
+des Begriffs Struktur eingebaut. (stimmt das?)
+
+
+Jede mathematische Struktur ist an eine bestimmte Sprache erster Ordnung gebunden.
+Ein Struktur enthält die Interpretationen von bestimmten Prädikats-, Funktions-
+und Konstantensymbolen; jedes Prädikat und Funktionssymbol hat eine festgelegte
+Arität. Die Zusammenfassung/Menge $k$ dieser Symbole ist die *Signatur* der Struktur.
+
+Symbole in der Signatur werden oft nichtlogische Konstanten genannt 
+(nonlogical constants). 
+
+Die Sprache erster Stufe über der Signatur $K$ ist die Sprache 
+aufgebaut aus den Symbolen in K zusammen mit dem Gleichheitszeichen $=$
+um die atomaren Formeln aufzubauen (was ist mit Variablen?).
+
+Wenn $K$ eine Signatur ist,
+$S$ ein Satz aus der Sprache über der Signatur $K$ und
+$A$ eine Struktur mit der Signatur $K$, 
+dann macht $A$ den Satz $S$ entweder wahr oder falsch.
+
+Damit ist die Klasse der abelschen Gruppen definiert als 
+die Klasse aller Strukturen mit der Signatur (+,-,0) 
+welche Modelle der oben genannten Theorie sind.
+
+Dies ist genau die mathematische Definition der abelschen Gruppen;
+die Modelltheorie formalisiert damit diese wichtige Klasse von Definitionen.
+
+#### Unterschiedliche Arten von Symbolen in den Axiomen
+
+In den Axiomen die eine Modellklasse definieren kommen drei Arten von Zeichen vor:
+* Das Identitätszeichen $=$ mit einer festgelegten Bedeutung
+* Nichtlogische Konstanten die ihre Interpretation
+	durch die Anwendung auf eine bestimmte Struktur beziehen.
+	(Interpretation == Bedeutung also Referenz in diesem Kontext?)
+    Dazu können auch die Quantorensymbole gezählt werden, da die Interpretationen
+    deren Quantifikationsbereich festlegt.
+* Variablen x, y, ...
+
+
+#### Definitionen innerhalb einer Struktur
+
+Diese Einteilung in drei Ebenen erlaubt es Klassen noch auf einem weiteren Weg 
+zu definieren: 
+Anstatt nach Interpretationen der nichtlogischen Konstanten zu suchen die
+die die Sätze wahr machen wird deren Bedeutung in einer bestimmten Interpretation
+fixiert;
+Nun suchen wir nach den Zuweisungen/Belegungen der Variablen,
+die den Satz/die Theorie wahr machen.
+
+
+Beispiel:
+$Z$ die additive Gruppe der Ganzzahlen; $+$, $-$, $0$ haben ihre übliche Bedeutung.
+Betrachte die Formel $v1 + v1 = v2$
+Für die Belegung $v1 = 2$ und $v2 = 4$ wird der Satz wahr in $Z$;
+Das Tupel $(2,4)$ erfüllt $S$ in $Z$.
+Damit definiert diese Formel/Satz eine binäre Relation in der Struktur,
+nämlich die Paare die sie erfüllen.
+Eine auf diese Art in einer Struktur definierte Relation ist ein 
+erststufig definierbare Relation (first-order definable relation) in A.
+
+nützliche Generalisierung:
+Zustätliche Namen in der Formel die bestimmte Elemente in $A$ spezifizieren.
+Diese Elemente werden Parameter genannt, die Relation ist dann
+*definierbar mit Parametern*.
+
+Diese zweite Art von Definitionen, Relationen innerhalb einer Struktur zu
+definieren anstatt eine Klasse von Strukturen, ist auch eine weit verbreitete
+mathematische Praxis; sie gehört aber eher zur geometrie als zur algebra.
+
+Beispiel:
+Körper R $v_1^2 + v_2^2 = 1$
+
+Ist der Einheitskreis um den Ursprung
+Algebraische Geometrie ist voll mit Definitionen dieser Art.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
