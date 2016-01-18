@@ -68,6 +68,10 @@ Frage: denotationale Semantik imperativer Programmiersprachen
 Können objektorientierte/imperative Programmiersprachen eine denotationale
 Semantik haben?
 
+Frage: Heytingalgebra und einfach typisiertes Lambdakalkül
+Warum ist nicht allein schon die Heytingalgebra eine adäquate Algebra
+für das einfach typisierte Lambdakalkül.
+
 
 ### Modelltheorie
 
@@ -134,6 +138,37 @@ enthalten sein kann.
 ## Algebraische Methoden der Logik
 
 ### Fragen
+
+Frage: Algebraisierung/Die Algebra der ...
+
+Algebraisierung unterstreicht zumindest bei der Logik die ihre duale Natur
+(welche duale Natur genau? Die als mathematisches Teilgebiet (algebraische Logik
+vs die alsmathematisches Grundgerüst (symbolische Logik?).
+
+In dem Buch geht es um die Algebraisierung verschiedener Logiken;
+(wie es bei der Domänentheorie vrm. um die Algebraisierung von
+Programmiersprachen geht (Die Mathematik der Programmiersprachen).
+Was genau ist mit einer Algebraisierung gemeint?
+(Idee: Menge mit aufgrprägter Operationaler und Relationaler Struktur;
+ siehe SEP Algebra)
+Un welche Vorteile bringt eine Algebraisierung?
+(Idee: Man kann 'rechnend' zu neuen Gesetzen/Axiomen kommen die dann auch 
+auf der Seite des Kalküls gelten müssen;
+man bekommt eine neue Perspektive auf die Sprache und den Gegenstand
+Die Möglichkeit neue Äquivalenzklassen/Äquivlanezrelationen zu bilden
+besteht; also bei syntaktischen Konstrukten einfacher sagen zu können
+ob sie die gleiche Proposition bedeuten.
+Dazu muss aber nicht zwingend algebraisiert werden;
+siehe Tarskis semantische Äquivalenz bzgl. Wertverlaufsgleichheit.)
+
+Mit ist irgendwie klar warum Algebra nützlich ist wenn man ein intendiertes
+Standardmodell als vorlage hat;
+warum man bei künstlichen Sprachen eins sucht ist mir irgendwie nicht so klar.
+
+Anmerkung:
+In dem Buch geht es um die Algebraisierung der klassischen Aussagenlogik;
+aber auch eine Algebraisierung der Prädikatenlogik wurde schon mit Erfolg
+untersucht (Tarski, Halmos, ...).
 
 Frage: Was?
 Was haben wir da eigentlich genau gemacht?
@@ -240,6 +275,8 @@ Ist das da iwi eingebettet?
 Frage: Zusammenhang zwischen Typentheorie und Modelltheorie
 Wie ist eigentlich der generelle Zusammenhang zwischen Typen und Modelltheorie?
 
+Frage: Gebrauch von Klasses im Englischen
+Meint man damit imme Klassen oder auch Mengen?
 
 ### Anmerkungen
 
