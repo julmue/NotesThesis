@@ -1,0 +1,191 @@
+# Algebra
+
+## Einleitung 
+
+Algebra ist ein Zweig der Mathematik, verwandt mit 
+* Analysis
+* Geometrie
+* Zahlentheorie
+* Kombinatorik
+* ...
+
+Obwohl die Algebra ihre Wurzeln in der Zahlenbereichen hat 
+(reellen Zahlen, komplexen Zahlen), 
+unterscheidet sie sich von den oben genannten Disziplinen darin, 
+dass sie nicht nur auf einen mathematischen Gegenstandsbereich anwendbar ist;
+sie ist auf allen mathematischen Gebiesten anwendbar.
+
+### Duale Natur der Algebra 1: Elementere Algebra
+*Elementare Algebra*: Arithmetik der undefinierten (indefinite) Quantitäten/Variablen
+* Die definierte Summe: $3 + 4$ wird immer zu $7$ ausgewertet
+* Die indefinierte Summe: $x + y$ hat keinen definierten Wert;
+	trotzdem gilt: $x + y = y + x$.
+
+Die Elementare Algebra stellt finite Mittel bereit, das unendliche zu fassen.
+(Aussagen über das unendliche zu treffen).
+
+Eine Formel wie $A = πr^2$ beschreibt unendlich viele Berechnungen,
+eine für jeden möglichen Wert von $r$.
+Ein allgemeingültiges Gesetz repräsentiert unendlich viele Fälle;
+
+Beispiel 1: Gleichungen als intensionale Repräsentation unendlicher Faktenmengen
+Die Gleichung $x + y = y + x$ repräsentiert unendlich viele Fakten:
+* $1 + 2 = 2 + 1$
+* $1 + 2.1 = 2.1 + 1$
+* $ ... $
+
+Beispiel 2: Gleichungen als Selektoren von Objekten aus unendlichen Faktenmengen.
+Die Gleichung $2x = 4$ wählt aus einer unendlichen Menge ein Element aus
+
+Beispiel 3: Gleichungen als intensionale Repräsentation unendlicher Objektmengen
+Die Gleichung $y = 2x + 3$ repräsentiert die unendliche Punktmenge, 
+welche diese Gleichung erfüllt.
+
+
+Die Domäne der elementaren Algebra sind in aller Regel die reellen oder die 
+komplexen Zahlen. 
+Ihre Methoden lassen sich aber auch auf andere Bereiche anwenden:
+* numerische Domänen/Zahlenbereiche: Ganzzahlen
+* nichtnumerische Domänen: 
+	* Teilmengen einer Menge unter Schnitt und Vereinigung
+	* Wörter eines Alphabets unter Konkatenation und Umkehrung
+	* Permutationen einer Menge unter Komposition und Inversem
+
+Jeder dieser *algebraischen Strukturen* oder *Algebren* besteht aus 
+1. einer Menge seiner Elemente (single-sorted manchmal aber auch many-sorted)
+2. Operationen auf diesen Elementen welche den Gesetzen dieser Domänen unterliegen.
+
+
+
+
+### Duale Natur der Algebra 2: Abstrakte Algebra/moderne Algebra
+
+Elementare Algebra behandelt eine festgelegte Algebra;
+Abstrakte Algebra behandelt verschiedene Klassen von Algebren die bestimmte 
+Eigenschaften teilen.
+
+Einstieg: Gruppen, Ringe, Felder.
+
+Anmerkung:
+Boolsche Algebren abstrahieren die Mengenalgebra (denk an die Welten!).
+Verbände generalisieren die boolschen Algebren da sie die Distributivität-
+und Komplementsgesetze nicht erfordern.
+
+Denk immer daran: 
+die Nähe zur Mengenlehre kommt von einer UCLA Interpretation der Propositionen --
+eine Proposition wird mit der Menge der Welten identifiziert in der Sie wahr ist.
+
+### Algebraisierung
+Algebra ist in vielen Bereichen der Mathematik ein so effizientes Werkzeug das
+einzelne algebraische Subzweige daraus entstanden sind:
+Algebraische Logik, algebraische Geometrie, algebraische Topologie, ...
+
+
+### Algebra und Philosophie
+
+Die Algebra ist für die Philosophie aus mindestens zwei Gründen interessant:
+1. Aus der Perspektive der Grundlagen der Mathematik:
+	Algebra unterscheidet sich von anderen Zweigen der Mathematik auf zwei Arten:
+	* Domänenunabhängigkeit
+	* Die nahe Verwandschaft der Algebra zur formalen Logik:
+	  die duale Natur der Logik und Mathematik:
+	 	* symbolische Logik als Logik der Mathematik
+		* algebraische Logik als Mathematik der Logik
+
+
+		
+
+
+<!-- ---------------------------------------------------------------------- --->
+## Abstraktionsebene 1: Elementare Algebra
+
+In der Elementaren wird eine feste Algebra gewäghlt und untersucht.
+
+### Terme
+Terme denotieren Objekte (sind eine Repräsentation für Objekte) in
+den der Algebra unterliegenden Domäne.
+
+Der Gegenstand der elementaren Algebra sind Terme über numerischen Domänen:
+* Konstanten
+* Variablen
+* Kombinationen aus Konstanten und Variablen zusammengesetzt durch Operatoren
+
+
+### Formeln
+Formeln repräsentieren wahre oder Falsche Aussagen.
+
+Aus Termen können Formeln (Aussagen) aufgebaut werden:
+* Identitätsaussagen (Gleichungen)
+	* Gesetze: Gesetze sind für alle Elemente der Trägermenge wahr.
+		Bsp: $x + y = y + x$
+	* Constraints: Wählen Elementmengen der Trägermenge aus.
+		Bsp: $x = y = 2$
+
+Gleichungen sind von größter Wichtigkeit in der Algebra:
+Die Menge der wahren Gleichungen einer Algebra ist ihre Theorie.
+
+
+
+<!-- ---------------------------------------------------------------------- --->
+## Abstraktionsebene 2: Abstrakte Algebra
+
+In der elementaren Algebra wird eine feste Algebra untersucht,
+die in ihr gültigen Gleichungen sind der zentrale Untersuchungsgegenstand.
+
+Die Moderne Algebra kehrt dieses Bild um:
+Sie legt eine Menge von Gesetzen (in der Form von Gleichungen?) fest
+die in einer bestimmten Trägermenge/Algebra gelten müssen.
+
+Beispiel: Ringaxiome
+
+Traditionell werden folgende Strukturklassen behandelt:
+(Siehe Zusammenfassung algebraische Strukturen)
+
+
+### Anwendungen
+
+Warum ist es sinnvoll ganze Klassen von Strukturen zu erforschen?
+
+Jede Struktur die eine bestimmte Axiomenmenge erfüllt ist ein Modell 
+dieser Axiomenmenge (Theorie).
+
+#### Anwendung 1:
+Die Gesetze die in einer bestimmten Algebra gelten/nicht gelten, 
+im Vergleich zu anderen Algebren charakterisiern diese Algebra;
+sie bringen Klarheit über die beispielsweise die Frage 
+"Was sind/charakterisiert Zahlen?".
+
+Beispiel:
+$(\{0,1\}, +, -)$ erfüllt alle Gesetze welche die Ganzzahlen erfüllen.
+Keine Gleichungseigentschaft der Theorie der Ganzzahlen erzwingt, das die
+Trägermenge unendlich ist.
+
+Andererseits erfüllt jedes finite Modell der Ganzzahlgleichungen noch weitere
+Gesetze, welche die Ganzzahlen nicht erfüllen.
+
+(Allerdings erfüllen die rationalen Zahlen exakt die gleichen Gesetze ...
+hier reicht eine Gleichungstheorie zur Unterscheidung nicht aus.)
+
+#### Anwendung 2:
+Alle gültigen Aussagen der Theorie können sofort auf jedes ihrer Modelle
+angewandt werden;
+
+Dadurch entsteht eine Abstraktionsschicht vom konkreten Modell;
+Dieses kann nach belieben durch ein anderes Modell ersetzt werden
+welches die gleichen Gesetze relativ zu einer bestimmten Theorie erfüllt.
+
+Trennung von Spezifikation und Implementierung.
+
+<!-- 
+Anmerkung:
+
+Theorie (Interface) vs Implementierung (Modell)
+-->
+
+
+<!-- ---------------------------------------------------------------------- --->
+## Abstraktionsebene 3: Universelle Algebra
+
+
+
+
