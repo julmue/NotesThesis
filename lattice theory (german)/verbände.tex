@@ -1,5 +1,9 @@
 \documentclass{paper}
 
+\usepackage{common}
+
+\begin{document}
+
 \section{Verbände}
 
 \subsection{Algebraische Beschreibung von Verbänden}
@@ -17,7 +21,7 @@ Inhalt:
 \subsubsection{Definition von Verbänden als algebraische Struktur}
 
 \begin{definition}{Verband (algebraische Struktur)}
-Eine algebraische Struktur $(V,⊔,⊓)$ 
+Eine algebraische Struktur %$(V,⊔,⊓)$ 
 \begin{itemize}
 \item $V$: Trägermenge $V ≠ ∅$
 \item $⊔: V × V → V$
@@ -55,10 +59,10 @@ Wichtige Verbände:
 \item Potenzmengenverband: $(2^X, ⋃, ⋂)$
 \item Teilbarkeitsverband: $(ℕ, kgV, ggT)$
 \end{itemize}
-\end{remark
+\end{remark}
 
 
-\subsubsection{\theorems{lattice}}
+\subsubsection{Sätze der Verbandstheorie}
 
 \begin{theorem}[Idempotenz]
 Sei $V = (V, ⊔, ⊓)$ ein Verband. Dann gilt \axiom{Idempotenz}: 
@@ -71,8 +75,8 @@ Sei $V = (V, ⊔, ⊓)$ ein Verband. Dann gilt \axiom{Idempotenz}:
 \begin{proof}
 \begin{align*}
     a ⊔ a 
-    &= a ⊔ (a ⊓ (a ⊔ a)) && \text{\axiom{Absorption}}
-    &= (a ⊓ (a ⊔ a)) ⊔ a && \text{\axiom{Kommutativität}}
+    &= a ⊔ (a ⊓ (a ⊔ a)) && \text{\axiom{Absorption}} \\
+    &= (a ⊓ (a ⊔ a)) ⊔ a && \text{\axiom{Kommutativität}} \\
     &= a
 \end{align*}
 \end{proof}
@@ -86,8 +90,8 @@ $a ⊓ b = a ⇔ a ⊔ b = b$
 \begin{proof}
 \begin{subproof}[$a ⊓ b = a ⇒ a ⊔ b = b$]
 \begin{align*}
-    (a ⊓ b) ⊔ b = b 
-    &= a ⊔ b = b
+    (a ⊓ b) ⊔ b = b \\
+    &= a ⊔ b = b \\
 \end{align*}
 \end{subproof}
 \begin{subproof}[$a ⊔ b = b ⇒ a ⊓ b = a$]
@@ -104,12 +108,12 @@ $a ⊓ b = a ⊔ b ⇔ a = b$
 \begin{proof}
 \begin{subproof}[$a ⊓ b = a ⊔ b ⇒ a = b$]
 \begin{align*}
-    (a ⊔ b) ⊓ a &= a && \text{\axiom{Idempotenz}} \\
+    (a ⊔ b) ⊓ a &= a && \axiom{Idempotenz} \\
     (a ⊓ b) ⊓ a &= a && \text{Prämisse} \\
-    (b ⊓ a) ⊓ a &= a && \text{Kommutativität} \\
-    b ⊓ (a ⊓ a) &= a && \text{Kommutativität} \\
-    b ⊓ a &= a && \text{Idempotenz} \\
-    (b ⊓ a) ⊔ b &= b && \text{axiom{Idempotenz} \\
+    (b ⊓ a) ⊓ a &= a && \axiom{Kommutativität} \\
+    b ⊓ (a ⊓ a) &= a && \axiom{Kommutativität} \\
+    b ⊓ a &= a && \axiom{Idempotenz} \\
+    (b ⊓ a) ⊔ b &= b && \axiom{Idempotenz} \\
     a ⊔ b &= b && \text{Gleichung} \\
     a &= b && \text{Prämisse, Gleichung}
 \end{align*}
@@ -135,6 +139,7 @@ Gilt für alle $a, b ∈ W$ auch $a ⊔ b ∈ W$ und $a ⊓ b ∈ W$
 so nennt man $W$ sowie das Tripel 
 $$(W, ⊔_{|W × W}, ⊓_{|W × W})$$
 einen \concept{Unterverband} (bzw. \concept{Teilverband}) von $V$.
+\end{definition}
 
 \begin{remark}[Restriktionen]
 Die Symbole $⊔_{|W × W}$ und $⊓_{|W × W}$ bezeichnen die Restriktionen von 
@@ -159,7 +164,7 @@ $ \set{1} ∪ \set{2} ∉ W$.
 Seien $V$, $W$ Verbände. Eine Abbildung $f: V → W$ nennt man 
 Verbandshomomorphismus, wenn gilt:
 $$∀ a, b, c ∈ V: (f(a ⊔_V b) = f(a) ⊔_W f(b) ∧ f(a ⊓_V b) = f(a) ⊓_W f(b))$$
-\begin{definition}
+\end{definition}
 
 \begin{definition}{Spezielle Verbandshomomorphismen}
 Verbandshomomorphismen können weiter klassifiziert werden:
@@ -168,6 +173,7 @@ Verbandshomomorphismen können weiter klassifiziert werden:
 \item Verbandsepimorphismus: surjektiver Verbandshomomorphismus
 \item Verbandsisomorphismus: bijektiver Verbandshomomorphismus
 \end{itemize}
+\end{definition}
 
 
 \begin{theorem}{Verbandshomomorphismen sind abgeschlossen unter Komposition}
@@ -210,7 +216,7 @@ wenn gilt:
 \item \axiom{Irreflexivität}: $∀ x ∈ M: ¬((x,x) ∈ ⊏)$
 \item \axiom{Transitivität}: $∀ x, y ,z ∈ M: (x,y) ∈ ⊏ ∧ (y,z) ∈ ⊏ → (x,z) ∈ ⊏$
 \end{itemize}
-\end{itemize}
+\end{definition}
 
 \begin{definition}{Strikter Anteil einer Ordnungsrelation}
 Konstruktion einer Striktordnung aus einer gegebenen Ordnung:
@@ -248,6 +254,7 @@ Sei $(M,⊑)$ eine Ordnung. Ist $M$ eine Kette nennt man $M$ Totalordnung.
 \begin{definition}{Antikette}
 Sei $(M,⊑)$ eine Ordnung. Eine Teilmenge $K$ von $M$ heißt Antikette,
 wenn gilt: $∀ a, b ∈ K: a ⊑ b ↔ a = b$.
+\end{definition}
 
 % Ergänzend:
 % Ketten mit Indexbereichen
@@ -257,7 +264,7 @@ wenn gilt: $∀ a, b ∈ K: a ⊑ b ↔ a = b$.
 
 \subsection{Unterstrukturen von Mengen}
 
-\definition{Teilordnung}
+\begin{definition}{Teilordnung}
 Sei $(M, ⊑)$ ein Ordnung und sei $∅ ≠ N ⊆ M$.
 Dann heißt $(N, ⊑_N)$ die durch $N$ induzierte Teilordnung.
 \end{definition}
@@ -270,7 +277,7 @@ Restriktionen auch das Symbol $⊑$ verwendet werden.
 
 \begin{remark}[Jede Restriktion einer Ordnung ist wieder eine Ordnung]
 Jede Restriktion einer Ordnung ist wieder eine Ordnung.
-\end{definition}
+\end{remark}
 
 
 \subsection{Strukturerhaltende Abbildungen}
@@ -295,6 +302,7 @@ Ordnungshomomorphismen können weiter klassifiziert werden:
 \begin{itemize}
 \item Ordnungsisomorphismus: bijektiver Ordnungshomomorphismus dessen Umkehrabbildung
 		ebenfalls ein Homomorphismus ist.
+\end{itemize}
 \end{definition}
 
 
@@ -408,10 +416,10 @@ Sei $(M, ⊑)$ eine Ordnung. Zwei wichtige Funktionen:
 		ein $N ⊆ M$ auf die Menge ihrer unteren Schranken ab.
 \end{enumerate}
 \begin{align*}
-    \mobj{Ma}: 2^M → 2^M
-    \mobj{Ma}(X) = \comp{a ∈ M}{a \text{ist obere Schranke von} X}
-    \mobj{Mi}: 2^M → 2^M
-    \mobj{Mi}(X) = \comp{a ∈ M}{a \text{ist untere Schranke von} X}
+    &\mobj{Ma}: 2^M → 2^M \\
+    &\mobj{Ma}(X) = \comp{a ∈ M}{a \text{ist obere Schranke von} X} \\
+    &\mobj{Mi}: 2^M → 2^M \\
+    &\mobj{Mi}(X) = \comp{a ∈ M}{a \text{ist untere Schranke von} X}
 \end{align*}
 \end{definition}
 
@@ -465,7 +473,7 @@ Folgende partielle Abbildungen können definiert werden:
 \item $∏: 2^M → M$ für das Infimum (größte untere Schranke)
 \item $∐: 2^M → M$ für das Supremum (kleinste obere Schranke)
 \end{itemize}
-\end{definition}
+\end{remark}
 
 \begin{theorem}[Teilmengen und Supremum/Infimum]
 Sei $(M,⊔,⊓)$ eine Ordnung, $N_1, N_2 ⊆ M$ und $N_1 ⊆ N_2$, dann gilt:
@@ -474,13 +482,14 @@ $∏N_2 ⊑ ∏N_1$ und $∏N_1 ⊑ ∏N_2$, falls diese Suprema und Infima exis
 
 \begin{proof}
 Angenommen $a, b ∈ M$ mit $a=∐N_1$ und $b=∏N_2$.
-
 \begin{subproof}[$∐N_1 ⊑ ∏N_2$]
 \begin{align*}
     b = ∐N_2 &⇒ b ∈ \mobj{Ma}(N_2) && \text{Definition Supremum} \\
-             &⇒ b ∈ \mobj{Ma}(N_1) 
+             &⇒ b ∈ \mobj{Ma}(N_1) \\
              &⇒ a ⊑ b && \text{Definition \mobj{Definition Supremum}}
 \end{align*}
+\end{subproof}
+\end{proof}
 
 
 
@@ -563,9 +572,9 @@ dann ist $(M,⊔,⊓)$ ein Verband.
 \begin{proof}
 \begin{subproof}[Assoziativität]
 \begin{align*}
-    (a ⊔ b) u c &= ∐\set{∐\set{a,b},c}
-                &= ∐\set{a,b,c}
-                &= ∐\set{a,∐\set{b,c}}
+    (a ⊔ b) u c &= ∐\set{∐\set{a,b},c} \\
+                &= ∐\set{a,b,c} \\
+                &= ∐\set{a,∐\set{b,c}} \\
                 &= a ⊔ (b ⊔ c)
 \end{align*}
 Für $⊓$ analog.
@@ -580,7 +589,7 @@ Für $⊓$ analog.
 \begin{subproof}[Idempotenz]
 Es gilt $a ⊑ ∐\set{a,b} = a ⊔ b$. Daraus folgt:
 \begin{align*}
-    (a ⊔ b) ⊓ a &= ∏ (a ⊔ b, a)
+    (a ⊔ b) ⊓ a &= ∏ (a ⊔ b, a) \\
                 &= a
 \end{align*}
 \end{subproof}
@@ -592,6 +601,7 @@ Für das zweite Absorptionsgesetz analog.
 % \end{theorem}
 
 
+\end{document}
 
 
 
