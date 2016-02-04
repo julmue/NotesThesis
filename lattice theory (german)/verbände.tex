@@ -1,0 +1,607 @@
+\documentclass{paper}
+
+\section{Verbände}
+
+\subsection{Algebraische Beschreibung von Verbänden}
+
+Algebraische Struktur: Menge mit inneren Verknüpfungen.
+
+Inhalt:
+\begin{itemize}
+\item Definition/Axiomenmenge/Theorie der Verbände
+\item Unterstrukturen
+\item Strukturerhaltende Abbildungen (Homomorphismen)
+\end{itemize}
+
+
+\subsubsection{Definition von Verbänden als algebraische Struktur}
+
+\begin{definition}{Verband (algebraische Struktur)}
+Eine algebraische Struktur $(V,⊔,⊓)$ 
+\begin{itemize}
+\item $V$: Trägermenge $V ≠ ∅$
+\item $⊔: V × V → V$
+\item $⊓: V × V → V$
+\end{itemize}
+welche die folgenden Axiome (Theorie der Verbände) erfüllt wird Verband genannt:
+\begin{enumerate}
+\item \axiom{Assoziativität}: 
+    \begin{enumerate}
+    \item $∀ x, y, z ∈ V: x ⊔ (y ⊔ z) = (x ⊔ y) ⊔ z$
+    \item $∀ x, y, z ∈ V: x ⊓ (y ⊓ z) = (x ⊓ y) ⊓ z$
+    \end{enumerate}
+\item \axiom{Kommutativität}:
+    \begin{enumerate}
+    \item $∀ x, y ∈ V: x ⊔ y = y ⊔ x$
+    \item $∀ x, y ∈ V: x ⊓ y = y ⊓ x$
+    \end{enumerate}
+\item \axiom{Absorption}:
+    \begin{enumerate}
+    \item $∀ x, y ∈ V: (x ⊓ y) ⊔ x = x$ 
+    \item $∀ x, y ∈ V: (x ⊔ y) ⊔ x = x$ 
+    \end{enumerate}
+\end{enumerate}
+\end{definition}
+
+\begin{remark}[Alternative Bezeichner für die Verbandsoperationen]
+Statt $⊔$, $⊓$ werden auch die Bezichner $∨$, $∧$ verwendet.
+Motivation: Verband der Wahrheitswerte.
+\end{remark}
+
+\begin{remark}[Wichtige Verbände]
+Wichtige Verbände:
+\begin{itemize}
+\item Verband der Wahrheitswerte: $(𝔹, ∨, ∧)$
+\item Potenzmengenverband: $(2^X, ⋃, ⋂)$
+\item Teilbarkeitsverband: $(ℕ, kgV, ggT)$
+\end{itemize}
+\end{remark
+
+
+\subsubsection{\theorems{lattice}}
+
+\begin{theorem}[Idempotenz]
+Sei $V = (V, ⊔, ⊓)$ ein Verband. Dann gilt \axiom{Idempotenz}: 
+\begin{enumerate}
+\item $∀ x ∈ V: x ⊓ x = x$
+\item $∀ x ∈ V: x ⊓ x = x$
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+\begin{align*}
+    a ⊔ a 
+    &= a ⊔ (a ⊓ (a ⊔ a)) && \text{\axiom{Absorption}}
+    &= (a ⊓ (a ⊔ a)) ⊔ a && \text{\axiom{Kommutativität}}
+    &= a
+\end{align*}
+\end{proof}
+
+
+\begin{theorem}[FlipFlop]
+Sei $V = (V, ⊔, ⊓)$ ein Verband. Dann gilt der \informal{FlipFlopsatz}:
+$a ⊓ b = a ⇔ a ⊔ b = b$
+\end{theorem}
+
+\begin{proof}
+\begin{subproof}[$a ⊓ b = a ⇒ a ⊔ b = b$]
+\begin{align*}
+    (a ⊓ b) ⊔ b = b 
+    &= a ⊔ b = b
+\end{align*}
+\end{subproof}
+\begin{subproof}[$a ⊔ b = b ⇒ a ⊓ b = a$]
+Dualisierung 
+\end{subproof}
+\end{proof}
+
+
+\begin{theorem}[Gleichheitssatz]
+Sei $V = (V, ⊔, ⊓)$ ein Verband. Dann gilt der \informal{Gleichheitssatz}:
+$a ⊓ b = a ⊔ b ⇔ a = b$
+\end{theorem}
+
+\begin{proof}
+\begin{subproof}[$a ⊓ b = a ⊔ b ⇒ a = b$]
+\begin{align*}
+    (a ⊔ b) ⊓ a &= a && \text{\axiom{Idempotenz}} \\
+    (a ⊓ b) ⊓ a &= a && \text{Prämisse} \\
+    (b ⊓ a) ⊓ a &= a && \text{Kommutativität} \\
+    b ⊓ (a ⊓ a) &= a && \text{Kommutativität} \\
+    b ⊓ a &= a && \text{Idempotenz} \\
+    (b ⊓ a) ⊔ b &= b && \text{axiom{Idempotenz} \\
+    a ⊔ b &= b && \text{Gleichung} \\
+    a &= b && \text{Prämisse, Gleichung}
+\end{align*}
+\end{subproof}
+\begin{subproof}[$a = b ⇒ a ⊓ b = a ⊔ b$]
+\begin{align*}
+    a &= b && \text{Prämisse} \\
+    a ⊓ a &= b && \text{Idempotenz} \\
+    a ⊓ a &= b ⊔ b && \text{Idempotenz} \\
+    a ⊓ b &= a ⊔ b && \text{Prämisse}
+\end{align*}
+\end{subproof}
+\end{proof}
+
+
+\subsection{Unterstrukturen von Verbänden}
+% Homomorphismen sind polymorph im Sinn von Overloading
+
+\begin{definition}{Unterverband}
+Sei $V$ ein Verband, $W ⊆ V$ mit $W ≠ ∅$.
+Gilt für alle $a, b ∈ W$ auch $a ⊔ b ∈ W$ und $a ⊓ b ∈ W$ 
+(\concept{Abgeschlossenheit bezüglich $⊔$ und $⊓$}) 
+so nennt man $W$ sowie das Tripel 
+$$(W, ⊔_{|W × W}, ⊓_{|W × W})$$
+einen \concept{Unterverband} (bzw. \concept{Teilverband}) von $V$.
+
+\begin{remark}[Restriktionen]
+Die Symbole $⊔_{|W × W}$ und $⊓_{|W × W}$ bezeichnen die Restriktionen von 
+$⊔$ und $⊓$ auf $W$; liegt keine Ambiguität vor können zur Denotation der
+Restriktionen auch die Symbole $⊔$ und $⊓$ verwendet werden.
+\end{remark}
+
+\begin{remark}[Untermengen sind nicht notwendig abgeschlossen]
+Nicht jede nicht-leere Untermenge eines Verbandes induziert einen Verband;
+\property{Abgeschlossenheit} muss nicht gelten.
+\end{remark}
+
+\begin{proof}
+Sei $V = (2^{\set{1,2}}, ∪, ∩)$, $W = \set{\set{1},\set{2}}$ dann ist 
+$ \set{1} ∪ \set{2} ∉ W$.
+\end{proof}
+
+
+\subsection{Verhandshomomorphismen}
+
+\begin{definition}{Verbandshomomorphismus}
+Seien $V$, $W$ Verbände. Eine Abbildung $f: V → W$ nennt man 
+Verbandshomomorphismus, wenn gilt:
+$$∀ a, b, c ∈ V: (f(a ⊔_V b) = f(a) ⊔_W f(b) ∧ f(a ⊓_V b) = f(a) ⊓_W f(b))$$
+\begin{definition}
+
+\begin{definition}{Spezielle Verbandshomomorphismen}
+Verbandshomomorphismen können weiter klassifiziert werden:
+\begin{itemize}
+\item Verbandsmonomorphismus: injektiver Verbandshomomorphismus
+\item Verbandsepimorphismus: surjektiver Verbandshomomorphismus
+\item Verbandsisomorphismus: bijektiver Verbandshomomorphismus
+\end{itemize}
+
+
+\begin{theorem}{Verbandshomomorphismen sind abgeschlossen unter Komposition}
+Seien $f$, $g$ Verbandshomomorphismen, dann auch $f∘g$ 
+\end{theorem}
+
+\begin{proof}
+% Siehe Dunn & Hardegree ... sollte universelle Eigenschaft von Homomorphismen sein
+% mit Verbandshomomorphismen als Spezialfall.
+\end{proof}
+
+
+\begin{theorem}{Verbandsisomorphismen sind abgeschlossen unter Inversenbildung}
+Sie $f$ ein Verbandshomomorhpismus, dann auch $f^{-1}$
+\end{theorem}
+
+\begin{proof}
+% TODO
+\end{proof}
+
+
+%-------------------------------------------------------------------------------
+\section{Geordnete Mengen}
+
+\begin{definition}{Ordnungsrelation}
+Eine Relation $⊑ ⊆ M × M$ auf einer Menge $M ≠ ∅$ heißt Ordnungsrelation
+wenn gilt:
+\begin{itemize}
+\item \axiom{Reflexivität}: $∀ x ∈ M: (x,x) ∈ ⊑$
+\item \axiom{Antisymmetrie}: $∀ x, y ∈ M: (x,y) ∈ M ∧ (y,x) ∈ M → x = y$
+\item \axiom{Transitivität}? $∀ x, y, z ∈ M: (x,y) ∈ M ∧ (y,z) ∈ M → (x,z) ∈ M$
+\end{itemize}
+\end{definition}
+% Prototyp: Teilmengenbeziehung
+
+\begin{definition}{Striktordnungsrelation}
+Eine Relation $⊏ ⊆ M × M$ auf einer Menge $M ≠ ∅$ heißt Striktordnungsrelation
+wenn gilt:
+\begin{itemize}
+\item \axiom{Irreflexivität}: $∀ x ∈ M: ¬((x,x) ∈ ⊏)$
+\item \axiom{Transitivität}: $∀ x, y ,z ∈ M: (x,y) ∈ ⊏ ∧ (y,z) ∈ ⊏ → (x,z) ∈ ⊏$
+\end{itemize}
+\end{itemize}
+
+\begin{definition}{Strikter Anteil einer Ordnungsrelation}
+Konstruktion einer Striktordnung aus einer gegebenen Ordnung:
+Sei $⊑$ eine Ordnung. Die Relation $⊏$ mit
+$a ⊏ b ⇔ a ⊑ b ∧ a ≠ b$ ist eine Striktordnungsrelation;
+man nennt sie den \concept{strikten Anteil} von $⊑$.
+\end{definition}
+
+\begin{definition}{Reflexive Hülle einer Striktordnung}
+Konstruktion einer Ordnung aus einer gegebenen Striktordnung:
+Sei $⊏$ eine Striktordnung. Die Relation $⊑$ mit 
+$a ⊑ b ⇔ a ⊏ b ∨ a = b$ ist eine Ordnungsrelation;
+man nennt sie die \concept{reflexive Hülle} von $⊏$.
+\end{definition}
+
+
+\begin{definition}{Vergleichbarkeit (Kommensurabilität)}
+Sei $(M, ⊑)$ eine Ordnung. Zwei Elemente $x, y ∈ M$ nennt man vergleichbar
+(kommensurabel) gdw. $a ⊑ b$ oder $b ⊑ a$.
+Zwei Elemente sind unvergleichbar (inkommensurabel) gdw. sie nicht vergleichbar
+sind.
+\end{definition}
+
+
+\begin{definition}{Mengentheoretische Kette}
+Sei $(M,⊑)$ eine Ordnung. Eine Teilmenge $K$ von $M$ heißt (mengentheoretische)
+Kette, wenn gilt: $∀ a, b ∈ K: (a ⊑ b ∨ b ⊑ a)$
+\end{definition}
+
+\begin{definition}{Totalordnung}
+Sei $(M,⊑)$ eine Ordnung. Ist $M$ eine Kette nennt man $M$ Totalordnung.
+\end{definition}
+
+
+\begin{definition}{Antikette}
+Sei $(M,⊑)$ eine Ordnung. Eine Teilmenge $K$ von $M$ heißt Antikette,
+wenn gilt: $∀ a, b ∈ K: a ⊑ b ↔ a = b$.
+
+% Ergänzend:
+% Ketten mit Indexbereichen
+% Quasiordnungen
+
+
+
+\subsection{Unterstrukturen von Mengen}
+
+\definition{Teilordnung}
+Sei $(M, ⊑)$ ein Ordnung und sei $∅ ≠ N ⊆ M$.
+Dann heißt $(N, ⊑_N)$ die durch $N$ induzierte Teilordnung.
+\end{definition}
+
+\begin{remark}[Restriktion]
+Das Symbol $⊑_N$ bezeichnet die Restriktionen von $⊑$ auf $N$:
+liegt keine Ambiguität vor kann zur Denotation der
+Restriktionen auch das Symbol $⊑$ verwendet werden.
+\end{remark}
+
+\begin{remark}[Jede Restriktion einer Ordnung ist wieder eine Ordnung]
+Jede Restriktion einer Ordnung ist wieder eine Ordnung.
+\end{definition}
+
+
+\subsection{Strukturerhaltende Abbildungen}
+
+\begin{definition}{Ordnungshomomorphismus/monotone Abbildung}
+% Wichtig: Ordnungshomomorphismus == monotone Abbildung
+Seien $(M_1, ⊑_1)$ und $(M_2, ⊑_2)$ Ordnungen.
+Eine Abbildung $f: M_1 → M_2$ nennt man Ordnungshomomorphismus 
+(bzw. monotone Abbildung) wenn gilt:
+$∀ a, b ∈ M_1: a ⊑_1 b → f(a) ⊑_2 f(b)$
+\end{definition}
+
+\begin{definition}{Dualisierung der Ordnung/antitone Abbildung}
+Seien $(M_1, ⊑_1)$ und $(M_2, ⊑_2)$ Ordnungen.
+Eine Abbildung $f: M_1 → M_2$ nennt man Ordnungshomomorphismus 
+(bzw. antitone Abbildung) wenn gilt:
+$∀ a, b ∈ M_1: a ⊑_1 b → f(a) ⊑_2 f(b)$
+\end{definition}
+
+\begin{definition}{Spezielle Ordnungshomomorphismen}
+Ordnungshomomorphismen können weiter klassifiziert werden:
+\begin{itemize}
+\item Ordnungsisomorphismus: bijektiver Ordnungshomomorphismus dessen Umkehrabbildung
+		ebenfalls ein Homomorphismus ist.
+\end{definition}
+
+
+\begin{theorem}{Ordnungshomomorphismen sind abgeschlossen unter Komposition}
+Seien $f$, $g$ Ordnungshomomorphismen/monotone Abbildungen, dann auch $f∘g$ 
+\end{theorem}
+
+\begin{proof}
+% TODO vermutlich wieder allg. Algebra
+\end{proof}
+
+
+\begin{theorem}{Ordnungsisomorphismen sind nicht abgeschlossen unter Inversenbildung}
+Sie $f$ ein Verbandshomomorhpismus, dann ist $f^{-1}$ im Allgemeinen kein
+Verbandshomomorphismus.
+\end{theorem}
+
+\begin{proof}
+Betrachte die Ordnungen $(2^\set{1,2}, ⊆)$ und $(\set{0,1,2,3}, ≤)$,
+sowie die monotone Abbildung 
+$f = \set{(∅, 0), (\set{1}, 1), (\set{2}, 2), (\set{1,2}, 3)}$.
+Dann ist $f^-1$ keine Monotone Abbildung da $1 ≤ 2$ aber $¬(\set{1} ⊆ \set{2})$.
+\end{proof}
+
+\begin{remark}{Isomorphismen in algebraischen und relationalen Strukturen}
+In relationalen Strukturen sind bijektive Homomorphismen nicht notwendig 
+Isomorphismen. Die gemeinsam mit der Bijektivität für einen Ordnungsisomorphismus 
+hinreichende Verstärkung (Umkehrabbildung ebenfalls monoton) muss 
+definitiorisch ergänzt werden.
+\end{remark}
+
+
+\subsection{Spezielle Elemente in Ordnungen und Teilmengen}
+
+\begin{definition}{Schranken}
+Sei $(M, ⊑)$ eine Ordnung, $N ⊆ M$ und $a ∈ M$.
+Dann heißt das Element $a$:
+\begin{itemize}
+\item \concept{obere Schranke} von $N$, wenn gilt: $∀ b ∈ N: b ⊑ a$.
+\item \concept{untere Schranke} von $N$, wenn gilt: $∀ b ∈ N: a ⊑ b$.
+\end{itemize}
+\end{definition}
+
+\begin{definition}{Maximale/Minimale Elemente}
+Sei $(M, ⊑)$ eine Ordnung, $N ⊆ M$ und $a ∈ M$.
+Dann heißt das Element $a$:
+\begin{itemize}
+\item \concept{Maximales Element} von $N$, wenn gilt: $¬∃ b ∈ N: a ⊑ b ∧ a ∈ N$.
+\item \concept{Minimales Element} von $N$, wenn gilt: $¬∃ b ∈ N: b ⊑ a ∧ a ∈ N$.
+\end{itemize}
+\end{definition}
+
+\begin{definition}{Größtes/Kleinstes Element}
+Sei $(M, ⊑)$ eine Ordnung, $N ⊆ M$ und $a ∈ M$.
+Dann heißt das Element $a$:
+\begin{itemize}
+\item \concept{Größtes Element} von $N$, wenn gilt: $∀ b ∈ N: b ⊑ a ∧ a ∈ N$.
+\item \concept{Kleinstes Element} von $N$, wenn gilt: $∀ b ∈ N: a ⊑ b ∧ a ∈ N$.
+\end{itemize}
+\end{definition}
+
+\begin{remark}[Existenz spezieller Elemente ist nicht notwendig]
+Die oben aufgeführten Elemente müssen nicht notwendeigerweise in jeder Ordnung
+existieren.
+\end{remark}
+
+\begin{remark}[Eindeutigkeit spezieller Elemente]
+Angenommen die oben aufgeführten Elemente existieren in beliebigen aber festen
+Ordnung.
+\begin{itemize}
+\item Schranken und maximalen/minimalen Elementen sind in der Regel nicht eindeutig.
+\item Größtes und kleinstes Element sind eindeutig.
+\end{itemize}
+\end{remark}
+
+
+\begin{theorem}{Endliche nichtleere Ordnungen haben maximale und minimale Elemente}
+Sei $(M, ⊑)$ eine Ordnung, dann besitzt jede endliche, nichtleere Teilmenge $N$
+ein maximales und ein minmales Element.
+% genau eins? vermutlich nicht ...
+\end{theorem}
+
+\begin{proof}[Konstruktiver/Algorithmischer Beweis]
+Konstruktiver/algorithmischer Beweis: linerare Suche nach einem maximalen Element.
+
+Betrachte die extensionale Darstellung von $N = \set{a_1, \dots , a_n}$ mit $n ≥ 1$.
+Folgende Konstruktion definiert eine aufsteigende Folge
+(deren Elemente eine Kette bilden) $x_1 ⊑ x_2 ⊑ \dots ⊑ x_n$:
+\begin{align*}
+    x_1 &= a_1 \\
+    x_{i+1} &= 
+        \begin{cases}
+            a_{i+1} & \text{falls} x_i ⊏ a_{i+1} \\
+            x_i     & \text{sonst}
+        \end{cases}
+\end{align*}
+
+Der Beweis für das minimale Element verläuft analog.
+\end{proof}
+
+
+
+\subsection{Majorante und Minorante}
+
+\begin{definition}{Ma und Mi}
+Sei $(M, ⊑)$ eine Ordnung. Zwei wichtige Funktionen:
+\begin{enumerate}
+\item Ma (von \concept{Majorante} = obere Schranke) bildet 
+		ein $N ⊆ M$ auf die Menge ihrer oberen Schranken ab.
+\item Mi (von \concept{Minorante} = untere Schranke) bildet
+		ein $N ⊆ M$ auf die Menge ihrer unteren Schranken ab.
+\end{enumerate}
+\begin{align*}
+    \mobj{Ma}: 2^M → 2^M
+    \mobj{Ma}(X) = \comp{a ∈ M}{a \text{ist obere Schranke von} X}
+    \mobj{Mi}: 2^M → 2^M
+    \mobj{Mi}(X) = \comp{a ∈ M}{a \text{ist untere Schranke von} X}
+\end{align*}
+\end{definition}
+
+
+\begin{theorem}[Teilmengenbeziehung und Antitonizität]
+Sei $(M, ⊑)$ ein Verband, $N_1, N_2 ∈ 2^M$, dann gilt:
+Wenn $N_1 ⊆ N_2$ dann $Ma(N_2) ⊆ Ma(N_1)$ und $Mi(N_2) ⊆ Mi(N_1)$ --
+\mobj{Ma} und \mobj{Mi} sind antitone Abbildungen.
+\end{theorem}
+
+\begin{proof}
+Sei $N_1 ⊆ N_2$, dann gilt:
+\begin{align*}
+\mobj{Ma}(N_2) &= \comp{a ∈ M}{∀ b ∈ N_2: b ⊑ a} && \text{Definition \mobj{Ma}} \\
+               &⊆ \comp{a ∈ M}{∀ b ∈ N_1: b ⊑ a} && N_1 ⊆ N_2 \\
+               &= \mobj{Mi}(N_1) && \text{Definition \mobj{Mi}}
+\end{align*}
+Antitonie von \mobj{Mi} wird äquivalent gezeigt.
+\end{proof}
+
+
+\begin{theorem}{???}
+Sei $(M, ⊑)$ ein Verband, $N ∈ 2^M$, dann gilt:
+\begin{itemize}
+\item $\mobj{Ma}(\mobj{Mi}(\mobj{Ma}(N))) = \mobj{Ma}(N)$
+\item $\mobj{Mi}(\mobj{Ma}(\mobj{Mi}(N))) = \mobj{Mi}(N)$
+\end{itemize}
+\end{theorem}
+
+\begin{proof}
+% TODO
+\end{proof}
+
+
+\subsection{Supremum und Infimum}
+
+% Supremum und Infimum sind sehr wichtig
+
+\begin{definition}{Supremum und Infimum}
+Sei $(M, ⊑)$ eine Ordnung, $N ⊆ M$ und $a ∈ M$. Dann heißt $a$:
+\begin{itemize}
+\item \concept{Infimum} von $N$, falls $a$ das größte Element von $\mobj{M}(N)$ ist.
+\item \concept{Supremum} von $N$, falls $a$ das kleinste Element von $\mobj{Ma}(N)$ ist.
+\end{itemize}
+\end{definition}
+
+\begin{remark}[Supremum und Infimum als partielle Abbildungen]
+Wenn Suprema bzw. Infima existieren sind diese eindeutig.
+Folgende partielle Abbildungen können definiert werden:
+\begin{itemize}
+\item $∏: 2^M → M$ für das Infimum (größte untere Schranke)
+\item $∐: 2^M → M$ für das Supremum (kleinste obere Schranke)
+\end{itemize}
+\end{definition}
+
+\begin{theorem}[Teilmengen und Supremum/Infimum]
+Sei $(M,⊔,⊓)$ eine Ordnung, $N_1, N_2 ⊆ M$ und $N_1 ⊆ N_2$, dann gilt:
+$∏N_2 ⊑ ∏N_1$ und $∏N_1 ⊑ ∏N_2$, falls diese Suprema und Infima existieren.
+\end{theorem}
+
+\begin{proof}
+Angenommen $a, b ∈ M$ mit $a=∐N_1$ und $b=∏N_2$.
+
+\begin{subproof}[$∐N_1 ⊑ ∏N_2$]
+\begin{align*}
+    b = ∐N_2 &⇒ b ∈ \mobj{Ma}(N_2) && \text{Definition Supremum} \\
+             &⇒ b ∈ \mobj{Ma}(N_1) 
+             &⇒ a ⊑ b && \text{Definition \mobj{Definition Supremum}}
+\end{align*}
+
+
+
+
+%-------------------------------------------------------------------------------
+\section{Verbände als speziell geordnete Mengen}
+
+Verbände stehen zu speziellen Ordnungen in einer eindeuting umkehrbaren
+Beziehung; sie können folglich als algebraische sowie relationale Struktur 
+definiert werden.
+
+Zwei Konstruktionsprinzipen:
+\begin{enumerate}
+\item Konstruktion einer Ordnung aus einem gegebenen Verband
+\item Konstruktion eines Verbands aus einer gegebenen Ordnung
+\end{enumerate}
+
+
+\subsection{Konstruktion einer Ordnung aus einem gegebenen Verband}
+
+\begin{theorem}{Konstruktion einer Ordnung aus einem gegebenen Verband}
+Sei $(V,⊔,⊓)$ ein Verband. Definiert man auf seiner Trägermenge $V$ eine 
+Relation $⊑$ durch $a ⊑ b ⇔ a ⊓ b = a$ für alle $a, b ∈ V$, 
+so ist $⊑$ eine Ordnungsrelation auf $V$.
+\end{theorem}
+
+\begin{proof}
+\begin{subproof}[Reflexivität]
+Sei $a ∈ V$ beliebig aber fest, so gilt:
+\begin{align*}
+    a ⊑ a &⇔ a ⊓ a 
+          &⇔ a = a
+\end{align*}
+\end{subproof}
+\begin{subproof}[Antisymmetrie]
+Seien $a, b ∈ V$ beliebig aber fest, so gilt: 
+\begin{align*}
+    a ⊑ b ∧ b ⊑ a &⇒ a ⊓ b = a ∧ b ⊓ a = b \\
+                  &⇒ a = a ⊓ b = b
+\end{align*}
+\end{subproof}
+\begin{subproof}[Transitivität]
+Seien $a, b, c ∈ V$ beliebig gewählt, so gilt:
+\begin{align*}
+    a ⊑ b ∧ b ⊑ c &⇔ a ⊓ b = a ∧ b ⊓ c = b \\
+                  &⇒ a ⊓ b ⊓ c = a \\
+                  &⇒ a ⊓ c = a 
+\end{align*}
+\end{subproof}
+\end{proof}
+
+
+\begin{theorem}
+Für alle Teilmengen der Form $\set{a,b} ⊆ V$ gelten die folgenden Gleichungen:
+\begin{align*}
+    ∐\set{a,b} = a ⊔ b \\
+    ∏\set{a,b} = a ⊓ b
+\end{align*}
+\end{theorem}
+
+\begin{proof}
+% TODO
+\end{proof}
+
+
+
+\subsection{Konstruktion eines Verbands aus einer gegebenen Ordnung}
+
+\begin{theorem}{Konstruktion eines Verbands aus einer gegeben Ordnung}
+Sei $(M,⊑)$ eine Ordnung mit der Eigenschaft, das für $a, b ∈ M$ sowohl
+$∐\set{a,b}$ als auch $∏\set{a,b}$ existieren.
+Definiert man zwei Abbildungen:
+\begin{enumerate}
+\item $⊔: M × M → M$, $a ⊔ b = ∐\set{a,b}$ 
+\item $⊓: M × M → M$, $a ⊓ b = ∏\set{a,b}$
+\end{enumerate}
+dann ist $(M,⊔,⊓)$ ein Verband.
+\end{theorem}
+
+\begin{proof}
+\begin{subproof}[Assoziativität]
+\begin{align*}
+    (a ⊔ b) u c &= ∐\set{∐\set{a,b},c}
+                &= ∐\set{a,b,c}
+                &= ∐\set{a,∐\set{b,c}}
+                &= a ⊔ (b ⊔ c)
+\end{align*}
+Für $⊓$ analog.
+\end{subproof}
+\begin{subproof}[Kommutativität]
+\begin{align*}
+    a ⊔ b &= ∐\set{a,b} \\
+          &= ∐\set{b,a} = b ⊔ a
+\end{align*}
+Für $⊓$ analog.
+\end{subproof}
+\begin{subproof}[Idempotenz]
+Es gilt $a ⊑ ∐\set{a,b} = a ⊔ b$. Daraus folgt:
+\begin{align*}
+    (a ⊔ b) ⊓ a &= ∏ (a ⊔ b, a)
+                &= a
+\end{align*}
+\end{subproof}
+Für das zweite Absorptionsgesetz analog.
+\end{proof}
+
+
+% \begin{theorem}{}
+% \end{theorem}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
