@@ -597,11 +597,192 @@ Für das zweite Absorptionsgesetz analog.
 \end{proof}
 
 
-% \begin{theorem}{}
-% \end{theorem}
+\begin{theorem}[Jeder Verbandshomomorphismen ist ein Ordnungshomomorphismen]
+Seien $V_1, ⊔_1, ⊓_2)$ und $(V_2, ⊔_2, ⊓_2)$ Verbände, $f: V_1 → V_2$ ein
+Verbandshomomorphismus, so ist $f$ monoton bezüglich der induzierten
+Ordnungen $⊑_1$ und $⊑_2$ (also ein Ordnungshomomorphismus).
+\end{theorem}
 
+\begin{proof}
+\begin{align*}
+    a ⊑_1 b &⇔ a ⊓_1 b = a \\
+            &⇒ f(a ⊓_1 b) = f(a) \\
+            &⇒ f(a) ⊓_2 f(b) = f(a) \\
+            &⇒ f(a) ⊑_2 f(b)
+\end{align*}
+\end{proof}
+
+\begin{theorem}[Nicht jeder Ordnungshomomorphismus ist ein Verbandshomomorphismus]
+\end{theorem}
+
+\begin{proof}
+% TODO
+\end{proof}
+
+\begin{remark}[Keine Extensionsgleichheit von Ordnungs- und Verbandshomomorphismen]
+In Verbänden denotieren die Begriffe Ordnungs- und Verbandshomomorphismus nicht 
+die gleiche Abbildungsmenge: Die Menge der Ordnungshomomorphismen ist eine 
+Obermenge der Menge der Verbandshomomorphismen.
+\end{remark}
+
+\begin{theorem}[Abschätzungen]
+Seien $(V_1, ⊔_1, ⊓_1)$ und $(V_2, ⊔_2, ⊓_2)$ Verbände, $f: V_1 → V_2$ ein
+Ordnungshomomorphsimus bezüglich der induzierten Verbandsordnungen $⊑_1$ und $⊑_2$ 
+so gelten für alle $a, b ∈ V_1$ folgende Abschätzungen:
+\begin{itemize}
+\item $f(a ⊓_1 b) ⊑_2 f(a) ⊓_2 f(b)$
+\item $f(a ⊔_1 b) ⊒_2 f(a) ⊔_2 f(b)$
+\end{itemize}
+\end{theorem}
+
+\begin{proof}
+Sei $V$ ein Verband, $f$ eine monotone Abbildung und seien $a, b ∈ V$ beliebig aber fest.
+\begin{subproof}[$f(a ⊓_1 b) ⊑_2 f(a) ⊓_2 f(b)$]
+\begin{align*}
+    $a ⊓_1 b &= ∏_1\set{a,b} \\
+    ⇒ ∏_1\set{a,b} ⊑_1 a\\
+    ⇒ a ⊓_1 b ⊑_1 a \\
+    ⇒ f(a ⊓_1 b) ⊑_2 f(a)
+\end{align*}
+\begin{align*}
+    $a ⊓_1 b &= ∏_1\set{a,b} \\
+    ⇒ ∏_1\set{a,b} ⊑_1 b\\
+    ⇒ a ⊓_1 b ⊑_1 a \\
+    ⇒ f(a ⊓_1 b) ⊑_2 f(b)
+\end{align*}
+Daraus folgt $f(a ⊓_1 b) ⊑_2 ∏_2\set{f(a),f(b)} = f(a) ⊓_2 f(b)$. % warum folgt das?
+\end{subproof}
+\begin{subproof}
+Analog.
+\end{subproof}
+\end{proof}
+
+\begin{theorem}[Verbandsisomorphismen und Ordnungsisomorphismen sind extensionsgleich]
+Seien $(V_1, ⊔_1, ⊓_1)$ und $(V_1, ⊔_1, ⊓_1)$ Verbände und $f: V_1 → V_2$, dann gilt:
+$f$ ist ein Verbandsisomorphismus gdw. $f$ ein Ordnungsisomorphismus bzgl.
+der induzierten Ordnungen $⊑_1$ und $⊑_2$ ist.
+\end{theorem}
+
+\begin{proof}
+\begin{subproof}[$⇒$]
+% TODO
+\end{subproof}
+\begin{subproof}
+% Todo
+\end{subproof}
+\end{proof}
 
 \end{document}
+
+%\subsection{Dualitätsprinzip der Verbandstheorie}
+
+
+\subsection{Nachbarschaft und Diagramme}
+
+
+\begin{definition}[Nachbar]
+Sei $V$ ein Verband und $a ∈ V$.
+\begin{itemize}
+\item Ein Element $u ∈ V$ heißt \concept{unterer Nachbar} von $a$ falls gilt:
+	$u ⊏ a ∧ ∀ b ∈ V: u ⊑ b ⊑ a → (u=b ∨ a=b)$
+\item Ein Element $o ∈ V$ heißt \concept{oberer Nachbar} von $a$ fall gilt:
+	$a ⊏ o ∧ ∀ b ∈ V: a ⊑ b ⊑ o → (o=b ∨ a=b)$
+\end{itemize}
+\end{definition}
+
+
+\begin{definition}[Atom]
+Sei $V$ ein Verband mit kleinstem Element $O ∈ V$.
+Jeder obere Nachber von $O$ wird \concept{Atom} genannt.
+$\mobj{At}(V)$ bezeichnet die \concept{Menge aller Atome} von $V$.
+\end{definition}
+
+
+\begin{definition}[Atomarer Verband]
+Sei $V$ ein Verband mit kleinstem Element $O ∈ V$.
+$V$ heißt atomarer Verband, falls es zu jedem $b ∈ V$ mit $b ≠ O$ ein 
+Atom $a ∈ \mobj{At}(V)$ mit $a ⊑ b$ gibt.
+\end{definition}
+
+
+\begin{comment}
+% ich denke nicht, dass das für die Arbeit besonders relevant ist
+\begin{theorem}[Jeder endliche Verband ist atomar]
+Jeder endliche Verband $V$ besitzt ein kleinstes Element und ist atomar.
+\end{theorem}
+
+\begin{proof}
+\begin{subproof}[Jeder endliche Verband besitzt ein kleinstes Element]
+Jeder endliche Verband besitzt eine extensionale Darstellung;
+das kleinste Element der in extensionaler Darstellung $\set{a_1, \dots, a_n}$
+ist durch $a_1 ⊓ \dots ⊓ a_2$ gegeben.
+\end{subproof}
+\begin{subproof}[Jeder endliche Verband ist atomar]
+\begin{case}[$|V| = 1$]
+Trivial.
+\end{case}
+\begin{case}[$|V| ≥ 2$]
+Beweis durch Widerspruch. Angenommen $V$ ist nicht atomar, 
+dann ist $V$ nicht endlich:
+\begin{induction}
+\base{TODO}
+\hypothesis{TODO}
+\step{TODO}
+\end{induction}
+Widerspruch zur Annahme.
+\end{case}
+\end{subproof}
+\end{proof}
+\end{comment}
+
+
+\begin{theorem}
+Sei $(V, ⊔, ⊓)$ und $a, b ∈ \mobj{At}(V)$ mit $a ≠ b$, dann gilt: $a ⊓ b = O$.
+\end{theorem}
+
+\begin{proof}
+Beweis durch Widerspruch.
+Seien $a, b ∈ \mobj{At}(V)$. Angenommen es gilt $a ⊓ b ≠ O$, dann gilt:
+\begin{align*}
+      &a ⊓ b ⊑ a ∧ a ⊓ b ⊑ b
+    ⇒ &a ⊓ b = a ∧ a ⊓ b = b
+    ⇒ a = b
+\end{align*}
+Widerspruch zur Annahme.
+\end{proof}
+
+
+\begin{definition}[Dualer Verband]
+Sei $(V, ⊔, ⊓)$ ein Verband. Vertauscht man $⊔$ mit $⊓$ erhält man den 
+\concept{dualen Verband} $(V, ⊓, ⊔)$ mit invertierter (dualer) Ordnung.
+\end{definition}
+
+
+
+\begin{definition}[Hasse Diaramm]
+Zu einer Ordnung $(M, ⊑)$ heißt die Relation $H_⊑$ der unteren Nachbarschaft
+das \concept{Hasse-Diagramm}: $ a H_⊑ b ⇔ a \text{ist unterer Nachbar von} b$.
+
+Gilt für alle $a, b ∈ M$ die Beziehung $a ⊑ b$ genau dann, wenn $a H_⊑^* b$ gilt,
+mit $H_⊑^*$ als der reflexiv-transitiven Hülle von $H_⊑$ so besitzt die Ordnung
+per Definition ein Hasse-Diagramm. %???
+\end{definition}
+
+\begin{theorem}[Jede endliche Ordnung besitzt ein Hasse-Diagramm]
+Jede endliche Ordnung besitzt ein Hasse-Diagramm.
+\end{theorem}
+
+\begin{proof}
+Beweislos.
+\end{proof}
+
+\begin{theorem}[Nicht jede Ordnung besitzt ein Hasse-Diagramm]
+Nicht jede Ordnung besitzt ein Hasse-Diagramm.
+\end{theorem}
+
+
+
+
 
 
 
