@@ -1,0 +1,492 @@
+\documentclass{scrartcl}
+
+\usepackage{header}
+
+\title{Formale Semantik von Programmiersprachen}
+\subtitle{Zusammenfassung von Winsekls Formal Semantics of Programming Languages}
+\author{Julian Müller}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Einleitung}
+
+Die Semantik einer Sprache legt die Bedeutung syntaktisch wohlgeformter 
+Ausdrücke und Sätze einer natürlichen oder formalen Sprache fest;
+demnach legt die Semantik einer Programmiersprache die Bedeutung dieser 
+formalen Sprache fest.
+
+Eine besondere Form der Semantik ist die formale Semantik, die Gegenstand 
+dieses Abschnitts sein wird: hier wird die Bedeutung einer Sprache durch die 
+Interpretation in einem mathematischen Modell gegeben.
+Dieser Ansatz eignet sich vor allem für formale Sprachen und ist insbesondere 
+bei Programmiersprachen von großem Nutzen -- der Zweck dieses 
+mathematischen Modells ist das Verständnis des Programmverhaltens:
+\begin{itemize}
+\item Die Suche eines Modells:
+   Eine formale Semantik zu definieren macht viele wichtige subtile Eigenschaften 
+   einer Programmiersprache explizit.
+\item Ein vorhandenes Modell:
+    Grundlage zur Verwendung mathematischer/logische Methoden bei der Programmanalyse:
+    \begin{itemize}
+    \item Laufzeitanalyse
+    \item Verifikation
+    \end{itemize}
+\end{itemize}
+
+
+\subsection{Einteilungen der Semantiken}
+
+Es gibt verschiedene Arten von formalen Semantiken:
+\begin{itemize}
+\item Operationale Semantik (Interpretermethode):
+	Operationale Semantik beschreibt die Bedeutung eines Programmes
+	durch die Spezifikation seines Laufzeitverhaltens auf einer abstrakten Maschine.
+	Die operationale Semantik ist eine syntaktische Spezifikation die durch 
+	eine Auswertungsrelation über den Termen der Sprache gegeben ist.
+\item Denotationale Semantik (mathemtische Semantik):
+	Verwendet die folgenden mathematischen Konzepte:
+	\begin{itemize}
+	\item vollständige Halbordnungen (complete partial order/cpo).
+	\item stetige Funktionen (continuous functions).
+	\item kleinste Fixpunkte (least fixed points).
+	\end{itemize}
+\item Axiomatische Semantik:
+	Legt die Bedeutung eines Programms durch die Anwendung von
+	Beweisregeln in einer Programmlogik (Hoare-Kalkül) fest.
+	Im Vordergrund der axiomatischen Semantik steht die Programmkorrektheit.
+\end{itemize}
+
+Diese drei Konzepte schließen sich gegenseitig nicht aus, sondern ergänzen sich
+vielmehr. Jede hat ihre Stärken:
+\begin{itemize}
+\item Operationale Semantik ist wichtig für die Implementierung.
+\item Axiomatische Semantik ist wichtig für Programmentwicklung und -verifikation.
+\item Denotationale Semantik (super aber warum???).
+\end{itemize}
+
+Die unterschiedlichen Semantiken hängen auch voneinander ab:
+Der Nachweis, dass die Beweisregeln einer axiomatischen Semantik korrekt sind
+erfolgt relativ zur operationalen und denotationalen Semantik.
+Der Nachweis, dass eine Implementierung korrekt ist 
+erfolgt durch den Abgleich von operationaler und denotationaler Semantik.
+Bei der Untersuchung der operationalen Semantik ist eine denotationale 
+Semantik ein mächtiges Werkzeug:
+Zum einen erlaubt sie die Abstraktion von unwichtigen Implementierungsdetails
+zum anderen erlaubt sie die Anwendung des gesamten mathematischen 
+Wissens und des deduktiven Insturmentariums der Interpretationsdomäne zur 
+Untersuchung der Sprache und der in ihr geschriebenen Programme.
+
+\subsection{Bedeutung der Logik in der Semantik}
+
+Logik hat eine zentrale Rolle in der Semantik.
+
+Gödels Unvollständigkeitssatz:
+Unmöglichkeit einer vollständigen axiomatischen Semantik.
+
+
+%-------------------------------------------------------------------------------
+% \section{Einführung in die operationale Semantik}
+\section{IMP -- eine einfache imperative Sprache}
+
+Inhalt des Kapitels ist die Syntax und die Semantik(en) von \mobj{IMP}, einer 
+minimalen, turing-vollständigen, prozeduralen Programmiersprache.
+
+\subsection{Syntax von Imp}
+
+In diesem Abschnitt wird die syntaktische Gestalt der Programme von \mobj{IMP}
+festgelegt. Ein Programm ist hierbei synonym zu einem wohlgeformten Ausdruck
+in \mobj{IMP} sowie zu einem Wort in der Sprache \mobj{IMP}.
+
+\begin{definition}[Syntax von \mobj{IMP}]\label{def:syntaxIMP}
+Die Menge der Ausdrücke \mobj{Exp} von \mobj{IMP} ist die Vereinigung 
+der Ausdrucksmengen der syntaktischen Kategorien der Sprache:
+\begin{itemize}
+\item Ganzzahlen \mobj{N}: $\set{\dots, -2, -1, 0, 1, 2, \dots}$.
+\item Wahrheitswerte \mobj{T}: $\set{true, false}$
+\item Positionen \mobj{Loc}: $\comp{a^*}{a ∈ \set{a, \dots, z}}$.
+\item \mobj{Aexp}: 
+	$ a ::= n | X | a₀ \imp{+} a₁ | a₀ \imp{-} a₁ | a₀ \imp{*} a₁ $
+\item \mobj{Bexp}: 
+	$b ::= \imp{true} | \imp{false} | a₀ \imp{=} a₁ | a₀ \imp{<=} a₁ 
+	 | \imp{not}b | b₀ \imp{&&} b₁ | b₀ \imp{||} b₁$
+\item \mobj{Com}: 
+	$c$ ::= $\imp{skip} | X \imp{:=} a | c₀\imp{;}c₁ | \imp{if} b \imp{then} c₀ \imp{else} c1 
+	 | \imp{while} b \imp{do} c$
+\end{itemize}
+\end{definition}
+
+\begin{remark}
+Als \concept{Positionen} werden hier Speicherplätze bezeichnet die über einen 
+bestimmten Namen adressiert werden können; 
+Oft werden diese als (Programm-)Variablen bezeichnet ---
+hier wird dieser Name bereits für ein anderes Konzept verwendet.
+% welches?
+\end{remark}
+
+\begin{remark}
+Für Definition~\ref{def:syntaxIMP} und im weiteren Verlauf gelten die folgenden Konvention:
+\begin{itemize}
+\item $n$, $m$ sind Metavariablen für Ganzzahlen \imp{N}.
+\item $X$, $Y$ sind Metavariablen für Speicherplätzen \imp{LOC}.
+\item $a$ sind Metavariablen für arithmetischen Ausdrücken \imp{Aexp}.
+\item $b$ sind Metavariablen für boolschen Ausdrücken \imp{Bexp}.
+\item $c$ sind Metavariablen für Kommandos \imp{Com}.
+\end{itemize}
+\end{remark}
+
+\begin{definition}[Syntaktische Äquivalenz]
+Syntaktische Äquivalenz $≡$ .
+\end{definition}
+
+
+%------------------------------------------------------------------------------
+\subsection{Semantik \imp{Imp} I: Operationale Semantik}
+
+Die Auswertung von Ausdrücken in der Sprache \mobj{Imp} kann durch die formale
+Beschreibung einer abstrakten Maschine gegeben werden, welche in \mobj{Imp}
+geschriebene Programme interpretiert und ihnen damit eine Bedeutung zuweist
+(daher auch der Name (\concept{Interpreter})): 
+Das operationale Verhalten dieser Maschine, also die Rechenoperationen zur
+Auswertung der Programm, werden \concept{operationale Semantik} genannt.
+
+Die operationale Semantik wird hier durch Transformationsregeln angegeben
+welche die Auswertungsrelation/Evaluationsrelation $→ ⊆ \mobj{Exp} ×\mobj{Exp}$
+definieren. 
+% ist das nicht eher eine partielle Auswertungsfn?
+Aus der Perspektive der operationalen Semantik ist die Bedeutung eines
+Ausdrucks einer Sprache wiederum ein Ausdruck derselben Sprache.
+
+Die zur Auswertung von \mobj{Imp} definierte Maschine hat einen unendlichen
+Speicher für benannte Werte, die Programmvariablen (im weiteren Verlauf
+Positionen genannt). Diese Speicherpositionen werden in Porgrammen direkt
+reifiziert: Positionsnamen können definiert, Werte zugewiesen, überschrieben
+und die mit einem Variablennamen assoziierten Werte ausgelesen werden.
+
+\begin{definition}[Zustand]
+Die Zustandsmenge $Σ$ besteht aus Funktionen $σ : Loc → N$ von Speicherplätzen
+auf Zahlen (Momentaufnahem des Speichers);
+$σ(X)$ ist damit der Wert, oder Inhalt, des Speicherplatzes $X$ im Zustand $σ$ .
+\end{definition}
+
+Die Auswertung eines Ausdrucks $e$ im Zustand $σ$
+Repräsentation durch eine \concept{Konfiguration} repräsentiert. 
+
+\begin{definition}[Konfigurationen]
+Ein Tupel $k = <e,σ>$ mit $k ∈ Exp × Σ$ wird Konfiguration genannt.
+\end{definition} 
+% Stimmt so nicht ganz, Befehle sind da rausgenommen
+
+Das Ergebnis der Auswertung eines Ausdrucks hängt damit von
+zwei Komponenten ab: dem Ausdruck selbst und dem Zustand in dem sich die 
+Maschine zu Beginn der Auswertung befindet.
+
+\begin{definition}[Big Step Evaluation]
+$$<c,σ> → σ'$$
+\end{definition}
+
+\begin{example}
+$$<X:=5,σ> → σ'>$$
+\end{example}
+
+\newpage
+\begin{definition}[Auswertungsrelation: Auswertung Ausdrücke]
+Definition der syntax-gerichteten Auswertungsrelation $→ ⊆ \imp{Exp} × Σ$. %???
+
+Arithmetische Ausdrücke:
+\begin{itemize}
+\item Zahlen $a = n$:
+	\begin{prooftree*}
+    \Infer0{(n,σ) → n}
+	\end{prooftree*}
+\item Speicherplätze $a = X$:
+	\begin{prooftree*}
+    \Infer0{(X,σ) → σ(X)}
+	\end{prooftree*}
+\item Summen $a = a₀ + a₁$:
+	\begin{prooftree*}
+	\Hypo{(a₀,σ) → n₀}
+	\Hypo{(a₀,σ) → n₀}
+	\Infer2{(a₀ + a₀, σ) → n}
+	\end{prooftree*}
+\item Differenzen $a = a₀ - a₁$:
+	\begin{prooftree*}
+    \Hypo{(a₀,σ) → n₀}    
+    \Hypo{(a₁,σ) → n₁}
+    \Infer2{(a₀ - a₁, σ) → n}
+	\end{prooftree*}
+\item Produkte $a = a₀ × a₁$:
+	\begin{prooftree*}
+    \Hypo{(a₀,σ) → n₀}   
+    \Hypo{(a₁,σ) → n₁}
+    \Infer2{(a₀ × a₁, σ) → n}
+    \end{prooftree*}
+\end{itemize}
+Boolsche Ausdrücke:
+\begin{itemize}
+\item Wahrheitswerte $b ≡ b₀$:
+    \[
+	\begin{prooftree}
+    \Infer0{(\imp{true},σ) → true}
+	\end{prooftree}
+	\begin{prooftree}
+    \Infer0{(\imp{false},σ) → false}
+	\end{prooftree}
+    \]
+\item Äquivalenz $b ≡ a₀ = a₁$:
+	\begin{prooftree*}
+	\Hypo{(a₀,σ) → n}
+	\Hypo{(a₁,σ) → n}
+	\Infer2[$a₀=a₁$]{(a₀ = a₁, σ) → \imp{true}}
+	\end{prooftree*}
+	\begin{prooftree*}
+	\Hypo{(a₀,σ) → n}
+	\Hypo{(a₁,σ) → n}
+	\Infer2[$a₀≠a₁$]{(a₀ = a₁, σ) → \imp{false}}
+	\end{prooftree*}
+\item Vergleich $a ≡ a₀ ≤ a₁$:
+	\begin{prooftree*}
+    \Hypo{a₀,σ → n₀}    
+    \Hypo{a₁,σ → n₁}
+    \Infer2[$a₀ ≤ a₁$]{(a₀ - a₁, σ) → \imp{true}}
+	\end{prooftree*}
+	\begin{prooftree*}
+    \Hypo{a₀,σ → n₀}    
+    \Hypo{a₁,σ → n₁}
+    \Infer2[$a₀ ≰ a₁$]{(a₀ - a₁, σ) → \imp{false}}
+	\end{prooftree*}
+\item Negation $b ≡ ¬b₀$:
+    \[
+	\begin{prooftree}
+    \Hypo{(b₀,σ) → true}
+    \Infer1{(¬b₀, σ) → false}
+    \end{prooftree}
+	\begin{prooftree}
+    \Hypo{(b₀,σ) → true}
+    \Infer1{(¬b₀, σ) → false}
+    \end{prooftree}
+    \]
+\item Konjunktion $b ≡ b₀ ∧ b₁$
+	\begin{prooftree*}
+    \Hypo{a₀,σ → \imp{true}}    
+    \Hypo{a₁,σ → \imp{true}}
+    \Infer2{(a₀ ∧ a₁, σ) → \imp{true}}
+	\end{prooftree*}
+%	\begin{prooftree*}
+%    \Hypo{a₀,σ → \imp{true}}    
+%    \Hypo{a₁,σ → \imp{false}}
+%    \Infer2{(a₀ ∧ a₁, σ) → \imp{false}}
+%	\end{prooftree*}
+%	\begin{prooftree*}
+%    \Hypo{a₀,σ → \imp{true}}    
+%    \Hypo{a₁,σ → \imp{true}}
+%    \Infer2{(a₀ ∧ a₁, σ) → \imp{false}}
+%	\end{prooftree*}
+%	\begin{prooftree*}
+%    \Hypo{a₀,σ → \imp{true}}    
+%    \Hypo{a₁,σ → \imp{true}}
+%    \Infer2{(a₀ ∧ a₁, σ) → \imp{false}}
+%	\end{prooftree*}
+\item Disjunktion $b ≡ b₀ ∨ b₁$
+	\begin{prooftree*}
+    \Hypo{a₀,σ → \imp{true}}    
+    \Hypo{a₁,σ → \imp{true}}
+    \Infer2{(a₀ ∨ a₁, σ) → \imp{true}}
+	\end{prooftree*}
+%	\begin{prooftree*}
+%    \Hypo{a₀,σ → \imp{true}}    
+%    \Hypo{a₁,σ → \imp{false}}
+%    \Infer2{(a₀ ∨ a₁, σ) → \imp{true}}
+%	\end{prooftree*}
+%	\begin{prooftree*}
+%    \Hypo{a₀,σ → \imp{true}}    
+%    \Hypo{a₁,σ → \imp{true}}
+%    \Infer2{(a₀ ∨ a₁, σ) → \imp{true}}
+%	\end{prooftree*}
+%	\begin{prooftree*}
+%    \Hypo{a₀,σ → \imp{true}}    
+%    \Hypo{a₁,σ → \imp{true}}
+%    \Infer2{(a₀ ∨ a₁, σ) → \imp{false}}
+%	\end{prooftree*}
+\end{itemize}
+
+\begin{itemize}
+\item Atomare Befehle:
+ 	\begin{prooftree*}
+ 	\Infer0{(\imp{skip},σ) → σ}
+ 	\end{prooftree*}
+	\begin{prooftree*}
+	\Hypo{(a,σ) → m}
+    \Infer1{(X:=a,σ) → σ[m/X]}
+	\end{prooftree*}
+\item Sequenzierung:
+	\begin{prooftree*}
+	\Hypo{(c₁,σ) → σ'}
+	\Hypo{(c₀,σ) → σ''}
+	\Infer2{(c₀;c₁,σ) → σ'}
+	\end{prooftree*}
+\item Konditionalse:
+	\begin{prooftree*}
+	\Hypo{(b,σ) → \imp{true}}
+	\Hypo{(c₀,σ) → σ'}
+	\Infer2{(\imp{if} b \imp{then} c₀ \imp{else} c₁,σ) → σ'}
+	\end{prooftree*}
+	\begin{prooftree*}
+	\Hypo{(b,σ) → \imp{false}}
+	\Hypo{(c₁,σ) → σ'}
+	\Infer2{(\imp{if} b \imp{then} c₀ \imp{else} c₁,σ) → σ'}
+	\end{prooftree*}
+\item While-Schleifen:
+	\begin{prooftree*}
+	\Hypo{(b,σ) → false}
+	\Infer1{(\imp{while} b \imp{do} c,σ) → σ}
+	\end{prooftree*}
+	\begin{prooftree*}
+	\Hypo{(b,σ) → \imp{true}}
+	\Hypo{(c,σ) → σ''}
+	\Hypo{(\imp{while} b \imp{do} c,σ'') → σ'} 
+	\Infer3{(\imp{while} b do c,σ) → σ'}
+	\end{prooftree*}
+\end{itemize}
+\end{definition}
+
+\begin{remark}[Initialzustand]
+Zu Beginn der Programmausführung sind alle Register auf $0$ gesetzt:
+$σ₀$ ist der initiale Zustand für den gilt: $∀ X ∈ \mobj{Loc}: σ₀(X)=0$.
+\end{remark}
+
+\begin{remark}[Konvergenz und Divergenz]
+Die Ausführung eines Programms kann ein einem Finalzustand $σ'$ terminieren
+(Konvergenz) oder nicht terminieren (Divergenz).
+\end{remark}
+
+\begin{remark}[Regelinstanz (Instanziierung einer Regel)]
+Eine Regelinstanz entsteht durch einsetzen von Werten aus den entsprechenden
+syntaktischen Kategorien und der Zustandsmenge in die Metavariablen. Beispiel:
+\begin{prooftree*}
+\Hypo{(2,σ₀) → 2}   
+\Hypo{(3,σ₀) → 3}
+\Infer2{(2 * 3, σ₀) → 6}
+\end{prooftree*}
+\end{remark}
+
+\begin{remark}[Analyse der Operationen $+$, $-$, $×$]
+Die Operationen $+$, $-$, $×$ werden an dieser Stelle nicht weiter analysiert;
+die entsprechenden Reduktionen als gegeben vorausgesetzt.
+\end{remark}
+
+
+\begin{remark}[Derivationsbaum/Derivation]
+Für ein Tripel $(a₀,σ) → a₁$ mit $a₀, a₁ ∈ \mobj{Exp}$ und $σ ∈ Σ$ ist die 
+Konstruktion eines Derivationsbaums ein Entscheidungsverfahren ob es sicht
+in der Auswertungsrelation befindet: 
+Kann der Derivationsbaum abgeschlossen werden, bestehen seine Blätter also
+nur noch aus Axiomen, ist das Tripel enthalten, sonst nicht.
+% braucht es da nicht eigentlich mehr als ein Tripel
+% * (a,σ) → (a,σ)	als wirkliche Auswertungsrelation
+% * (a,σ) → a		als Auswertungsrelation wo der Endzustand nicht interessiert
+% * a → a			als Auswertungsrelation ab dem leeren Startzustand
+\begin{example}[Ableitungsbaum für $(\imp{(Init + 5) + (5+9)}, σ₀) → \imp{21}$]
+\begin{prooftree*}
+\Infer0{(9,σ₀) → 9}
+\Infer0{(7,σ₀) → 7}
+\Infer2{(7 + 9,σ₀) → 16}
+\Infer0{(5,σ₀) → 5}
+\Infer0{(Init,σ₀) → 0}
+\Infer2{((Init + 5,σ₀) → 5)}
+\Infer2{((Init + 5) + (5+9)), σ₀) → 21}
+\end{prooftree*}
+\end{example}
+\end{remark}
+
+\begin{remark}[Nichtdeterministische Evaluation]
+Auch die Auswertung eines Ausdrucks kann durch einen
+Ableitungsbaum/Derivationsbaum (kurz: Derivation) bestehend aus Regelinstanzen
+gelöst werden. Hier müssen für das Antezedens der Konklusion strukturgleiche
+Regeln gefunden und instanziiert werden.
+Einige dieser Vorderglieder können Instanzen gleich mehrerer Regeln sein; Um in 
+jedem Fall eine (abgeschlossene) Ableitung zu finden, falls diese existiert, 
+kann es notwendig sein jede passende Regel zu instanziieren.
+
+Damit sind die Regeln ein Algorithmus zur Auswertung von Ausrücken;
+sie geben diesen Ausdrücken eine operationale Bedeutung.
+Die hier vorgestellte Definition über Regeln, \concept{strukturelle} oder auch
+\concept{natürliche Semantik} genannt ist nur eine der denkbaren 
+Darstellungsformen für operationale Semantiken, wenn auch eine sehr verbreitete.
+Auch andere Beschreibungen -- beispielsweise natürlichsprachliche --
+sind möglich. Beispiel: Operationale Semantik von Java und C++.
+\end{remark}
+
+
+\begin{remark}[Semantische Äquivalenzrelation]
+Über die Auswertungsrelation kann eine semantische Äquivalenzrelation definiert
+werden:
+Zwei Ausdrücke/Programme sind semantisch äquivalent, wenn sie in allen Zuständen
+Wertverlaufsgleich sind modulo der Auswertungsrelation.
+
+$$a₀ \sim a₁ \text{gdw.} (∀ n ∈ ℕ, σ ∈ Σ: (e₀,σ) → n ⇔ (e₁,σ) → n) $$
+$$b₀ \sim b₁ \text{gdw.} (∀ b ∈ 𝔹, σ ∈ Σ: (b₀,σ) → n ⇔ (b₁,σ) → n) $$
+$$c₀ \sim c₁ \text{gdw.} (∀ σ, σ' ∈ Σ: (c₀,σ) → n ⇔ (c₁,σ) → n) $$
+
+\end{remark}
+
+\begin{todo}
+Was nocht aufzudröseln ist: Smallstep vs Bigstep relation und über was genau
+diese Relationen jetzt eigentlich definiert sind...
+Außerdem trennt er nochmal Evaluation und Exekution
+\end{todo}
+
+
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+\section{Induktive Definitionen}
+
+Theorie der induktiv definierten Mengen,
+von welchen die syntax und operativen Semantiken Beispiele sind.
+Mengen, welche durch Regeln definiert werden sind die kleinsten (least)
+Mengen die abgeschlossen sind unter der Regelanwendung.
+
+\subsection{Regelinduktion}
+
+\subsection{Spezielle Regelinduktion}
+
+\subsection{Beweisregeln für die operationale Semantik}
+
+\subsection{Operatoren und ihre kleinsten Fixpunkte}
+
+
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+\section{Denotationale Semantik von \mobj{IMP}}
+
+% Motivation
+Denotation of a command is a partial function of states.
+Denotationalle Semantiken lassen sich für fast alle Programmiersprachen definieren,
+allerdings gibt es Probleme bei Parallelismus und 'fairness'.
+
+\begin{itemize}
+\item Ein arithmetischer Ausdruck $a ∈ \mobj{Aexp}$ bezeichnet eine Funktion $𝓐⟦a⟧:Σ → N$.
+\item Ein boolscher Ausdruck $a ∈ \mobh{Bexp}$ bezeichnet eine Funktion $𝓑⟦b⟧:Σ → 𝔹$.
+\item Ein Befehl $c$ bezeichnet eine partielle Funktion $𝓒⟦c⟧:Σ → Σ$.
+\end{itemize}
+
+\begin{remark}
+Die \concept{Oxford brackets} genannten Klammersymbole $⟦$ und $⟧$ sind
+traditionell in der denotationalen Semantik.
+Sie sollen anzeigen, dass es sich bei dem Argument um einen syntaktischen
+Ausdruck handelt (der an dieser Stelle nicht ausgewertet wird).
+\end{remark}
+
+Die Semantischen Funktionen 
+\begin{itemize}
+\item $𝓐: \mobj{Aexp} → (Σ → N)$
+\item $𝓑: \mobj{Bexp} → (Σ → T)$
+\item $𝓒: \mobj{Com} → {Σ → Σ}$
+\end{itemize}
+werden über strukturelle Induktion definiert.
+
+
+\end{document}
