@@ -1,0 +1,260 @@
+\documentclass[parskip=half]{scrreprt}
+\usepackage{common}
+
+% ------------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------------
+
+\newcommand{\engl}[2]{(\text{#1}: \textit{#2})}
+
+\newcommand{\graphics}[2]%
+{\begin{center}\includegraphics[width=7cm]{#1}\captionof{figure}{#2}\end{center}}
+
+% map			Abbildung
+% morphism		Abbildung
+% domain		Wertemenge
+% codomain		Zielmenge
+% rule			Abbildungsvorschrift
+% process		Abbildungsvorschrift
+% isomorphism	Isomorphismus
+
+\begin{document}
+\title{Zusammenfassung: Einführung in die Kategorientheorie}
+\subtitle{Zusammenfassung \enquote{Introduction to Category Theory}}
+\author{Julian Müller}
+\maketitle
+\tableofcontents
+
+\part{Kategorien}
+
+\chapter{Definition der Kategorie}
+
+\begin{definition}[Kategorie]
+Eine Kategrie $𝓒$ besteht aus:
+\begin{itemize}[leftmargin=1em]
+\item Daten: 
+	\begin{itemize}
+	\item Ob($𝓒$): Eine Klasse von Objekten ($A, B, C, \dots$).
+	\item Ar($𝓒$): Eine Klasse von Pfeilen/Morphismen ($f, g, h, \dots$). \\
+		Jeder Morphismus $f : A → B$ besteht aus:
+		\begin{itemize}
+		\item Quelle/Domäne: $dom(f) = A$
+		\item Ziel/Kodomäne: $codom(f) = B$
+		\end{itemize}
+	\item Verknüpfungsabbildung für je zwei Abbildungen:
+		$$(B → C) × (A → B) ⇒ (A → C), (g,f) ↦ g ∘ f$$
+	\item Identitätsmorphismus: $1_A : A → A$ (auch $id_X$) für jedes Objekt.
+	\end{itemize}
+\item Gesetzen:
+	\begin{itemize}
+	\item Identitätsgesetze:
+		\begin{itemize}
+		\item Wenn $A \xrightarrow{1_A} A \xrightarrow{g} B$, dann $g ∘ 1_A = g$.
+		\item Wenn $A \xrightarrow{f} A \xrightarrow{1_B} B$, dann $1_A ∘ f = f$.
+		\end{itemize}
+	\item Assoziativgesetz:
+		\begin{itemize}
+		\item Wenn $A \xrightarrow{f} B \xrightarrow{g} C \xrightarrow{h} D$\\ 
+			dann $A \xrightarrow{h∘(g∘f)=(h∘g)∘f} D $
+		\end{itemize}
+	\end{itemize}
+\end{itemize}
+\end{definition}
+
+\begin{remark}
+Die Algebra der Abbildungskomposition 
+(Komposition als die Verküpfung von Abbildungen)
+gleicht der Multiplikation von Zahlen,
+allerdings hat sie eine weit reichere Interpretation.
+\end{remark}
+
+\begin{remark}
+Die Identitätsabbildung ist das neutrale Element der Abbildungsalgebra,
+wie die $1$ das neutrale Element der Multiplikation ist ... daher auch $1_A$.
+\end{remark}
+
+\begin{remark}
+Der Kompositionsoperator $∘$ verküpft zwei Abbildungen $g$ und $h$ zu 
+einer neuen Abbildungen $h∘g$ ($h$ nach $g$).
+\end{remark}
+
+\chapter{Die Kategorie der Mengen}
+
+Ein Beispiel für eine Kategorie:
+Die Kategorie der endlichen Mengen, und Abbildungen.
+Eine Abbildung \engl{Abbildung}{map} ist eine Prozess 
+um von einer Menge in eine andere zu kommen.
+
+% Nach Meijer also unsere erste Programmiersprache
+% endliche Mengen als Typen
+% Abbildungen als Funktionen
+\begin{definition}[Kategorie der endlichen Mengen]
+\begin{description}
+\item[Objekte] finite Mengen $A, B, \dots$
+\item[Morphismen] Abbildungen zwischen Mengen $f: A → B$
+	\begin{description}
+	\item[Definitionsmenge] eine Menge $A$ \engl{Definitionsmenge}{domain}
+	\item[Zielmenge] eine Menge $B$ \engl{Zielmenge}{codomain}
+	\item[Abbildungsvorschrift] Zu jedem $a ∈ A$ ein $b ∈ B$ mit $f(a) = b$.
+	\end{description}
+\end{description}
+\end{definition}
+
+\begin{remark}
+Die Abbildung ist linkstotal und rechtseindeutig
+\end{remark}
+
+Finite Mengen sind die Objekte der Kategorie der finiten Mengen.
+Der Inhalt von Mengen lässt sich in verschiedenen Auflösungsgraden
+als internes Diagramm darstellen.
+
+\graphics{pics/internalDiagram1.png}{Internes Diagramm einer Menge}
+
+Abbildungen zwischen Mengen sind die Morphismen zwischen den Objekten
+der Kategorie der finiten Mengen.
+Die Abbildungsvorschrift kann explizit gemacht werden durch ein internes 
+Diagramm. 
+
+\graphics{pics/internalDiagram2.png}{Internes Diagramm einer Abbildung}
+
+Externe Diagramme zeigen nur Definitions- und Zielmenge; 
+sie werden verwendet wenn es auf die genaue Abbildungsvorschrift nicht 
+ankommt, oder wenn Morphismen zwischen mehreren Objekten untersucht werden.
+\graphics{pics/externalDiagram1.png}{Externe Diagramme}
+
+Endoabbildungen sind spezielle Abbildungen.
+\begin{definition}[Endoabbildung]
+Eine Endoabbildung \engl{Endoabbildung}{endomap} $f: A → A$ hat den
+die selbe Definitions und Zielmenge.
+\end{definition}
+
+Identitätsabbildungen sind spezielle Endoabbildungen.
+
+\begin{definition}[Identitätsabbildung]
+Eine spezielle Endoabbildung ist die Identitätsabbildung $1_A$,
+\engl{Identitätsabbildung}{identity map} die jedem Element von $A$ sich selber 
+zuordnet.
+\end{definition}
+
+Die Verknüpfungsabbildung zweier Morphismen $f$ und $g$ in der Kategorie der 
+finiten Mengen ist einfach die Komposition $g∘f$ der Abbildungen;
+Voraussetzung für die Komposition ist, dass die Zielmenge von $f$ identisch
+mit der Definitionsmenge von $g$ ist.
+
+\graphics{pics/functionComposition1.png}{Funktionskomposition}
+
+\begin{definition}[Punkt]% Unit?
+Ein Punkt (auch Singleton) ist eine Menge mit exakt einem Element.
+\end{definition}
+
+\begin{remark}
+Einelementige Mengen werden auch mit $1$ bezeichnet.
+\end{remark}
+
+\begin{theorem}
+Die Komposition eines Punktes mit einer anderen Abbildung ist wieder ein Punkt.
+\end{theorem}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Session 2: Mengen, Abbildungen und Komposition                             %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Vergleich/Identität von Abbildungen;
+Abbildungsvorschrift ist der Inhalt, Abbildung ist der Umfang.
+
+\begin{example}
+$$f : ℕ → ℕ, x ↦ (x+1)²$$
+$$g : ℕ → ℕ, x ↦ x²+2x+1$$
+
+Beide Abbildungen sind wertverlaufsgleich --- es handelt sich um die selbe
+Abbildung $f=g$. Das ist exakt die Aussage der folgenden Gleichung:
+
+$$ (x+1)² = x²+2x+1$$
+
+Im Allgemeinen drücken Gleichungen aus, das Ausdrücke mit (evtl. verschiedenen)
+Inhalten den gleichen Umfang haben.
+Der Begriff der Abbildung wird damit extensional verwendet,
+da eine Abbildung von ihrem Umfang bestimmt wird, nicht intensional von  
+ihrere Abbildungsvorschrift.
+\end{example}
+
+\begin{remark}
+Eine notwendige, aber nicht hinreichende Bedingung für die identität zweier 
+Abbildungen $f$ und $g$ ist in jeder Kategorie, dass $f$ und $g$ die gleichen 
+Domänen und Kodomänen haben.
+\end{remark}
+
+\begin{remark}[Test der Identität zweier Abbildungen]
+Um die Identität zweier Abbildungen $A \xrightarrow{f} B$ und $A \xrightarrow{g} B$
+zu beweisen genügt es zu zeigen:
+$$\text{Wenn für jeden Punkt} 1 \xrightarrow{a} A, f ∘ a = g ∘ a, \text{dann} f=g$$
+\end{remark}
+
+% Vielleicht als Beispiel: Fahrenheit nach Celsius S. 28
+
+\begin{remark}[Unterschied zwischen Multiplikation und Komposition]
+Multiplikation auf $ℕ$ ist kommutativ, Komposition nicht.
+\end{remark}
+
+
+\begin{remark}[Anzahl der Abbildungen von einer Menge in eine andere Menge]
+Für endliche Mengen $A$ und $B$ gibt es $|B|^{|A|}$ viele Abbildungen 
+$f : A → B$.
+\end{remark}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Session 3: Komposition von Abbildungen und Zählen von Abbildungen		  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{remark}
+Die Menge der Abbildungen $f : A → B$ wird mit $B^A$ bezeichnet
+(Da sie $|B|^{|A|}$ viele Elemente enthält).
+\end{remark}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setpartpreamble{%
+\begin{abstract}
+Wir untersuchen folgende Analogie: Wenn die Komposition von Abbildungen
+der Multiplikation von Zahlen gleicht, was ist dann das Analogon zur Division?
+\end{abstract}
+}
+\part{Die Algebra der Komposition}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Artikel 2: 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Isomorphisment}
+
+\begin{example}[Einführung: Vergleich von Mengen]
+Bevor Zahlen entwickelt wurden muss es eine andere Methode gegeben haben
+Mengen zu vergleichen.
+Ein Vergleich über spezielle Abbildungen ist möglich:
+Eine Abbildung $f: A → B$ mit der man zwei Mengen $A$ und $B$ vergleichen kann
+muss 
+\begin{enumerate*}
+\item injektiv und 
+\item surjektiv 
+\end{enumerate*}
+sein --- eine Bijektion. Dann gibt es eine Umkehroperation $f^{-1}: B → A$ 
+mit $f ∘ f^{-1} = 1_A$.
+\end{example}
+
+\graphics{pics/setIsomorphism1}{Isomorphismus zwischen Mengen}
+% ein isomorphismus ist nur zwischen Mengen mit der gleichen Kardinalität möglich.
+% ist die Anzahl der Isomorphismen zwischen zwei Mengen gleich ihrer Kardinalität?
+
+
+
+
+
+
+
+
+
+\end{document}
+
