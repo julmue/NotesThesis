@@ -1,0 +1,26 @@
+% von Wikipedia: partielle Funktion, vll. noch etwas abändern
+
+\begin{definition}[partielle Funktion]
+Der Begriff \concept{partielle Funktion} ist eine 
+Verallgemeinerung des Begriffs \concept{Funktion}:
+Während eine Funktion eine \pred{linkstotale} und \pred{rechtseindeutige}
+Funktion muss eine partielle Funktion nur \pred{rechtseindeutig} sein.
+Funktionen im ersten Sinn werden zur Abgrenzung von partiellen Funktionen
+auch \concept{totale Funktionen} genannt.
+Partielle Funktionen werden werden als Funktionen modelliert:
+
+\begin{definition}[Partielle Funktion]
+Eine partielle Funktion $f: X → Y$ kann durch die Funktion $f'$ wie folgt
+modelliert werden:
+$f': X → Y ∪ \set{⊥}$ mit
+\begin{align*}
+	f'(x) =
+	\begin{cases}
+		f(x), \text{falls} x ∈ Def(f) \\
+		⊥, \text{sonst}
+	\end{cases}
+\end{align*}
+mit $Y ∩ \set{⊥} = ∅$.
+\end{definition}
+
+
