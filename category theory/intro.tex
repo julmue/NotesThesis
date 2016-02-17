@@ -1,12 +1,6 @@
 \documentclass[parskip=half]{scrreprt}
 \usepackage{common}
 
-% ------------------------------------------------------------------------------
-\newcommand{\engl}[2]{(\text{#1}: \textit{#2})}
-
-\newcommand{\graphics}[2]%
-{\begin{center}\includegraphics[width=7cm]{#1}\captionof{figure}{#2}\end{center}}
-
 %-------------------------------------------------------------------------------
 % map			Abbildung
 % morphism		Abbildung
@@ -251,19 +245,20 @@ sind.
 % ist die Anzahl der Isomorphismen zwischen zwei Mengen gleich ihrer Kardinalität?
 
 \begin{definition}[Isomorphismus]
-Ein Morphismus $A \rightarrow{f} B$ wird Isomorphismus (oder umkehrbare Abbildung)
-genannt, wenn es eine Abbildung $B \rightarrow{g} A$ gibt für welche die 
-folgenden Gleichungen gelten:
+Ein Morphismus $A \xrightarrow{f} B$ wird \definiendum{Isomorphismus} 
+(oder umkehrbare Abbildung) genannt, wenn es eine Abbildung $B \xrightarrow{g} A$ 
+gibt für welche die folgenden Gleichungen gelten:
 \begin{enumerate}
 \item $f ∘ g = 1_A$
 \item $g ∘ f = 1_B$
 \end{enumerate}
 Eine Abbildung $g$ welche in Bezug auf $f$ diese Eigenschaften erfüllt heißt 
 \concept{Inverse von $f$}. Zwei Objekte $A$ und $B$ werden isomorph genannt,
-wenn es mindestens einen Isomorphismus $A \rightarrow{B} B$ gibt.
+wenn es mindestens einen Isomorphismus $A \xrightarrow{f} B$ gibt.
+\end{definition}
 
-\begin{remark}{Gleichmächtigkeit ist eine Äquivalenzrelation}
-Die Gleichmächtigkeits zwischen zwei Mengen ist eine Äquivalenzrelation:
+\begin{theorem}[Isomorphie ist eine Äquivlanzrelation]
+Isomorphie zwischen zwei Objekten ist eine Äquivalenzrelation. Es gilt:
 \begin{enumerate}
 \item \label{def:IsoRef} Reflexivität: $A$ ist isomorph zu $A$
 \item \label{def:IsoSym} Symmetrie: Wenn $A$ isomorph ist zu $B$, 
@@ -272,30 +267,33 @@ Die Gleichmächtigkeits zwischen zwei Mengen ist eine Äquivalenzrelation:
 							und $B$ isomorph zu $C$,
 							dann ist $A$ isomorph zu $C$.
 \end{enumerate}
+\end{theorem}
 
 \begin{proof}
 Seien $A$, $B$ und $C$ Objekte und $f: A → B$, $f^{-1}: B → A$ sowie $g: B → C$ 
-und $g^{-1}: C → B$ Morphismen mit den Eigenschaften: 
-\begin{enumerate*} 
-\item $f ∘ f^{-1} = 1_A$ und
-\item $f^{-1} ∘ f = 1_B$ 
-\item $g ∘ g^{-1} = 1_B$ und
-\item $g^{-1} ∘ g = 1_C$ 
-\end{enumerate}. Dann gilt:
+und $g^{-1}: C → B$ Isomorphismen (mit ihren Umkehrabbildungen).
+% \begin{enumerate} 
+% \item $f ∘ f^{-1} = 1_A$ und
+% \item $f^{-1} ∘ f = 1_B$ 
+% \item $g ∘ g^{-1} = 1_B$ und
+% \item $g^{-1} ∘ g = 1_C$ 
+% \end{enumerate}
+Dann gilt:
 
-\begin{subproof}[\ref{def:IsoRef}]
+\begin{subproof}[Reflexivität]
 Aufgrund der Identitätsabbildung $1_A$.
 \end{subproof}
-\begin{subproof}[\ref{def:IsoSym}] 
+\begin{subproof}[Symmetrie] 
 Aufgund der Voraussetzung.
 \end{subproof}
-\begin{subproof}[\ref{def:IsoTra}]
-\begin{align*}
-	  &f ∘ g ∘ g^{-1} ∘ f^{-1}	% Assoziativität
-	= &f ∘ 1_B ∘ f^{-1}			% Annahme
-	= &f ∘ f^{-1}				% Identitätsgesetz
+\begin{subproof}[Transitivität]
+\begin{align*}\label{sp:IsoTrans}
+	  &f ∘ g ∘ g^{-1} ∘ f^{-1}  \\	% Assoziativität
+	= &f ∘ 1_B ∘ f^{-1}			\\% Annahme
+	= &f ∘ f^{-1}				\\% Identitätsgesetz
 	= &1_A						% Annahme
 \end{align*}
+Weiter $ g ∘ f ∘ f^{-1}∘ g^{-1} = 1_C$ analog.
 \end{subproof}
 \end{proof}
 
