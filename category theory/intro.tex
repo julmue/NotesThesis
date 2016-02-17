@@ -2,14 +2,12 @@
 \usepackage{common}
 
 % ------------------------------------------------------------------------------
-
-%-------------------------------------------------------------------------------
-
 \newcommand{\engl}[2]{(\text{#1}: \textit{#2})}
 
 \newcommand{\graphics}[2]%
 {\begin{center}\includegraphics[width=7cm]{#1}\captionof{figure}{#2}\end{center}}
 
+%-------------------------------------------------------------------------------
 % map			Abbildung
 % morphism		Abbildung
 % domain		Wertemenge
@@ -18,6 +16,7 @@
 % process		Abbildungsvorschrift
 % isomorphism	Isomorphismus
 
+%-------------------------------------------------------------------------------
 \begin{document}
 \title{Zusammenfassung: Einführung in die Kategorientheorie}
 \subtitle{Zusammenfassung \enquote{Introduction to Category Theory}}
@@ -50,7 +49,7 @@ Eine Kategrie $𝓒$ besteht aus:
 	\item Identitätsgesetze:
 		\begin{itemize}
 		\item Wenn $A \xrightarrow{1_A} A \xrightarrow{g} B$, dann $g ∘ 1_A = g$.
-		\item Wenn $A \xrightarrow{f} A \xrightarrow{1_B} B$, dann $1_A ∘ f = f$.
+		\item Wenn $A \xrightarrow{f} B \xrightarrow{1_B} B$, dann $1_B ∘ f = f$.
 		\end{itemize}
 	\item Assoziativgesetz:
 		\begin{itemize}
@@ -226,29 +225,79 @@ der Multiplikation von Zahlen gleicht, was ist dann das Analogon zur Division?
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Artikel 2: 
+%% Artikel 2: Isomorphismen, 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter{Isomorphisment}
+\chapter{Isomorphismen, Sektionen, Retraktionen, Idempotenz, Automorphismen}
+
+\subsection{Isomorphismen}
 
 \begin{example}[Einführung: Vergleich von Mengen]
-Bevor Zahlen entwickelt wurden muss es eine andere Methode gegeben haben
-Mengen zu vergleichen.
-Ein Vergleich über spezielle Abbildungen ist möglich:
-Eine Abbildung $f: A → B$ mit der man zwei Mengen $A$ und $B$ vergleichen kann
-muss 
+Isomorphismen erlauben unter abderem den Vergleich von Mengen ohne einen Zahlbegriff.
+Ein Isomorphismus eine spezielle Abbildung. Welche Eigenschaften muss eine 
+Abbildung $f: A → B$ haben, damit man zwei mit ihrer Hilfe zwei Mengen $A$ und 
+$B$ vergleichen kann? Sie muss 
 \begin{enumerate*}
 \item injektiv und 
 \item surjektiv 
 \end{enumerate*}
 sein --- eine Bijektion. Dann gibt es eine Umkehroperation $f^{-1}: B → A$ 
-mit $f ∘ f^{-1} = 1_A$.
+mit $f ∘ f^{-1} = 1_A$ und $f^{-1} ∘ f = 1_B$.
+Beide dieser Gleichungen müssen erfüllt sein, damit $A$ und $B$ gleich mächtig
+sind.
 \end{example}
 
 \graphics{pics/setIsomorphism1}{Isomorphismus zwischen Mengen}
 % ein isomorphismus ist nur zwischen Mengen mit der gleichen Kardinalität möglich.
 % ist die Anzahl der Isomorphismen zwischen zwei Mengen gleich ihrer Kardinalität?
 
+\begin{definition}[Isomorphismus]
+Ein Morphismus $A \rightarrow{f} B$ wird Isomorphismus (oder umkehrbare Abbildung)
+genannt, wenn es eine Abbildung $B \rightarrow{g} A$ gibt für welche die 
+folgenden Gleichungen gelten:
+\begin{enumerate}
+\item $f ∘ g = 1_A$
+\item $g ∘ f = 1_B$
+\end{enumerate}
+Eine Abbildung $g$ welche in Bezug auf $f$ diese Eigenschaften erfüllt heißt 
+\concept{Inverse von $f$}. Zwei Objekte $A$ und $B$ werden isomorph genannt,
+wenn es mindestens einen Isomorphismus $A \rightarrow{B} B$ gibt.
 
+\begin{remark}{Gleichmächtigkeit ist eine Äquivalenzrelation}
+Die Gleichmächtigkeits zwischen zwei Mengen ist eine Äquivalenzrelation:
+\begin{enumerate}
+\item \label{def:IsoRef} Reflexivität: $A$ ist isomorph zu $A$
+\item \label{def:IsoSym} Symmetrie: Wenn $A$ isomorph ist zu $B$, 
+							dann ist $B$ isomorph zu $A$.
+\item \label{def:IsoTra} Transitivität: Wenn $A$ isomorph zu $B$, 
+							und $B$ isomorph zu $C$,
+							dann ist $A$ isomorph zu $C$.
+\end{enumerate}
+
+\begin{proof}
+Seien $A$, $B$ und $C$ Objekte und $f: A → B$, $f^{-1}: B → A$ sowie $g: B → C$ 
+und $g^{-1}: C → B$ Morphismen mit den Eigenschaften: 
+\begin{enumerate*} 
+\item $f ∘ f^{-1} = 1_A$ und
+\item $f^{-1} ∘ f = 1_B$ 
+\item $g ∘ g^{-1} = 1_B$ und
+\item $g^{-1} ∘ g = 1_C$ 
+\end{enumerate}. Dann gilt:
+
+\begin{subproof}[\ref{def:IsoRef}]
+Aufgrund der Identitätsabbildung $1_A$.
+\end{subproof}
+\begin{subproof}[\ref{def:IsoSym}] 
+Aufgund der Voraussetzung.
+\end{subproof}
+\begin{subproof}[\ref{def:IsoTra}]
+\begin{align*}
+	  &f ∘ g ∘ g^{-1} ∘ f^{-1}	% Assoziativität
+	= &f ∘ 1_B ∘ f^{-1}			% Annahme
+	= &f ∘ f^{-1}				% Identitätsgesetz
+	= &1_A						% Annahme
+\end{align*}
+\end{subproof}
+\end{proof}
 
 
 
