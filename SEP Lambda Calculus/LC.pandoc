@@ -3,11 +3,11 @@
 Lambda-Kalkül: einfache Notation für Funktionen und ihre Anwendung
 (Formalisation von Funktionen und ihrer Anwendung)
 
-zentrale Idee, Idiome:
-* Anwendung einer Funktion auf ein Argument (Application)
-* Funktionen bilden durch Abstraktion (Abstraktion)
+zentrale Idee, Idiome des Lambdakalküls:
+* Applikation: Anwendung einer Funktion auf ein Argument
+* Abstraktion: Funktionen bilden durch Abstraktion
 
-Funktionen und Argumente sind gleichberechtigt.
+Funktionen und Argumente sind gleichberechtigt (Homoikonizität).
 Daraus resultiert eine intensionale Theorie von Funktionen als
 Rechenregelen/Abbildungsvorschriften im Gegensatz zu einer extensionalen 
 Theorie von Funktionen als einer Menge von geordneten Paaren.

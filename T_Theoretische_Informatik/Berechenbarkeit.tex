@@ -1,0 +1,466 @@
+\documentclass{scrartcl}
+\usepackage{common}
+\begin{document}
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+\section{Berechenbarkeitstheorie}
+
+Gegenstände der Berechenbarkeitstheorie sind:
+\begin{enumerate*}
+\item\label{it:Berechenbarkeitsbegriff} 
+	Die Formalisierung des intuitiven Berechenbarkeitsbegriffs/Algorithmenbegriffs.
+\item\label{it:Einteilung} 
+	Einteilung der Funktionen anhand dieses Berechenbarkeitsbegriffs in 
+	berechenbare (also algorithmisch lösbare) und nicht-berechenbare Funktionen.
+\item\label{it:Entscheidbarkeit} 
+	Einteilung der berechenbaren Funktionen in entscheidbare und 
+	nicht-entscheidbare Funktionen.
+\end{enumerate*}
+
+% Sind Entscheidbare Probleme immer total? Stimmt diese Klasse mit den Totalen
+% Funktionen überein?
+% Vermutlich nicht ... es kann ja auch totale zufällige Funktionen geben.
+% Aber vielleicht mit den totalen berechenbaren?
+
+Die in \ref{it:Berechenbarkeitsbegriff} gestellte Frage ist historisch von 
+größter Bedeutung --- ihre Lösung war der erste Schritt zur Lösung des von 
+Hilbert gestellten Entscheidungsproblems. 
+Dabei wurde sie durch mehrere Ansätze gelöst:
+\begin{enumerate*}
+	\item Turing-Maschinen
+	\item Lambda-Kalkül
+	\item Rekursive Funktionen
+	\item Goto-Berechenbarkeit
+	\item Loop-Berechenbarkeit
+\end{enumerate}
+Diese Ansätze bedeuten alle die gleiche Klasse von Funktionen. %siehe Church-Turing-These
+Der zweite Schritt zur Lösung des Entscheidungsproblems war es das 
+
+Der dritte Schritt zur Lösung des Entscheidungsproblems.
+
+Wichtige Ergebnisse:
+\begin{description}
+	\item [Die Church-Turing-These I]
+			Der von Turing-maschinen festgelegt Berechenbarkeitsbegriff
+			erfasst genau die Menge der berechenbaren Funktionen. 
+	\item [Die Church-Turing-These II]
+			Die oben genannten Berechenbarkeitsbegriffe beschreiben die gleiche
+			Menge von Funktionen:
+	\item [Es gibt berechenbare und nicht-berechenbare Funktionen] 
+			Nicht jede Funktion ist berechenbar/algorithmisierbar:
+			Entscheidungskriterium für die algorithmische Unlösbarkeit 
+			bestimmter Probleme.
+	\item [Es gibt entscheidbare und nicht-entscheidbare Probleme]
+			Nicht jedes Problem für dass es eine berechenbare Funktion gibt ist
+			entscheidbar. %das gegebproblem muss auch entscheidbar sein.
+\end{description}
+
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+\subsection{Intuitiver Berechenbarkeitsbegriff}
+
+Zunächst die Beschreibung des intuitiven Berechenbarkeitsbegriffs nach 
+\autocite{TIKG:2003}:
+
+\begin{definition}[Intuitiver Berechenbarkeitsbegriff]
+Eine (evtl. partielle) Funktion $f : Def(f) → ℕ$ soll als berechenbar angesehen 
+werden, falls es einen Algorithmus gibt, der $f$ berechnet:
+\begin{itemize}
+\item totale Funktion $Def(f) = ℕ^k$:
+	\begin{description}
+	\item [Input] 
+		$(n₁,\dots,n_k) ∈ ℕ^k$ 
+	\item [Output] 
+		Termination mit $f(n₁,\dots,n_k)$ nach endlich vielen Schritten.
+	\end{itemize}
+\item partielle Funktionen $Def(f) ⊆ ℕ^k$ modelliert durch Funktion $f'$:
+	\begin{itemize}
+	\item [Input] $(n₁,\dots,n_k) ∈ ℕ^k$ 
+	\item [Output] 
+		\begin{align*}
+		f'(n₁,\dots,n_k) = 
+		\begin{cases}
+			\text{terminiert mit} f(n₁,\dots,n_k), \text{falls} (n₁,\dots,n_k) ∈ Def(f) \\
+			⊥, \text{sonst}
+		\end{align*}
+	\end{itemize}
+\end{itemize}
+mit $Def(f) ∩ ⊥ = ∅$; $⊥$ bezeichnet Definitionslücken.
+\end{definition}
+
+\begin{remark}
+Für alle Eingabewerte gilt: 
+Wenn der Eingabewert keine Definitionslücke der Funktion ist
+dann muss die Berechnung auch in endlicher Zeit terminieren;
+Ist der Eingabewert eine Definitionlücke muss der Algorithmus nicht 
+terminieren.
+\end{remark}
+
+\begin{remark}
+Dieser Berechenbarkeitsbegriff ist nicht konstruktiv!
+Es genügt der Nachweis, dass ein Algorithmus existiert, dieser muss
+nicht explizit angegeben werden.
+
+\begin{example}
+Folgende Funktion ist berechenbar:
+\begin{align*}
+	n_{i} &= 
+		\begin{cases}
+    	    1 & \text{falls das LBA-Problem eine positive Lösung hat}
+    	    0     & \text{sonst}
+    	\end{cases}
+\end{align*}
+\end{example}
+Die epistemische Lücke ob der Lösbarkeit des LBA-Problems ändert nichts 
+daran, dass $i$ berechenbar ist.
+\end{remark}
+
+\begin{remark}
+Jedem Algorithmus ist also eine (partielle) Funktion zugeordnet;
+ein Algorithmus ist eine finite, intensionale Darstellung einer 
+(u.U. transfiniten) (u.U. partiellen) extensionalen Funktion;
+Jeder Algorithmus denotiert/bezeichnet/bedeutet eine Funktion.
+\end{remark}
+
+\begin{remark}
+Zwei unterschiedliche Algorithmen können die gleiche Funktion bedeuten.
+Sie haben dann einen unterschiedlichen Inhalt (Sinn) aber den gleichen
+Umfang (Bedeutung).
+
+Es gibt im Allgemeinen keinen Algorithmus, der gegeben zwei Algorithmen mit 
+unterschiedlichem Inhalt feststellen kann ob diese die gleiche Bedeutung haben.
+(Lambdakalkül, Halteproblem).
+\end{remark}
+
+% \begin{remark}[Berechenbarkeit von Zahlen]
+% Die Funktionen der Zahlen $π$ und $e$ sind berechenbar.% ??? sind doch nur Näherungsverfahren
+% Nicht jede reele Zahl ist berechenbar.
+% Die Kardinalität der berechenbaren Funktionen ist gleich der Kardinalität von $ℕ$,
+% und damit kleiner als die Kardinalität von $ℝ$.
+% 
+% Jede natürliche Zahl ist berechenbar, jede rationale Zahl ist berechenbar.
+% \end{remark}
+
+
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+\subsection{Formaler Berechenbarkeitsbegriff}
+
+\begin{theorem}[Churchsche These]
+Die durch die formale Definition der \concept{Turing-Berechenbarkeit}
+(äquivalent: \concept{Lambda-Definierbarkeit}, \concept{While-Berechenbarkeit},
+\concept{Goto-Berechenbarkeit}, μ-Rekursivität, \dots) erfasste Klasse von
+Funktionen stimmt genau mit der Klasse der im intuitiven Sinn berechenbaren
+Funktionen überein.
+\end{theorem}
+
+\subsubsection{Turing-Berechenbarkeit}
+
+\begin{remark}
+% Bislang wurde die Turing-Maschinen zum Akzeptieren von Sprachen verwendet.
+% Nun muss die Definition modifiziert werden, um das Berechnen von Funktionen
+% zu erfassen. 
+Im folgenden Abschnitt werden zwei Definitionen von Turing-Berechenbarkeit 
+vorgestellt, eine für Funktionen auf natürlichen Zahlen, eine für Funktionen 
+auf Wörtern\autocite[87]{TIKG:2003}.
+\end{remark}
+
+\begin{definition}Turing-Berechenbarkeit für Funktionen über $ℕ$}\label{def:TuringNat}
+Eine Funktion $f: ℕ^k → ℕ$ heißt \concept{Turing-Berechenbar},
+falls es eine (deterministische) Turingmaschine $M$ gibt,
+so dass für alle $n₁,\dots,n_k$ gilt:
+\begin{align*}
+	f(n₁,\dots,n_k) &= m \\
+				&gdw. \\
+	z₀bin(n1)#bin(n₂)#\dots#bin(n_k) &⊢^* ⎕\dots⎕z_ebin(m)⎕\dots⎕
+\end{align*}
+wobei $z_e ∈ E$.
+\end{definition}
+
+\begin{definition}{Turing-Berechenbarkeit für Funktionen über Wörtern}\label{def:TuringWord}
+Eine Funktion $f : Σ^* → Σ^*$ heißt \concept{Turing-berechenbar},
+falls es eine (deterministische) Turingmaschine $M$ gibt,
+so dass für alle $x,y ∈ Σ^*$ gilt:
+\begin{align*}
+	f(x) &= y
+		&gdw.
+	z₀x ⊢^* ⎕\dots⎕z_ey⎕\dots⎕
+\end{align*}
+wobei $z_e ∈ E$.
+\end{definition}
+
+\begin{remark}[Turing-Maschinen und Nicht-Termination]
+In Definition \ref{def:TuringWord} und Definition \ref{def:TuringNat} implizit
+enthalten ist, dass im Falle von $f(x) = ⊥$ die Maschine in eine 
+unendliche Schleife gehen kann. 
+\begin{remark}
+
+\begin{remark}[Turing-Maschinen und Typ-0-Sprachen]
+Die Turingmaschine muss nur für Eingaben halten die durch die Funktion definiert 
+sind. Für nicht definierte Eingaben muss die Maschine nicht halten.
+
+Dies betrifft auch das Wortproblem von Typ-0-Sprachen;
+diese entsprechen damit exakt den semi-entscheidbaren Sprachen\autocite{TIKG:2003}.
+\end{remark}
+
+% \begin{theorem}
+% Zu jeder Mehrband-Turingmaschine $M$ gibt es eine Einband-Turingmaschine $M'$
+% mit $T(M) = T(M')$ bzw. so, dass $M'$ dieselbe Funktion berechnet wie $M$.
+% \end{theorem}
+% T ist hier die von der Turingmaschine akzeptierte Sprache
+
+
+%%-------------------------------------------------------------------------------
+%\subsubsection{Loop Berechenbarkeit}
+%
+%\mobj{Loop} ist eine einfache Programmiersprache.
+%\fo{Loop}-Programme sind aus den folgenden Komponenten aufgebaut:
+%\begin{itemize}
+%\item Variablen: $x₁, x₂, x₃, \dots$
+%\item Konstanten: \loop{0 1 2} \dots
+%\item Trennsymbole: \loop{; :=}
+%\item Operationszeichen: \loop{+ -}
+%\item Schlüsselwörter: \loop{LOOP DO END}
+%\end{itemize}
+%
+%\begin{definition}[Syntax von \fo{Loop}-Programmen]
+%\begin{align*}
+%	L &= x_i \loop{:=} x_j + c
+%	  &= x_i \loop{:=} x_j - c
+%	  &| L₁\loop{;}L₂)
+%	  &| \Loop{LOOP}x₁\loop{DO}P\loop{END}
+%\end{align*}
+%\end{definition}
+%
+%\begin{definition}[(Operationale) Semantik von \fo{Loop} Programmen]
+%%TODO
+%\end{definition}
+%
+%\begin{theorem}
+%Es gilt: Wenn eine Funktion \fo{Loop}-berechenbar ist,
+%dann ist sie total.
+%\end{theorem}
+%
+%\begin{remark}
+%Mit \fo{Loop}-Programmen ist es nicht möglich eine unendliche Schleife zu bauen;
+%jede Schleife terminiert nach einiger Zeit.
+%\end{remark}
+%
+%\begin{example}
+%Additionsfunktion.
+%\end{example}
+%
+%\begin{question}
+%Entspricht Loop einem bestimmten Autoamtenkonzept?
+%wohl nicht...
+%\end{question}
+%
+%\begin{theorem}
+%Es gilt: Wenn eine Funktion total ist, 
+%dann ist sie nicht notwendig \fo{Loop}-berechenbar.
+%\end{theorem}
+%\begin{proof}
+%Ackermann-Funktion.
+%\end{proof}
+%
+%\begin{theorem}
+%Eine Funktion ist \fo{Loop}-berechenbar gdw. sie primitiv-rekursiv ist.
+%\end{theorem}
+%
+%
+%%-------------------------------------------------------------------------------
+%\subsubsection{While Berechenbarkeit}
+%
+%\mobj{While} ist eine einfache Programmiersprache.
+%\fo{While}-Programme sind aus den folgenden Komponenten aufgebaut:
+%\begin{itemize}
+%\item Variablen: $x₁, x₂, x₃, \dots$
+%\item Konstanten: \while{0 1 2} \dots
+%\item Trennsymbole: \while{; :=}
+%\item Operationszeichen: \while{+ -}
+%\item Schlüsselwort: \while{LOOP DO END}
+%\item Schlüsselwort: \while{WHILE}$x₁ ≠ 0$ \while{DO} $p$ \while{END}
+%\end{itemize}
+%
+%\begin{definition}[Syntax von While-Programmen]
+%\end{definition}
+%
+%\begin{definition}[Semantik von While-Programmen]
+%\end{definition}
+%
+%\begin{remark}
+%Loop und While sind keine historisch bedeutsamen Programmiersprachen,
+%sondern nur zu didaktischen Zwecken von Schöning entworfen
+%\end{remark}
+%
+
+
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+\subsection{Primitiv-rekursive Funktionen}
+
+Die primitiv-rekursiven Funktionen sind eine wichtige echte Untermenge der 
+totalen, berechenbaren Funktionen. Sie werden durch Komposition und
+durch primitive Rekursion aus atomaren Grundfunktionen gebildet:
+
+\begin{definition}[primitiv-rekursive Funktionen]
+Die Klasse der \concept{primitiv-rekursiven Funktionen} auf
+den natürlichen Zahlen):
+\begin{enumerate}
+\item\label{it:basis1} Alle konstanten Funktionen sind primitiv-rekursiv.
+\item Alle identischen Funktionen (Projektionen) sind primitiv rekursiv.
+	% (Beispiel $f : A × B × C → B$ mit $f(a,b,c) ↦ b)$)
+\item\label{it:basis2} Die Nachfolgerfunktion $succ(n) = n + 1$ auf $ℕ$ ist primitiv rekursiv.
+\item\label{it:basis3} Primitiv-rekursive Funktionen sind abgeschlossen unter Komposition.
+\item Primitiv-rekursive Funktionen sind abgeschlossen unter primitive Rekursion:
+	Seien $f, g$ primitiv rekursive Funktionen, $f$ eine primitiv-rekursive Funktion
+	die durch primitive Rekursion aus $f$ und $g$ gebildet wird.
+	Dann $f$ muss ein Gleichungssystem der folgenden Art erfüllen:
+	\begin{align*}
+		f(0,\dots) &= g(\dots)
+		f(n+1,\dots) &= h(f(n,\dots),\dots)$
+	\end{align*}
+\end{itemize}
+Die Funktionen \ref{it:basis1}-\ref{it:basis3} werden Basisfunktionen genannt.
+\end{definition}
+
+\begin{example}[Additionsfunktion $add: ℕ × ℕ → ℕ$]
+Die Additionsfunktion $add: ℕ × ℕ → ℕ$ ist primitiv-rekursiv:
+\begin{align*}
+	add(0,x) &= x
+	add(n + 1, x) &= succ(add(n,x))
+\end{align*}
+\end{example}
+
+\begin{theorem}
+Für alle berechenbaren Funktionen $f$ gilt: 
+Wenn $f$ primitiv rekursiv ist, dann ist $f$ total.
+\end{theorem}
+
+\begin{proof}
+% TODO
+\end{proof}
+
+\begin{theorem}
+Für alle berechenbaren Funktionen $f$ gilt:
+Wenn $f$ total ist, dann ist $f$ nicht notwendig primitiv rekursiv.
+\end{theorem}
+
+\begin{proof}
+Die Ackermann-Funktion ist eine totale, intuitiv berechenbare Funktion 
+die nicht primitiv-rekursiv ist.
+\end{proof}
+
+% \begin{question}
+% Welche Rolle spielen die primitiv rekursiven Funktionen in der Beweistheorie
+% und im Curry Howard isomorphismus?
+% ist es möglich Termination zu kapseln, beispielsweise in einer Monade
+% \end{question}
+
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+\subsection{$μ$-rekursive Funktionen}
+
+Eine echte Erweiterung der primitiv-rekursiven Funktionen wird durch
+Hinzunahme des \comcept{$μ$-Operators} erreicht. 
+Die daraus entstehende Klasse von Funktionen wird 
+\concept{$μ$-rekursive Funktionen} oder \concept{partiell-rekursive Funktionen}
+genannt. 
+Die Klasse der $μ$-rekursiven Funktionen ist extensionsgleich mit der durch 
+Turing-Berechenbarkeit festgelegten Klasse der berechenbare Funktionen;
+es sind also auch partielle Funktionen enthalten.
+
+\begin{definition}
+Sei $f: ℕ^{k + 1} → ℕ$ eine gegebene (evtl. partielle) Funktion.
+Die durch Anwendung des $μ$-Operators auf $f$ entstehende Funktion ist 
+$μf = g$ mit $g: ℕ^k → ℕ$ und
+$ g(x₁,\dots,x_k) = 
+	\text{min} \{ n | f(n,x₁,\dots,x_k) = 0, ∀ m<n: f(m,x₁,\dots,x_k) \text{ist definiert}\}$
+mit $min ∅ = ⊥$.
+\end{definition}
+%Das sieht doch gaaaaanz extrem nach dem least-fixpoint aus?
+
+\begin{remark}
+Durch Anwendung des $μ$-Operators können partielle Funktionen entstehen.
+\end{remark}
+
+\begin{definition}
+Die Klasse der $μ$-rekursiven Funktionen ist die kleinste Klasse von
+(evtl. partiellen) Funktionen, di die Basisfunktionen enthält und 
+abgeschlossen ist unter Einsetzung, primitiver Rekursion und 
+Anwendung des $μ$-Operators.
+\end{definition}
+
+\begin{theorem}
+Die Klasse der $μ$-rekursiven Funktionen stimmt genau mit der Klasse 
+der Turing-berechenbaren Funktionen überein.
+\end{theorem}
+
+% \begin{question}
+% Wie ist der gute Kurt eigentlich auf diese Konzept gekommen?
+% Erscheint mir doch iwi reichlich unintuitiv ...
+% \end{question}
+
+
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+\subsection{Entscheidbarkeit}
+
+\begin{definition}[Entscheidbarkeit]
+Eine Menge $A ⊆ Σ^*$ heißt \concept{entscheidbar},
+falls die \concept{charakteristische Funktion} von $A$,
+$χ_A: Σ^* → \set{0,1}$ berechenbar ist.
+Es gilt für alle $w ∈ Σ^*$:
+\begin{align*}
+	χ_A(w) = 
+	\begin{cases}
+	1, w ∈ A \\
+	0, w ∉ A
+	\end{cases}
+\end{align*}
+\end{definition}
+
+\begin{definition}[Semi-Entscheidbarkeit]
+Eine Menge $A ⊆ Σ^*$ heißt \concept{semi-entscheidbar},
+falls die \enquote{halbe} \concept{charakteristische Funktion} von $A$,
+$χ_A: Σ^* → \set{0,1}$ berechenbar ist.
+Es gilt für alle $w ∈ Σ^*$:
+\begin{align*}
+	χ'_A(w) =
+	\begin{cases}
+	1, w ∈ A \\
+	⊥, w ∉ A
+	\end{cases}
+\end{align*}
+\end{definition}
+
+% Es liegt keine Entscheidungsprozedur vor ...
+% im Falle 
+
+\begin{remark}
+Diese Definitionen lassen sich auch auf Mengen $A ⊆ ℕ^k$ übertragen. 
+\end{remark}
+
+\begin{remark}
+Im Zusammenhang mit der Frage der Entscheidbarkeit werden Sprachen auch oft 
+(Entscheidungs-) Probleme genannt.
+\end{remark}
+
+\begin{theorem}
+Eine Sprache $A$ ist entscheidbar gdw. sowohl $A$ als auch $\bar{A}$ 
+semi-entscheidbar sind.
+\end{theorem}
+
+\begin{theorem}
+Eine Sprache ist rekursiv aufzählbar, gdw. sie semi-entscheidbar ist.
+\end{theorem}
+
+\begin{example}[SAT]
+\end{example}
+
+
+%-------------------------------------------------------------------------------
+% Entscheidungsproblem
+% Quelle: Wikipedia
+\end{document}

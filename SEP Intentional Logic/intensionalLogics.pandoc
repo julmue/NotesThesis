@@ -1,0 +1,428 @@
+# Intensional Logic
+
+There is a difference between 
+
+* What a term designates (extension)
+* What a term means (intension)
+
+Intension determines extension but is not synonymous with it
+
+Intension/content/Sinn		extension/reference/Bedeutung
+----------------------		-----------------------------
+"the morning star"			Venus
+"the evening star"			Venus		
+
+Intensional logic formalizes intension and extension 
+and provides the tools to investigate the relationship between them.
+
+The essential dichotomy:
+What a term *means* and what it *denotes*
+
+
+## Introduction
+
+The two phrases "morning star" and "evening star" 
+may designate the same object, but they do not have the same meaning.
+
+(gleich bei lambdatermen:
+
+	t1 = \x. (x^2) + 1
+	t2 = \x. ...
+
+denotieren gleiche Funktion haben aber andere Bedeutung...
+Grundlage equational reasoning (bzw. Gleichungen im algemeinen --
+ersetzen von termen mit gleicher Extension aber unterschiedlicher Intension
+(bezüglich bestimmter Charakteristiken wie Termlänge, Variablennamen, Laufzeitverhalten, ...)
+
+Also ist Mathematik eigentlich doch eine sehr intensionale Theorie,
+bei der die Invariaten der Termumformungen die Extensionsgleichheit beider Seiten ist.
+)
+
+Contexts in which extension is all that matters are called *extensional*,
+contexts in which extension is not enough are called *intensional*.
+
+**Mathematics is typically extensional throughout*** -- we happily write 
+"1+4 = 2+3" even though the two terms involved may differ in intenstion)
+
+*"It is known that ..."* is a typical intensional context
+(propositional belief ascription).
+"It is known that 1+4 = 2+5" may not be correct when the knowledge of small children is involved.
+Thus mathematical pedagogy differs from mathematics proper.
+
+Other examples of intensional contexts:
+
+* "It is necessary that ..."
+* "It is informative that ..."
+* "It is believed that ..."
+
+***Typically a context that is intensional can be recognized***
+***by a failure of the substitutivity of equality when naively applied.***
+
+Substitution of co-referring terms in a knowledge context is the problematic move
+-- such context is intensional.
+
+
+Other problems: Proper names
+"Cicero" and "Tully" denote the same person.
+Proper names are generally considered to be rigid,
+once a designation has been specified it does not change.
+This makes "Cicero is Tully" a necessary truth.
+How then could someone not Know it?
+
+"Superman is Clark Kent" is even more difficult to deal with as there is no real person involved ...
+(What is a necessary truth? Proposition that is true in every possible world)
+
+Existential issues are interwined with intensional matters.
+
+Further example:
+The property of being an quilateral triangle is coextensive 
+with the property of being an equiangular triangle
+though clearly meanings differ.
+
+
+In classical FOL intension plays no role.
+It is extensional by design since primarily it evolved to model the reasoning 
+needed in mathematics.
+(But intensionality plays a role in mathematics, too?)
+
+Formalizing aspects of natural lanugage or everyday reasoning
+needs something richer.
+Formal systems in which intensional features can be represented are generally 
+referred to as *intensional Logics*.
+The aim is to find logics that can formally represent the issues sketched above.
+
+
+## History
+
+### Frege 
+
+Referencetheorie: not difference between a = a and a = b; 
+but the first is analytic, the second generally is synthetic.
+
+*mode of presentation*?
+
+A sign has a *reference* and a *sense*
+We can think of the *sense* as an embodiment of the mode of presentation.
+
+A name *expresses* its sence, and *designates* its reference.
+
+"Morning Star" and "Evening Star" have the same designation
+but express different senses, representing different modes of presentation.
+
+Sense and reference are objective (the *idea* of a thing is subjective).
+    
+
+Substitution of equi-designating signs perserves truth;
+but not always -- exception: ***indirect reference*** contexts. 
+(propositional belief ascriptions).
+
+"George knows that the morning star is seen in the sky near sunrise" may be true;
+"George knows that the Venus is seen in the sky near sunrise" may be false.
+
+In such sentences sense is central, designation is not.
+
+An expression might have a sense, but is does not need to have a reference 
+(extension: Partial function undefined, botton, no knowledge about the reference)
+
+Two distinct but related notions:
+1. sense
+2. reference 
+
+Equality plays a central role, a central issue is the substitutivity of equals for equals.
+Names, signs, expressions, can be equal in designation, but not equal in sense.
+There are both direct/extensional and indirect/intensional contexts,
+and reference matters for the first while sense is fundamental for the second.
+
+
+## Church
+
+Church extension of simple type theory for formalizing extension.
+In his logic, terms have both senses and denotation.
+These are taken to be different sorts/types.
+
+
+A fundamental issue for Church: *when do two lambda terms have the same sense?*
+Three alternatives are considered 
+(sense is unchagned under the renaming of bound variables and b reduction):
+1. technical
+2. fine grained
+3. logical equality
+
+
+
+## Carnap
+
+Church formalized something of how intensions behaved, without saying what they were.
+Carnap: intension and extension, specific model-theoretic entities.
+goal: suppy intensions and extensions for every meaningful expression.
+
+Infulence: Tractatus
+In the Tractatus precursor of possible world semantics.
+There are *states of affairs* which can be identified with the set of all their truths
+*"The facts in logical space are the world".
+Presumably the facts are atomic, and can be varied independently.
+*"Each item can be the case of not the case while everything remains the same"*
+
+Thus there are many possible states of affairs, among them the actual one, the real world.
+
+Objects involve not only the actual state of affairs but all possible ones.
+
+
+Carnap: Intesions as sets of possible worlds:
+
+formal language:
+
+1. state description $a$ or $¬a$ for each atomic sentence. 
+   In each state description the truth or falsity of every sentence of the language
+	is determined following the usual truth-functional semantics.
+
+	Thus *truth is relative to state descriptions*
+
+(haben deswegen prozedurale Sprachen Kripke semantiken? 
+Die denotationale Semantik hat ja als weiteres Argument einen Zustand,
+somit eine weitere Welt ...
+Zugangsrelationen sind dann vermutlich die innerhalb eines schrittes möglichen 
+Zystandsübergänge. ...
+
+rein funktionale Sprachen kommen damit also ohne eine intensionale Semantik aus.
+)
+
+Carnap introduces "necessary truth/analytic truth": truthness in all possible worlds.
+
+***A sentence is a necessary truth iff it holds in every state description***
+(logic: some sort of L5 semantics)
+
+Intensional equivalence: 
+P and Q are intensionally equivalent iff $∀x(Px ≡ Qx)$ is an L-truth.
+(in each state description P and Q have the same extension)
+
+
+Carnaps fundamental idea: intensions, for whatever entites are begin considered 
+can be giben a precise mathematical embodiment as functions on states.
+While extensions are relative to a single state.
+
+
+
+
+## Marcus
+
+Carnaps work was semantic and resulted in a logic that did not correspond to
+any of the formal systems that had been studied up to this point.
+Axiomatically presented propositional modal logics were well-established,
+so it was important to see how/if they could be extended to include
+1. quantifiers
+2. equality
+
+At decision:
+* What sort of things do quantifiers range over
+* substitutivity of equals for equals
+
+Barcan formula ⋄(∃α)A ⊃ (∃α)⋄A
+
+The system was extended with *abstraction* and *identity*
+Two versions of identity were considered, depending on 
+* whether things had the same properties (abstracts) 
+* or necessarily had the same properties
+
+
+
+
+## Montague, Tichy, Bressan, Gallin
+
+hmmm...
+
+
+## A Particular Intensional Logic
+
+The common feature of every designating term is that designation may change
+from state to state -- it can be formalized by a function from states to objects.
+
+This bare bones apporach is enough to deal with many problems.
+
+
+
+## Problems with Rigidity
+
+### Mathematical problems
+
+$1+4=2+3$. Complexer examples of mathematical truths we don't know can be found.
+Obviously the designations of $1+4$ and $2+3$ are the same, so their senses must be different.
+
+If we model sense by a function form states to designations, the functions
+would be the same, mapping each state to 5.
+
+If it is necessary truth that is the issue, there is no problem;
+we certainly want that $1+4=2+5$ is a necessary truth.
+
+But if epistemic issues are under consideration, since we cannot have a possible world
+in which $1+4=5$ and $2+3$ designate different things, $1+5=2+3$ must be a known truth.
+
+Poss
+
+
+
+
+
+# Sense as Algorithm
+
+Following Frege, the mathematical expressions "1+4" and "2+3" have the same 
+denotation but different senses.
+
+Frege did not say what a sense was, though it was clear that, sense determined denotation.
+
+Formalism in which the sense or intension of an expression is an algorithm,
+and algorithm execution determines deontation.
+
+If sense is to be identified with algorithm, the most basic question is:
+what is an algorithm.
+An algorithm is an abstract mathematical object, in the same way that a number is.
+
+## Motivating Example
+
+Given:
+1. A structure with a given domain and some given relations of various arities $<D,R1,...,RN>$.
+
+2. First order language formed in the usual way:
+	$R1,...,Rn$ whose arities match those of the given relations.
+	We can build up a first order language that talks about the structure, where 
+	* atomic formulas involve $R1, ... , Rn$ and $=$.
+	* Constants can be simulated by the use of 
+	   unary relations that are true of single things.
+	   Example: in Arithmetic we have an unary relation $Z$ that only holds if $Z(0)$.
+
+3. NEW: ***where*** construction:
+
+
+
+Example: D = <{0,1,2,...}, S, Z>
+
+even(x) ≡ E(x) where { E(x) ≃ x = 0 ∨ (∃y)(S(y,x) ∧ O(y)),
+					   O(x) ≃ (∃y)(S(y,x) ∧ (E(y))}
+
+this could be directly lifted to prolog.
+
+"≃" means "is defined to be".
+Think of $E(x)$ as representing the "Output" relation
+
+TODO: Computation
+
+The example is a start, but is misleadingly simple.
+The machinery is rich enough to allow formualtion of the liar sentence
+
+    liar ≡ P where {P ≃ ¬P}
+
+Clearly an evaluation attempt of the sort shown above will not terminate.
+
+A solution to non-termination is familiar from classical recursion theory,
+and also from work on the theory of thruth:
+allow the relations defined by our formal machinery to be *partial*.
+Not all instances of a relation have to receive a truth value.
+
+### Syntax
+
+Lower Predicate Calculus with Reflections (LPCR);
+For a structure <D,R1, ..., Rn> the language is built up using the 
+machinery of ordinary first-order logic with equality, 
+together with the following foration clause.
+* If $φ0,φ1, ... φk$ appear in the formulas and 
+* P1,...,Pk are (new) auxiliary relation variables, the following is a formula
+
+    φ0 where {P1(x1) ≃ φ1, ... ,Pk(xk) ≃ φk}
+
+In this each xi is a sequence of variables whose length is the arity of Pi.
+The Pi may appear in the formulas φ0,...,φk themselves 
+and so we have a self-referential set of defining equations, with φ0 as output.
+
+
+
+### Denotation
+
+We have been discussing sentences and mor generally formulas with free variables.
+
+Def: partial function
+f(x)≃y means that x is in the domain of f and f(x)=y
+
+Def: partial relations
+Partial relations are partial functions from k-tuples to {t,f}
+
+The given relations of our structure are relations in the usual sense
+but it is partial relations that we may find ourselves defining.
+
+
+Assume we have a structure <D,R1,...,Rn> and 
+suppose we have an LPCR language associated with it.
+
+A *valuation v* in this structure is a mapping from
+individual variables to members of D 
+and from auxiliary relation symbols to partial relations on D.
+
+We would like to associate with each valuation v a mapping Tv
+from formulas of LPCR to truth values but since things like the liar
+sentence are fomulable Tv must be a partial function,
+and we must be careful even about familiar things like logical connectives.
+
+Various three valued logics have been developed:
+most commen: Kleene's strong three-valued logic,
+motivated by recursion theory and familiar connectis and quantifies behave.
+
+
+
+## Sense
+
+Each formual of LPCR specifies an algorithm for its evaluation, that is,
+for the determination of its truth value (if possible).
+
+Moschovakis identifies the *sense* of a formula with that algorithm.
+
+Two formulas that evaluate to the same result, thus having the same denotation,
+may have different senses because the associated algorithms are different.
+
+
+
+We need a uniform method of comparison between algorithms.
+
+There is a very general machinery, form Moschovakis, 
+called the Formal Language of Recursion, FLR.
+
+Using the thorough exploration of recursive definitions and fixpoints is possible.
+
+In FLR there is a method for converting recursive definitions into a normal form,
+That normal form has a very simple structure,
+consisting of a set of self-referential equations with not nesting present at all.
+
+The idea is that if two formulas of LPCR, when embedded into FLR, have
+differing normal forms, the two formulas have different senses.
+
+This must be taken with some resonable flexibility:
+two sets of equations that differ only by renaming variables or swithcing order of equations
+do not differ in any fundamental way.
+
+If two LPCR formulas, 
+when embedded into FLR, have truly distinct normal forms, the two LPCR formulas are defined 
+to have differet senses.
+This meets all the informal conditions one wants a notion of sense to have.
+
+Moschovakis even provides the important theorem that equality of sense
+is decidable under natural conditions (??? how that ???).
+
+
+### Algorithms need not be effective
+
+The word "algorithm" suggest something effective, 
+bit here it is being used in a more general sense,
+as a set of instructions that,
+for reasons of our finitistic limitations, we may not be able to actually carry out.
+
+
+Moschovakis is not claiming to turn sense and reference into something computatble,
+but simply to provide mathematical machinery that can plausibly formalize the ideas 
+involved using a generalized notion of lagorithm
+
+
+Moschovakis is not claiming to turn sense and reference into something computatble,
+but simply to provide mathematical machinery that can plausibly formalize the ideas 
+involved using a generalized notion of lagorithm
+
+
+
+

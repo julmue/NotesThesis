@@ -155,7 +155,7 @@ die Sätze scheinen unterschiedeliche Dinge auszusagen:
 5. ist eine Tautologie, notwendige Wahrheit und a priori
 6. hingegen ist kontingent, synthetisch und informativ.
 
-Diesen wichtigen unterschied erfasst eine reine Referenztheorie nicht.
+Diesen wichtigen Unterschied erfasst eine reine Referenztheorie nicht.
 
 ##### Gegenargument 2: Versagen bei Sätzen
 
@@ -168,9 +168,9 @@ Propositionale Einstellungszuschreibungen (propositinal attitude ascriptions)
 
  :  Propositionale Einstellungszuschreibungen 
     sind Zuschreibungen von Einstellungen gegenüber bestimmten Propositionen:
-	* Zuschreibung von Wissen
+	* Zuschreibung von Wissen (epistemische propositionen)
 	* Zuschreibung von Begierde
-	* Zuschreibung von Urteilen
+	* Zuschreibung von Urteilen (doxastische propositionen)
 
 Propositionelle Eintellungszuschreibungen sind ein wichtiges Werkzeug
 zur Untersuchung semantischer Theorien.
@@ -254,13 +254,10 @@ nicht ihre Referenz.
 Aufgabe einer Semantik ist es einem Ausdruck eine Proposition zuzuordnen;
 diese ist seine Bedeutung.
 (Semantik ist hier eine (Interpretations-)funktion von Ausdrücken in Propositionen)
-(Warum ist die Referenz nicht auch Teil der Bedeutung?)
 
 Zentrale Frage (propositionaler semantischer Theorien): 
 *"Was ist die Natur von Propositionen/ 
 	Was für eine Art von Entität ist eine Proposition?"*
-
-(Sind propositionale Theorien inhärent intensional?)
 
 Diese Klasse von Theorien wird im weiteren untersucht.
 (Sind propositionale Semantiken immer intensional bzw. nicht extensional?)
@@ -280,7 +277,7 @@ die (extensionale) Referenztheorie nicht;
 sie erweitert diese um weitere "Bedeutungsebenen" (kann man das so schreiben?).
 
 Substantielle Ausdrücke haben, neben einer Referenz/Umfang (Extension) (reference)
-auch einen Inhalt (Intentsion) (content).
+auch einen Inhalt (Intension) (content).
 
 Der Inhalt von Sätzen (Ausdrücken?) -- was ein Satz ausdrückt --
 wird als *Proposition* bezeichnet.
@@ -309,7 +306,8 @@ werden über die Funktion die Inhalte (contents) erfüllen sollen.
 **Generelle Aussage (1): Inhalt determiniert Umfang.**
 
 (Die Beziehung zwischen Ausdruck und Inhalt ist die Semantik,
-wie heißt denn dann die Beziehung zwischen Inhalt und Referenz?)
+wie heißt denn dann die Beziehung zwischen Inhalt und Referenz?
+Semantic: Intesion + Extension)
 
 Frage: Was ist die Beziehung zwischen Inhalt und Referenz?
 Beantwortung der Frage mit Bezug auf Sätze:

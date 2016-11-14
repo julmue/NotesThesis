@@ -1,0 +1,67 @@
+# Modell
+
+## Was ist ein Modell?
+
+Im Prinzip jeder Homomorphismus.
+
+Durch eine strukturerhaltende Projektion in eine strukturgleiches,
+(aber einfacheres) formales Objekt ergeben sich Vorteile:
+* Explizite Strukur;
+	die Struktur der formalen Objekts ist klar beschrieben,
+	Zusammenhänge lassen sich leichter aufzeigen.
+* Neue Äquivalenzrelation/Äquivalenzklassen:
+	Durch die Projektion entstehen neue Äquivalenzklassen:
+ 	Alle Objekte der Ursprungsobjekts, 
+	die auf den gleichen Teil des Projektionsobjekts abgebildet werden
+	können zu eine Äquivalenzklasse zusammengefasst werden.
+	Durch die Stellung des Teils im Projektionsobjekt können,
+	(durch Rückprojektion) auch Schlüsse über die Stellung der 
+	Äquivalenzklasse getroffen werden.
+	(partieller Isomorphismus?)
+
+* Durch das Modell kann der Auflösungsgrad festgelegt werden;
+	der Prozess der Modellbildung kann auch mehrstufig sein;
+	(vgl. gestufte Projektionen von formalen Sprachen z.B.
+	im Kompilierforgang)
+
+* Bei der Projektion ins Modell können für die aktuell relevante Aufgabe 
+	irrelevante Informationen vergessen werden;
+	Beispiel: Syntaktischer Zucker in Programmiersprachen;
+	nur homomorphismus; Nutzen zur einfacheren Strukturiereung
+	Reduktion der komplexität bei der Programmerstellung.
+	irrelevant für die Semantik.
+	
+	
+### Beispiel Formale Sprachen
+
+Formale Sprachen können durch Homomorhpismen in passende mathematische 
+Strukturen interpretiert werden; 
+Beispiel:
+Aussagenlogik in eine Fregealgebra, boolsche Algebra, ...
+
+Die Wahl der Struktur in die Interpretiert wird legt auch den Auflösunggrad
+der Projektion fest (hier durch die Wahl der Algebra)
+
+Bzw. auch die gesamte Wahl der Bedeutung (einer oder mehr Wahrheitswerte, ...)
+
+Auch hier kann die Projektion in Stufen stattfinden.
+
+
+typisiertes Lambdakalkül wird in CCC abgebildet;
+
+
+Hier Vll ein nettes Bild:
+Der vereinfacheung und Projektion.
+
+	---------> Struktur 1 (Auflösungsgrad 1)
+Sprache ---------> Struktur 2 (Auflösungsgrad 2)
+	---------> Struktur 3 (Auflösungsgrad 3)
+
+Sprache -----> Struktur 1 --------> Struktur 2 -----------> Struktur 3
+
+Bei jeder Projektion die ein reiner Homomorphismus und kein Isomorphismus
+ist geht (für den nächsten Schritt irrelevante) Information verloren.
+
+
+## Frage
+

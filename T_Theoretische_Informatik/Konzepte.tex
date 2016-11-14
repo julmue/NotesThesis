@@ -1,0 +1,792 @@
+\documentclass{scrartcl}
+
+\usepackage{common}
+
+\begin{document}
+(formale) Sprachen
+	Syntax
+		Alphabet
+		Grammatik 
+		Chomsky Hierarchiy
+			Typ 0: Phrasenstrukturgrammatiken
+				Keine Einschränkungen and die Produktionsregeln; 
+				allgemeinster Typ.
+				Die Länge der Satzformen kann zunehmen und abnehmen.
+			Typ 1: Kontextsensitive Sprachen
+				Für alle Regeln $W₁ → w₂$ gilt, dass $|w₁| ≤ |w₂|$
+				Die Länge der Satzformen kann nur zunehmen.
+			Typ 2: Kontextfreie Grammatiken
+				Für alle Regeln $w₁ → w₂$ gilt, dass $|w₁| = 1$
+			Typ 3: Reguläre Sprachen
+				Für alle Regeln $w₁ → w₂$ gilt, dass
+				$|w₁| = 1$ und $w₂ ∈ Σ ∪ ΣV$, d.h. die rechte Seite
+				der Regel ist entweder ein Terminalzeichen, oder ein
+				Terminalzeichen gefolgt von einer Variablen.
+	Semantik
+	Interpretation
+
+Funktionen
+	Berechenbarkeitstheorie/Berechenbare Funktion (= Algorithmus?)
+		Berechenbarkeitsbegriff
+		    Turing Maschinen
+		    Lambda-Kalkül
+		    $μ$-rekursive Funktionen
+			Goto-Berechenbarkeit
+			While-Programme
+		Berechenbare Funktionen
+			Nicht entscheidbare Funktion
+			Entscheidbare Funktion / Komplexitätstheorie 
+				Charakteristische Funktion
+				Entscheidungsprozedur
+				Laufzeit
+				Komplexitätsklassen
+					P 
+					NP (Sat, ...)
+		Nicht Berechenbare Funktion
+
+Formale Systeme
+	(formale) Sprachen -> formale Sprachen
+	Axiomatisierung
+	Konsistenz/Inkonsistenz
+	Kalkül -> (Algorithmus?)
+	Vollständigkeit
+	Unvollständigkeit
+	Arithmetik
+		Unvollständigkeit der Arithmetik
+	Logiken
+		Ausdrücke
+			gültige Ausdrücke (Tautologien?/Formeln)
+			kontingente Ausdrücke
+			ungültige Ausdrücke (Kontradiktionen?)
+		wichtige Eigenschaften
+			Deduktionstheorem
+			Kompaktheit
+			Endlichkeitssatz
+			Lövenheim-Skolem
+		Aussagenlogik
+			klassische Aussagenlogik
+			intuitionistische Aussagenlogik
+			modale Aussagenlogik
+		Prädikatenlogik
+			klassische Prädikatenlogik
+			Intuitionistische Prädikatenlogik
+			erster Stufe
+				Entscheidungsproblem der Prädikatenlogik
+				Vollständigkeit der Prädikatenlogik
+			zweiter Stufe
+			....
+			modale Prädikatenlogik
+
+To Sort: 
+Sinn und Bedeutung (Inhalt und Umfang)
+Kompositionalität
+Loop vollständig,
+Terminierung/Nichtterminierung, Konvergenz/Divergenz
+Typentheorie
+formale Sprachen
+	Grammatiken (Generator)
+	Automatentheorie (Akzeptor)
+		Kellerautomat -> 
+		(deterministische/nichtdeterministische) endliche Automaten -> 
+Modelltheorie
+Algebra
+Probeleme:
+	Wortproblem
+	...
+Konzepte der Finitisierung des Transfiniten:
+Grammatiken, Automaten, Lambdaterme, Turingmaschinen, ...
+
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+\section{Automathentheorie}
+
+\begin{remark}
+Alle Sprachen von Typ 1,2,3 sind entscheidbar,
+es gibt eine berechenbare Funktion/Algorithmus der terminiert und 
+feststellt ob bei Eingabe einer Grammatik und eines Wortes das Wort 
+in der Sprache der Grammatik liegt oder nicht. 
+\end{remark}
+
+\begin{theorem}
+Das Wortproblem für Typ 1,2,3 Sprachen ist entscheidbar:
+Es gibt einen Algorithmus, der bei Eingabe einer Kontextsensitiven Grammatik
+$G = (V,Σ,P,S)$ und eines Wortes $x ∈ Σ^*$ in endlicher Zeit entscheidet,
+ob $x ∈ L(G)$ oder $x ∉ L(G)$.
+(Allgemeiner Algorithmus ist NP-hart.)
+\end{theorem}
+
+\begin{remark}
+Für Sprachen in Typ 0 gilt das nicht.
+Beispiel für eine solche Sprache ist das Halteproblem.
+(Vermutlich auch das Entscheidungsproblem der Prädikatenlogik)
+
+Die Typ-0 Sprachen sind identisch mit den semi-entscheidbaren oder
+rekursiv Aufzählbaren Sprachen.
+Daher gibt es Typ 0 Sprachen die nicht entscheidbar sind.
+(gibt es auch welche die entscheidbar sind? Beispiel...)
+\end{remark}
+
+\begin{remark}
+Da Typ-0 Grammatiken per Definition endliche objekte sind, ist die Menge
+aller Typ-0 Grammatiken eine abzählbare Menge \autocite[12]{TIKG:2003},
+hat also die selbe Kardinalität wie $ℕ$.
+Da jeder Typ-0 Sprache mindestens eine Typ-0 Grammatik zugeordnet ist,
+ist die Menge der Typ 0-Sprachen gleichfalls abzählbar.
+
+Die Menge aller Sprachen ist aber überabzählbar:
+allein schon $2^{\{0,1\}^*}$ die Menge aller Teilmengen über $\{0,1\}^*$ 
+ist überabzählbar, sie hat die selbe Kardinalität wie $ℝ$.
+Daher muss es Sprachen geben, die durch Grammatiken nicht beschreibbar sind.
+(Maßtheoretsche gesehen hat die Menge der Typ 0-Sprachen das Maß 0,
+die Nullmenge). Trotzdem gibt es interessante Theorien über Typ 0 Sprachen.
+\end{remark}
+
+
+
+% ------------------------------------------------------------------------------
+% ------------------------------------------------------------------------------
+\subsection{Reguläre Sprachen}
+
+\begin{remark}
+Deterministische Sprachen:
+\begin{itemize}
+	\item Akzeptor: DEA (Deterministischer endlicher Automat)
+	\item Generator: Typ 3 Grammatik (reguläre Grammatik)
+\end{remark}
+
+\begin{remark}
+Die Syntaxbäume von Wörtern aus regulären Sprachen sind entartete Bäume:
+Sie haben die Struktur von Liste.
+\end{remark}
+
+\begin{theorem}
+Die regulären Sprachen sind abgeschlossen unter:
+\begin{itemize}
+    \item Vereinigung (Disjunktion, +)
+	\item Schnitt (Konjunktion, *)
+	\item Komplement (Negation)
+	\item Produkt 
+	\item Stern
+\end{itemize}
+\end{theorem}
+% bilden dann die regulären Sprachen einen Verband? ja wohl irgendwie:
+% http://www.liafa.univ-paris-diderot.fr/~mgehrke/GGP08.pdf
+\begin{theorem}
+
+\begin{theorem}
+Folgende wichtige Probleme sind für reguläre Sprachen entscheidbar:\autocite[42]{TKIG:2003}
+\begin{itemize}
+	\item Leerheitsproblem (Sprache leer oder nicht?)
+		Endzustand des DFA erreichbar?
+	\item Endlichkeitsproblem (Sprache endlich oder nicht?)
+		zyklenfreier Graph
+	\item Schnittproblem (Schnitt leer oder nicht): 
+			reduziert auf Schnitt und Leerheit
+	\item Äquivalenzproblem (Gleiche Sprache):
+			gleicher minimalautomat vgl auf Isomorphie.
+			bzw. vergleich auf entscheidbarkeit des Leerheitsproblems.
+\end{itemize}
+
+\begin{remark}
+Deterministische Finite Automaten sind Graphen.
+Gewichtete deterministeische DFA sind gewichtete Graphen.
+
+Dadurch können viele Eigenschaften von DFA und deren Sprachen durch 
+Algorithmen über Graphen geklärt werden.
+\end{remark}
+
+\begin{theorem}
+Das Wortproblem für reguläre Sprachen ist in linearer Zeit lösbar.
+\end{theorem}
+
+\begin{poof}
+Arbeitsweise DFA. (deterministischer finiter Automat)
+\end{proof}
+
+\begin{remark}
+Die verschiedenen Konzepte, Turing-Maschinen, Lambdakalkül, ...
+sind verschiedene Sprachen in denen berechenbare Funktionen/Algorithmen 
+ausgedrückt werden können; diese reifizieren dabei unterschiedliche
+Aspekte von berechenbaren Funktionen:
+\begin{itemize}
+	\item Turingmaschinen die exakten Maschinenoperationen die bei der 
+		  Berechnung auf einer Speichermaschine durchgeführt werden.
+	\item Das Lambdakalkül die intensionale Definition/Konstruktion von Funktionen 
+			und deren Anwendung
+	\item Rekursive Funktionen
+\end{itemize}
+\end{remark}
+
+
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+\subsection{Kontextfreie Sprachen}
+
+\begin{remark}
+Kontextfreie Sprachen:
+\begin{itemize}
+	\item Akzeptor: Kellerautomat (Push-Down Automaton (PDA))
+	\item Generator: Typ 2 Grammatik (kontextfreie Grammatik)
+\end{remark}
+
+\begin{remark}
+Eignen sich zu beschreibung geklammerter Sprachen
+\end{remark}
+
+
+\begin{theorem}
+Zu jeder kontextfreien Grammatik $G$ mit i$ε ∉ L(G)$  gibt es eine 
+Chomsky-Normalform-Grammatik $G'$ mit $L(G) = L(G')$.
+\end{theorem}
+\begin{proof}
+Algorithmus
+\end{proof}
+
+\begin{theorem}
+Pumping-Lemma.
+\end{theorem}
+
+
+\begin{theorem}
+Die kontextfreien Sprachen sind abgeschlossen unter:
+\begin{itemize}
+    \item Vereinigung (Disjunktion, +)
+	\item Produkt 
+	\item Stern
+\end{itemize}
+Die kontextfreien Sprachen sind nicht abgeschlossen unter:
+\begin{itemize}
+	\item Schnitt (Konjunktion)
+	\item Komplement
+\end{itemize}
+\end{theorem}
+
+\begin{theorem}
+Das Wortproblem für kontextfreie Sprachen hat exponentiellen Aufwand
+\end{theorem}
+\begin{proof}
+CYK-Algorithmus.
+\end{proof}
+
+
+\begin{theorem}
+Eine Sprache $L$ ist kontextfrei gdw. $L$ von einem Nichtdeterministischen
+Kellerautomaten erkannt wird.
+\end{theorem}
+
+\subsubsection{deterministisch kontextfreie Sprachen}
+
+Echte Untermenge der nichtdeterministischen kontextfreien Sprachen.
+
+\begin{theorem}
+Die deterministischen kontextfreien Sprachen sind unter komplementbildung
+abgeschlossen.
+\end{theorem}
+
+% usw...
+
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+\section{Kontexsensitive Sprachen}
+
+\begin{remark}
+Kontextfreie Sprachen:
+\begin{itemize}
+	\item Akzeptor: Linear beschränkter Automat (LBA)
+	\item Generator: Typ 1 Grammatik (kontextfreie Grammatik)
+\end{remark}
+
+\begin{theorem}
+Die von linear beschränkten, nichtdeterministischen Turingmaschinen (LBAs)
+akzeptierten Sprachen sind genau die kontextsensitiven (Typ 1) Sprachen.
+\end{theorem}
+
+\begin{theorem}
+Kontextsensitie Sprachen sind abgeschlossen unter:
+\begin{itemize}
+	\item Schnitt
+	\item Vereinigung
+    \item Komplement
+	\item Stern
+	\item Produkt
+\end{itemize}
+
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+\section{Typ 0 Sprachen: Phrasenstruktursprachen}
+
+\begin{remark}
+Kontextfreie Sprachen:
+\begin{itemize}
+	\item Akzeptor: Turingmaschine
+	\item Generator: Phrasenstrukturgrammatik
+\end{remark}
+
+\begin{theorem}
+Die durch allgemeine Turingmaschinen akzeptierbaren Sprachen sind genau die
+Typ-0 Sprachen.
+\end{theorem}
+
+\begin{question}
+Ist eine Phrasenstrukturgrammatik eigentlich auch ein eigenständiger 
+Berechenbarkeitsbegriff?
+Wenn ja warum, wenn nein warum ...
+\end{question}
+
+
+
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+\section{Berechenbarkeitstheorie}
+
+Gegenstand der Berechenbarkeitstheorie sind:
+\begin{itemize}
+	\item\label{it:Berechenbarkeitsbegriff} 
+		Formalisierung des Berechenbarkeitsbegriffs/Algorithmenbegriffs
+\end{itemize}
+
+\ref{Berechenbarkeitsbegriff} wurde durch mehrere Ansätze gelöst:
+\begin{itemize}
+	\item Turing-Maschinen
+	\item Lambda-Kalkül
+	\item Rekursive Funktionen
+	\item Goto-Berechenbarkeit
+	\item Loop-Berechenbarkeit
+\end{itemize}
+
+Wichtige Ergebnisse:
+\begin{itemize}
+	\item Die Church-These
+			Der von Turing-maschinen festgelegt Berechenbarkeitsbegriff
+			erfasst genau die Menge der berechenbaren Funktionen. 
+	\item Die oben genannten Berechenbarkeitsbegriffe beschreiben die gleiche
+			Menge von Funktionen:
+			Church-Turing-These
+	\item Nicht jede Funktion ist berechenbar/algorithmisierbar:
+			Entscheidungskriterium für die algorithmische Unlösbarkeit 
+			bestimmter Probleme.
+\end{itemize}
+
+\begin{remark}
+Frage: Warum ist es notwendig den intuitiven Berechenbarkeitsbegriff zu formalisieren?
+
+Antwort: 
+Um ein Kriterium zu haben mit dem sich von einer bestimmten Funktion zeigen
+lässt, dass sie sich algorithmisch berechnen lässt oder nicht.
+
+Historisch war dies zur Lösung von Hilberts Entscheidungsproblem notwendig.
+\end{remark}
+
+%-------------------------------------------------------------------------------
+\subsubsection{Intuitiver Berechenbarkeitsbegriff}
+
+\begin{remark}[Intuitiver Berechenbarkeitsbegriff]
+Eine (evtl. partielle) Funktion $f : ℕ^k → ℕ$ soll als berechebar angesehen 
+werden, falls es einen Algorithmus gibt, der $f$ berechnet:
+\begin{itemize}
+\item totale Funktion:
+	\begin{itemize}
+	\item Input: $(n₁,\dots,n_k) ∈ ℕ^k$ 
+	\item Output: Termination mit $f(n₁,\dots,n_k)$ nach endlich vielen Schritten
+	\end{itemize}
+\item partielle Funktionen:
+	\begin{itemize}
+	\item Input: $(n₁,\dots,n_k) ∈ ℕ^k$ 
+	\item Output: Termination mit $(n₁,\dots,n_k) ∈ ℕ^k$ falls Eingabe definiert 
+			oder Nichttermination bei Definitionslücke.
+	\end{itemize}
+\end{itemize}
+
+Jedem Algorithmus ist also eine Funktion die durch ihn berechnet wird zugeordnet;
+ein Algorithmus ist eine (finite) intensionale Darstellung einer 
+(u.u. transfiniten) (extensionalen) Funktion;
+Jeder Algorithmus denotiert/bezeichnet/bedeutet eine Funktion.
+\end{remark}
+
+\begin{remark}
+Kurz gesagt: 
+Für alle Eingabewerte gilt: 
+Wenn der Eingabewert keine Definitionslücke der Funktion ist
+dann muss die Berechnung auch in endlicher Zeit terminieren.
+
+Offensichtlich weiss man aber nicht bei allen Eingabewerten ob sie 
+Definitionslücken sind oder nicht.
+\end{remark}
+
+\begin{remark}
+Dieser Berechenbarkeitsbegriff ist nicht konstruktiv!
+Es genügt der Nachweis, dass ein Algorithmus existiert, dieser muss
+nicht explizit angegeben werden.
+
+\begin{example}
+Folgende Funktion ist berechenbar:
+\begin{align*}
+	n_{i} &= 
+		\begin{cases}
+    	    1 & \text{falls das LBA-Problem eine positive Lösung hat}
+    	    0     & \text{sonst}
+    	\end{cases}
+\end{align*}
+\end{example}
+Die epistemische Lücke ob der Lösbarkeit des LBA-Problems ändert nichts 
+daran, dass $i$ berechenbar ist.
+\end{remark}
+
+\begin{remark}
+Zwei unterschiedliche Algorithmen können die gleiche Funktion bedeuten.
+Sie haben dann einen unterschiedlichen Inhalt (Sinn) aber den gleichen
+Umfang (Bedeutung).
+
+Es gibt im Allgemeinen keinen Algorithmus, der gegeben zwei Algorithmen mit 
+unterschiedlichem Inhalt feststellen kann ob diese die gleiche Bedeutung haben.
+(Halteproblem).
+\end{remark}
+
+\begin{remark}
+Der Kompiliervorgang ist somit der Prozess ein Programm/Zeichenkette
+einen anderen Inhalt zuzuordnen, aber den Umfang/die Bedeutung beizubehalten.
+\end{remark}
+
+
+\begin{remark}[Berechenbarkeit von Zahlen]
+Die Funktionen der Zahlen $π$ und $e$ sind berechenbar.% ??? sind doch nur Näherungsverfahren
+Nicht jede reele Zahl ist berechenbar.
+Die Kardinalität der berechenbaren Funktionen ist gleich der Kardinalität von $ℕ$,
+und damit kleiner als die Kardinalität von $ℝ$.
+
+Jede natürliche Zahl ist berechenbar, jede rationale Zahl ist berechenbar.
+\end{remark}
+
+
+
+%-------------------------------------------------------------------------------
+\subsubsection{Formaler Berechenbarkeitsbegriff}
+
+\begin{theorem}[Churchsche These]
+Die durch die formale Definition der \concept{Turing-Berechenbarkeit}
+(äquivalent: \concept{Lambda-Definierbarkeit}, \concept{While-Berechenbarkeit},
+\concept{Goto-Berechenbarkeit}, μ-Rekursivität, \dots) erfasste Klasse von
+Funktionen stimmt genau mit der Klasse der im intuitiven Sinn berechenbaren
+Funktionen überein.
+\end{theorem}
+
+\begin{question}
+Warum ist dieser Begriff nicht konstruktiv?
+Und warum kann ich einfach an einigen stellen so tun als hätte ich 
+epistemische Kenntnis von irgendwas?
+
+Beispielsweise:
+1 wenn f ein Modell hat,
+0 wenn f kein Modell hat
+\end{question}
+
+
+\paragraph{Turing-Berechenbarkeit}
+
+\begin{remark}
+Bislang wurde die Turing-Maschinen zum Akzeptieren von Sprachen verwendet.
+Nun muss die Definition modifiziert werden, um das Berechnen von Funktionen
+zu erfassen. Zwei Definitionen von Turing-Berechenbarkeit, eine für Funktionen
+auf natürlichen Zahlen, eine für Funktionen auf Wörtern\autocite[87]{TIKG:2003}
+
+\begin{definition}{Turing-Berechenbarkeit für Funktionen über $ℕ$}\label{def:TuringNat}
+Eine Funktion $f: ℕ^k → ℕ$ heißt \concept{Turing-Berechenbar},
+falls es eine (deterministische) Turingmaschine $M$ gibt,
+so dass für alle $n₁,\dots,n_k$ gilt:
+
+\begin{align*}
+	f(n₁,\dots,n_k) &= m \\
+				&gdw. \\
+	z₀bin(n1)#bin(n₂)#\dots#bin(n_k) &⊢^* ⎕\dots⎕z_ebin(m)⎕\dots⎕
+\end{align*}
+wobei $z_e ∈ E$.
+\end{definition}
+
+\begin{definition}{Turing-Berechenbarkeit für Funktionen über Wörtern}\label{def:TuringWord}
+Eine Funktion $f : Σ^* → Σ^*$ heißt \concept{Turing-berechenbar},
+falls es eine (deterministische) Turingmaschine $M$ gibt,
+sod dass für alle $x,y ∈ Σ^*$ gilt:
+
+\begin{align*}
+	f(x) &= y
+		&gdw.
+	z₀x ⊢^* ⎕\dots⎕z_ey⎕\dots⎕
+\end{align*}
+wobei $z_e ∈ E$.
+\end{definition}
+
+\begin{remark}
+In Definition \ref{def:TuringWord} und Definition \ref{def:TuringNat} implizit
+enthalten ist, dass im Falle von $f(x) = undefiniert$ die Maschine in eine 
+undendliche Schleife gehen kann. 
+\begin{remark}
+
+\begin{remark}[Turing-Maschinen und Typ 0 Sprachen]
+Die Turingmaschine muss nur für Eingaben halten die durch die Funktion definiert 
+sind. Für nicht definierte Eingaben muss die Maschine nicht halten.
+
+Dies betrifft auch das Wortproblem von Typ 0 Sprachen;
+diese entsprechen damit exakt den semi-entscheidbaren Sprachen.\autocite{TIKG:2003}
+\end{remark}
+
+\begin{theorem}
+Zu jeder Mehrband-Turingmaschine $M$ gibt es eine Einband-Turingmaschine $M'$
+mit $T(M) = T(M')$ bzw. so, dass $M'$ dieselbe Funktion berechnet wie $M$.
+\end{theorem}
+% T ist hier die von der Turingmaschine akzeptierte Sprache
+
+
+%%-------------------------------------------------------------------------------
+%\subsubsection{Loop Berechenbarkeit}
+%
+%\mobj{Loop} ist eine einfache Programmiersprache.
+%\fo{Loop}-Programme sind aus den folgenden Komponenten aufgebaut:
+%\begin{itemize}
+%\item Variablen: $x₁, x₂, x₃, \dots$
+%\item Konstanten: \loop{0 1 2} \dots
+%\item Trennsymbole: \loop{; :=}
+%\item Operationszeichen: \loop{+ -}
+%\item Schlüsselwörter: \loop{LOOP DO END}
+%\end{itemize}
+%
+%\begin{definition}[Syntax von \fo{Loop}-Programmen]
+%\begin{align*}
+%	L &= x_i \loop{:=} x_j + c
+%	  &= x_i \loop{:=} x_j - c
+%	  &| L₁\loop{;}L₂)
+%	  &| \Loop{LOOP}x₁\loop{DO}P\loop{END}
+%\end{align*}
+%\end{definition}
+%
+%\begin{definition}[(Operationale) Semantik von \fo{Loop} Programmen]
+%%TODO
+%\end{definition}
+%
+%\begin{theorem}
+%Es gilt: Wenn eine Funktion \fo{Loop}-berechenbar ist,
+%dann ist sie total.
+%\end{theorem}
+%
+%\begin{remark}
+%Mit \fo{Loop}-Programmen ist es nicht möglich eine unendliche Schleife zu bauen;
+%jede Schleife terminiert nach einiger Zeit.
+%\end{remark}
+%
+%\begin{example}
+%Additionsfunktion.
+%\end{example}
+%
+%\begin{question}
+%Entspricht Loop einem bestimmten Autoamtenkonzept?
+%wohl nicht...
+%\end{question}
+%
+%\begin{theorem}
+%Es gilt: Wenn eine Funktion total ist, 
+%dann ist sie nicht notwendig \fo{Loop}-berechenbar.
+%\end{theorem}
+%\begin{proof}
+%Ackermann-Funktion.
+%\end{proof}
+%
+%\begin{theorem}
+%Eine Funktion ist \fo{Loop}-berechenbar gdw. sie primitiv-rekursiv ist.
+%\end{theorem}
+%
+%
+%%-------------------------------------------------------------------------------
+%\subsubsection{While Berechenbarkeit}
+%
+%
+%\mobj{While} ist eine einfache Programmiersprache.
+%\fo{While}-Programme sind aus den folgenden Komponenten aufgebaut:
+%\begin{itemize}
+%\item Variablen: $x₁, x₂, x₃, \dots$
+%\item Konstanten: \while{0 1 2} \dots
+%\item Trennsymbole: \while{; :=}
+%\item Operationszeichen: \while{+ -}
+%\item Schlüsselwort: \while{LOOP DO END}
+%\item Schlüsselwort: \while{WHILE}$x₁ ≠ 0$ \while{DO} $p$ \while{END}
+%\end{itemize}
+%
+%\begin{definition}[Syntax von While-Programmen]
+%\end{definition}
+%
+%\begin{definition}[Semantik von While-Programmen]
+%\end{definition}
+%
+%\begin{remark}
+%Loop und While sind keine historisch bedeutsamen Programmiersprachen,
+%sondern nur zu didaktischen Zwecken von Schöning entworfen
+%\end{remark}
+%
+
+
+%-------------------------------------------------------------------------------
+\subsubsection{primitiv rekursive Funktionen}
+
+\begin{definition}[primitiv rekursive Funktionen]
+Die Klasse der \concept{primitiv rekursiven Funktionen} auf
+den natürlichen Zahlen):
+\begin{enumerate}
+\item\label{it:basis1} Alle Konstanten Funktionen sind Primitiv rekursiv.
+\item Alle identischen Funktionen (Projektionen) sind primitiv rekursiv.
+	(Beispiel $f : A × B × C → B$ mit $f(a,b,c) ↦ b)$)
+\item\label{it:basis2} Die Nachfolgerfunktion $s(n) = n + 1$ auf $ℕ$ ist primitiv rekursiv.
+\item\label{it:basis3} Primitiv rekursive Funktionen sind abgeschlossen unter Komposition.
+\item Jede Funktion die durch \concept{primitive Rekursion} 
+	$f$ muss ein Gleichungssystem der folgenden Art erfüllen:
+	\begin{align*}
+		f(0,\dots) &= g(\dots)
+		f(n+1,\dots) &= h(f(n,\dots),\dots)$
+	\end{align*}
+	wobei $h, g$ bereits primitiv rekursive Funktionen sind.
+\end{itemize}
+Die Funktionen \ref{it:basis1}-\ref{it:basis3} werden Basisfunktionen genannt.
+\end{definition}
+
+
+\begin{example}[Additionsfunktion $add : ℕ × ℕ → ℕ]
+\begin{align*}
+	add(0,x) &= x
+	add(n + 1, x) &= succ(add(n,x))
+\end{align*}
+\end{example}
+
+\begin{theorem}
+Für alle berechenbaren Funktionen $f$ gilt: 
+Wenn $f$ primitiv rekursiv ist, dann ist $f$ total.
+\end{theorem}
+
+\begin{proof}
+\end{proof}
+
+
+\begin{theorem}
+Für alle berechenbaren Funktionen $f$ gilt:
+Wenn $f$ total ist, dann ist $f$ nicht notwendig primitiv rekursiv.
+\end{theorem}
+
+\begin{proof}
+Ackermann-Funktion.
+\end{proof}
+
+\begin{question}
+Welche Rolle spielen die primitiv rekursiven Funktionen in der Beweistheorie
+und im Curry Howard isomorphismus?
+ist es möglich Termination zu kapseln, beispielsweise in einer Monade
+\end{question}
+
+\begin{remark}
+Offensichtlich machen Funktionen in der Maybe-monad manche Funktionen total,
+welche es ansonsten nicht wären, Beispielsweise die Division auf $ℕ$.
+Allerdings erzwingt dass natürlich noch keine Termination, sondern nur 
+Offensichtliche Definitionslücken aufgrund von Lücken im Wertebereich.
+\end{remark}
+
+
+%-------------------------------------------------------------------------------
+\subsection{$μ$-rekursive Funktionen}
+
+Eine echte Erweiterung der primitiv-rekursiven Funktionen wird durch
+Hinzunahme des \comcept{$μ$-Operators} erreicht.
+
+\begin{definition}
+Sei $f$ eine gegenene $k + 1$ stellige Funktion.
+Die durch Anwendung des $μ$-Operators auf $f$ entstehende Funktion ist 
+$g : ℕ^k → ℕ$ mit
+$ g(x₁,\dots,x_k) = 
+	\text{min} \{ n | f(n,x₁,\dots,x_k) = 0 
+	\text{und für alle} m , n \text{ist} f(m,x₁,\dots,x_k) \text{definiert}\}$
+mit $min ∅ = undefiniert$.
+\end{definition}
+%Das sieht doch gaaaaanz extrem nach dem least-fixpoint aus?
+
+\begin{remark}
+Durch Anwendung des $μ$-Operators können partielle Funktionen entstehen.
+\end{remark}
+
+\begin{definition}
+Due Jkasse der $μ$-rekursiven Funktionen ist die kleinste Klasse von
+(evtl. partiellen) Funktionen, di die Basisfunktionen enthält und 
+abgeschlossen ist unter Einsetzung, primitiver Rekursion und 
+Anwendung des $μ$-Operators.
+\end{definition}
+
+\begin{theorem}
+Die Klasse der $μ$-rekursiven Funktionen stimmt genau mit der Klasse 
+der Turing-berechenbaren Funktionen überein.
+\end{theorem}
+
+\begin{question}
+Wie ist der gute Kurt eigentlich auf diese Konzept gekommen?
+Erscheint mir doch iwi reichlich unintuitiv ...
+\end{question}
+
+
+
+		
+
+
+
+%------------------------------------------------------------------------------ne-
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+\section{Komplexitätstheorie}
+
+Voraussetzung für die Berechenbarkeitstheorie ist eine berechenbare Funktion.
+Die Berechenbarkeitstheorie untersucht mit welchen Ressourcen (Time/Space)
+eine solche Berechnung durchgeführt werden kann.
+
+%-------------------------------------------------------------------------------
+\begin{question}
+Bezeichnen das Konzept \concept{Algorithmus} und \concept{Berechenbare Funktion} 
+die gleiche Funktionenmenge --- die der berechenbaren Funktionen?
+\end{question}
+\begin{answer}
+Ja.
+Die Berechenbarkeitstheorie liefert Kriterien wie diese Einteilung vorgenommen
+werden kann ...
+\begin{example}{Beispiel für eine nicht-berechenbare Funktion}
+\end{example}
+\begin{example}{Beispiel für eine berechenbare Funktion}
+\end{example}
+\end{question}
+
+\begin{question}
+Offensichtlich gibt es eine Grammatik die alle wohlgeformten Formeln der 
+klassischen Aussagenlogik erzeugt:
+
+F = V | not F | F₁ and F₂ | F₁ or F₂ 
+
+Das ist offensichtlich eine Type 2 Grammatik: Kontextfreie Grammatik
+(genauso wie die Grammatik für arithmetische Ausdrücke).
+
+Gibt es auch eine Grammatik die alle gültigen Formeln (Tautologien) der KAL 
+erzeugt (Kontradiktionen, Kontingente Ausdrücke/Neutralitäten?).
+
+Sollte doch eigentlich möglich sein, da es ein terminierendes 
+Entscheidungsverfahren gibt. Das müsste doch bedeuten, 
+dass es allerhöchstens eine Typ 1 Sprache sein dürfte, oder?
+\end{question}
+
+\begin{question}
+Wenn es für ein bestimmtes Problem ein Entscheidungsverfahren gibt,
+dann kann doch die Grammatik höchtens von Typ 1 sein oder?
+Für berechenbare aber nicht zwingend terminierende Dinge Typ 0?
+
+Hat unbeschränkte und primitive Rekursion was damit zu tun?
+\end{question}
+
+
+
+\begin{question}
+Gibt es eigentlich auch einen Zusammenhang zwischen Pattern-matching
+und Grammatiken?
+im Prinzip ist doch ein Typ mit nur einem Konstruktor sowas wie eine 
+kontextfreie Grammatik, ansonsten kontextsensitiv?
+\end{question}
+
+\end{document}

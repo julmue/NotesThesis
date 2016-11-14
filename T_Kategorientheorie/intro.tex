@@ -1,0 +1,687 @@
+\documentclass[parskip=half]{scrreprt}
+\usepackage{common}
+
+%-------------------------------------------------------------------------------
+% map			Abbildung
+% morphism		Abbildung
+% domain		Wertemenge
+% codomain		Zielmenge
+% rule			Abbildungsvorschrift
+% process		Abbildungsvorschrift
+% isomorphism	Isomorphismus
+
+%-------------------------------------------------------------------------------
+\begin{document}
+\title{Zusammenfassung: Einführung in die Kategorientheorie}
+\subtitle{Zusammenfassung \enquote{Introduction to Category Theory}}
+\author{Julian Müller}
+\maketitle
+\tableofcontents
+
+\part{Kategorien}
+
+\chapter{Definition der Kategorie}
+
+\begin{definition}[Kategorie]
+Eine Kategrie $𝓒$ besteht aus:
+\begin{itemize}[leftmargin=1em]
+\item Daten: 
+	\begin{itemize}
+	\item Ob($𝓒$): Eine Klasse von Objekten ($A, B, C, \dots$).
+	\item Ar($𝓒$): Eine Klasse von Pfeilen/Morphismen ($f, g, h, \dots$). \\
+		Jeder Morphismus $f : A → B$ besteht aus:
+		\begin{itemize}
+		\item Quelle/Domäne: $dom(f) = A$
+		\item Ziel/Kodomäne: $codom(f) = B$
+		\end{itemize}
+	\item Verknüpfungsabbildung für je zwei Abbildungen:
+		$$(B → C) × (A → B) ⇒ (A → C), (g,f) ↦ g ∘ f$$
+	\item Identitätsmorphismus: $1_A : A → A$ (auch $id_X$) für jedes Objekt.
+	\end{itemize}
+\item Gesetzen denen die Morphismen genügen müssen:
+	\begin{itemize}
+	\item Identitätsgesetze:
+		\begin{itemize}
+		\item Wenn $A \xrightarrow{1_A} A \xrightarrow{g} B$, dann $g ∘ 1_A = g$.
+		\item Wenn $A \xrightarrow{f} B \xrightarrow{1_B} B$, dann $1_B ∘ f = f$.
+		\end{itemize}
+	\item Assoziativgesetz:
+		\begin{itemize}
+		\item Wenn $A \xrightarrow{f} B \xrightarrow{g} C \xrightarrow{h} D$\\ 
+			dann $A \xrightarrow{h∘(g∘f)=(h∘g)∘f} D $
+		\end{itemize}
+	\end{itemize}
+\end{itemize}
+\end{definition}
+
+\begin{remark}
+Die Algebra der Abbildungskomposition 
+(Komposition als die Verküpfung von Abbildungen)
+gleicht der Multiplikation von Zahlen,
+allerdings hat sie eine weit reichere Interpretation.
+\end{remark}
+
+\begin{remark}
+Die Identitätsabbildung ist das neutrale Element der Abbildungsalgebra,
+wie die $1$ das neutrale Element der Multiplikation ist ... daher auch $1_A$.
+\end{remark}
+
+\begin{remark}
+Der Kompositionsoperator $∘$ verküpft zwei Abbildungen $g$ und $h$ zu 
+einer neuen Abbildungen $h∘g$ ($h$ nach $g$).
+\end{remark}
+
+\chapter{Die Kategorie der Mengen}
+
+Ein Beispiel für eine Kategorie:
+Die Kategorie der endlichen Mengen, und Abbildungen.
+Eine Abbildung \engl{Abbildung}{map} ist eine Prozess 
+um von einer Menge in eine andere zu kommen.
+
+% Nach Meijer also unsere erste Programmiersprache
+% endliche Mengen als Typen
+% Abbildungen als Funktionen
+\begin{definition}[Kategorie der endlichen Mengen]
+Die Kategorie \category{SET} besteht aus:
+\begin{itemize}
+\item Objekten: Mengen $A, B, \dots$
+\item Morphismen: Abbildungen zwischen Mengen $f: A → B$ welche bestehen aus:
+	\begin{itemize}
+	\item Definitionsmenge: eine Menge $A$ \engl{Definitionsmenge}{domain}
+	\item Zielmenge: eine Menge $B$ \engl{Zielmenge}{codomain}
+	\item Abbildungsvorschrift: Zu jedem $a ∈ A$ ein $b ∈ B$ mit $f(a) = b$.
+	\end{itemize}
+\end{itemize}
+\end{definition}
+
+\begin{remark}
+Die Abbildungen sind totale Funktionen (linkstotal und rechtseindeutig).
+\end{remark}
+
+% ------------------------------------------------------------------------------
+% interne und externe diagramme 
+\newpage
+\subsection{Diagramme}
+
+\begin{remark}[Interne Diagramme]
+Der Inhalt finiter Mengen lässt sich durch (beschriftete) interne Diagramm 
+darstellen:
+
+\graphics{pics/internalDiagram1.png}{Internes Diagramm einer Menge}
+
+Auch Abbildungen lassen sich auf diesem Weg darstellen;
+die Abbildungsvorschrift kann durch interne Diagramme explizit gemacht werden:
+
+\graphics{pics/internalDiagram2.png}{Internes Diagramm einer Abbildung}
+\end{remark}
+
+\begin{remark}[Externe Diagramme]
+Externe Diagramme zeigen nur Definitions- und Zielmenge; 
+sie werden verwendet wenn es auf die genaue Abbildungsvorschrift für den 
+aktuellen Diskurs nicht relevant ist:
+
+\graphics{pics/externalDiagram1.png}{Externe Diagramme}
+
+Externe Diagramme können in jeder Kategorie verwendet werden,
+da sie Morphismen zwischen Kategorien allgemein erfassen.
+\end{remark}
+
+% ------------------------------------------------------------------------------
+\newpage
+\subsection{Spezielle Abbildungen}
+
+\begin{definition}[Endomorphismus]
+Ein Endmorphismus $f: A → A$ ist ein Morphismus bei dem Quelle und Ziel 
+identisch sind.
+\end{definition}
+
+\begin{definition}[Identitätsmprphismus]
+Ein spezieller Endomorphismus ist der Identitätsmorphismus $1_A$,
+der $A$ unverändert auf sich selbst abbildet. 
+\end{definition}
+
+\begin{remark}
+In \category{SET} bildet der Identitätsmorphismus jedes Element auf sich selbst ab.
+\end{remark}
+
+\begin{remark}
+Die Verknüpfungsabbildung zweier Morphismen $f$ und $g$ in \category{SET}
+ist die Komposition $g∘f$ der Abbildungen;
+Voraussetzung für die Komposition ist, dass die Zielmenge von $f$ identisch
+mit der Definitionsmenge von $g$ ist.
+\end{remark}
+
+\graphics{pics/functionComposition1.png}{Funktionskomposition}
+
+\begin{definition}[Punkt]% Unit?
+Ein Punkt (auch Singleton) ist eine Menge mit exakt einem Element.
+\end{definition}
+
+\begin{remark}
+Einelementige Mengen werden auch mit $1$ bezeichnet.
+\end{remark}
+
+\begin{theorem}
+Die Komposition eines Punktes mit einer anderen Abbildung ist wieder ein Punkt.
+\end{theorem}
+\begin{proof}
+% TODO
+\end{proof}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Session 2: Mengen, Abbildungen und Komposition                             %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+
+\begin{remark}[Vergleich/Identität von Abbildungen]
+
+Die Abbildungsvorschrift ist der Inhalt, die Abbildung ist der Umfang.
+
+\begin{example}
+$$f : ℕ → ℕ, x ↦ (x+1)²$$
+$$g : ℕ → ℕ, x ↦ x²+2x+1$$
+
+Beide Abbildungen sind wertverlaufsgleich --- es handelt sich um dieselbe
+Abbildung $f=g$. Das ist exakt die Aussage der folgenden Gleichung:
+
+$$ (x+1)² = x²+2x+1$$
+
+Im Allgemeinen drücken Gleichungen aus, das Ausdrücke mit (evtl. verschiedenen)
+Inhalten den gleichen Umfang haben.
+Der Begriff der Abbildung wird damit extensional verwendet,
+da eine Abbildung von ihrem Umfang bestimmt wird, nicht intensional von  
+ihrere Abbildungsvorschrift.
+\end{example}
+\end{remark}
+
+\begin{remark}[Notwendige Bedingung für die Identität zweier Abbildungen]
+Eine notwendige, aber nicht hinreichende Bedingung für die Identität zweier 
+Abbildungen $f$ und $g$ ist in jeder Kategorie, dass $f$ und $g$ die gleichen 
+Domänen und Kodomänen haben.
+\end{remark}
+
+\begin{remark}[Test der Identität zweier Abbildungen]
+Um die Identität zweier Abbildungen $A \xrightarrow{f} B$ und $A \xrightarrow{g} B$
+zu beweisen genügt es zu zeigen:
+$$\text{Wenn für jeden Punkt} 1 \xrightarrow{a} A, f ∘ a = g ∘ a, \text{dann} f=g$$
+\end{remark}
+
+% Vielleicht als Beispiel: Fahrenheit nach Celsius S. 28
+
+\begin{remark}[Unterschied zwischen Multiplikation und Komposition]
+Multiplikation auf $ℕ$ ist kommutativ, Komposition nicht.
+\end{remark}
+
+
+\begin{remark}[Anzahl der Abbildungen von einer Menge in eine andere Menge]
+Für endliche Mengen $A$ und $B$ gibt es $|B|^{|A|}$ viele Abbildungen 
+$f : A → B$.
+\end{remark}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Session 3: Komposition von Abbildungen und Zählen von Abbildungen		  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{remark}
+Die Menge der Abbildungen $f : A → B$ wird mit $B^A$ bezeichnet
+(Da sie $|B|^{|A|}$ viele Elemente enthält).
+\end{remark}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setpartpreamble{%
+\begin{abstract}
+Wir untersuchen folgende Analogie: Wenn die Komposition von Abbildungen
+der Multiplikation von Zahlen gleicht, was ist dann das Analogon zur Division?
+\end{abstract}
+}
+\part{Die Algebra der Komposition}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Artikel 2: Isomorphismen, 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Isomorphismen, Sektionen, Retraktionen, Idempotenz, Automorphismen}
+
+% ------------------------------------------------------------------------------
+\section{Isomorphie}
+
+\begin{example}[Einführung: Vergleich von Mengen]
+Isomorphismen erlauben unter abderem den Vergleich von Mengen ohne einen Zahlbegriff.
+Ein Isomorphismus eine spezielle Abbildung. Welche Eigenschaften muss eine 
+Abbildung $f: A → B$ haben, damit man zwei mit ihrer Hilfe zwei Mengen $A$ und 
+$B$ vergleichen kann? Sie muss 
+\begin{enumerate*}
+\item injektiv und 
+\item surjektiv 
+\end{enumerate*}
+sein --- eine Bijektion. Dann gibt es eine Umkehroperation $f^{-1}: B → A$ 
+mit $f ∘ f^{-1} = 1_A$ und $f^{-1} ∘ f = 1_B$.
+Beide dieser Gleichungen müssen erfüllt sein, damit $A$ und $B$ gleich mächtig
+sind.
+\end{example}
+
+\graphics{pics/setIsomorphism1}{Isomorphismus zwischen Mengen}
+% ein isomorphismus ist nur zwischen Mengen mit der gleichen Kardinalität möglich.
+% ist die Anzahl der Isomorphismen zwischen zwei Mengen gleich ihrer Kardinalität?
+
+\begin{definition}[Isomorphismus]\label{def:IsmomorphismAsInvertibleMorphism}
+Ein Morphismus $f: A → B$ wird \definiendum{Isomorphismus} 
+(oder umkehrbare Abbildung) genannt, wenn es eine Abbildung $g: B → A$ 
+gibt für welche die folgenden Gleichungen gelten:
+\begin{enumerate}
+\item $f ∘ g = 1_A$
+\item $g ∘ f = 1_B$
+\end{enumerate}
+Eine Abbildung $g$ welche in Bezug auf $f$ diese Eigenschaften erfüllt heißt 
+\concept{Inverse von $f$} und wird auch mit $f^{-1}$ bezeichnet. Zwei Objekte 
+$A$ und $B$ werden isomorph genannt, wenn es mindestens einen Isomorphismus 
+$f: A → B$ gibt.
+\end{definition}
+% Beispiel 1:
+% Descartes Koordinaten --- Isomorphismus zwischen Raum und der Algebra von n-Tupeln
+% Beispiel 2:
+% könnte sich jetzt überlegen wie der Curry-Howard-Lambek-Isomorphimus aussieht ...
+
+% ------------------------------------------------------------------------------
+% Isomorphie ies eine Äquivalenzrelation
+\newpage
+
+\begin{theorem}[Isomorphie ist eine Äquivlanzrelation]\label{thm:IsomorphismIsAnEquivalenceRelation}
+Isomorphie zwischen zwei Objekten ist eine Äquivalenzrelation. Es gilt:
+\begin{enumerate}
+\item \label{def:IsoRef} Reflexivität: 
+	$A$ ist isomorph zu $A$
+\item \label{def:IsoSym} Symmetrie: 
+	Wenn $A$ isomorph ist zu $B$, 
+	dann ist $B$ isomorph zu $A$.
+\item \label{def:IsoTra} Transitivität: 
+	Wenn $A$ isomorph zu $B$, 
+	und $B$ isomorph zu $C$,
+	dann ist $A$ isomorph zu $C$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Seien $A$, $B$ und $C$ Objekte und $f: A → B$, $f^{-1}: B → A$ sowie $g: B → C$ 
+und $g^{-1}: C → B$ Isomorphismen (mit ihren Umkehrabbildungen).
+Dann gilt:
+\begin{subproof}[Reflexivität]
+Aufgrund der Identitätsabbildung $1_A$.
+\end{subproof}
+\begin{subproof}[Symmetrie] 
+Aufgund der Voraussetzung.
+\end{subproof}
+\begin{subproof}[Transitivität]
+\begin{align*}\label{sp:IsoTrans}
+	  &f ∘ g ∘ g^{-1} ∘ f^{-1}  \\	% Assoziativität
+	= &f ∘ 1_B ∘ f^{-1}			\\% Annahme
+	= &f ∘ f^{-1}				\\% Identitätsgesetz
+	= &1_A						% Annahme
+\end{align*}
+Weiter $ g ∘ f ∘ f^{-1}∘ g^{-1} = 1_C$ analog.
+\end{subproof}
+\end{proof}
+
+
+\begin{theorem}[Eindeutigkeit des Umkehrmorphismus]\label{InvertibleMorphismIsUnique}
+Hat ein Morphismus $f: A → B$ einen Umkehrmorphismus $f^{-1}: B → A$ ist dieser 
+eindeutig.
+\end{theorem}
+\begin{proof}
+%TODO
+\end{proof}
+
+
+
+% ------------------------------------------------------------------------------
+% ------------------------------------------------------------------------------
+\section{Entscheidungsprobleme: Wahl- und Determinationsproblem}
+% section and retraction
+
+In der Abbildungsalgebra gibt es zwei Arten von Entscheidungsproblemen:
+
+\begin{definition}[Wahlprobleme (Lifting)]
+\graphics{pics/liftingProblem.png}{Wahlproblem}
+Gegeben ein $g$ und $h$, was sind alle $f$, so es welche gibt,
+dass $g ∘ f = h$?
+\begin{analogon}[Logik]
+Beim Beweis einer Transitivität fehlt die erste Implikation.
+\end{analogon}
+\begin{analogon}[Multiplikation auf $ℕ$]
+Achtung: Multiplikation ist kommutativ daher hinkt der Vergleich ...
+Hinterer Faktor unbekannt: $g * ? = h$. 
+\end{analogon}
+\end{definition}
+
+\begin{remark}
+Das Wahlproblem entspricht dem Finden eines Morphismus' $f$ der auf die 
+Repräsentanten gemäß $h$ von $C$ in $B$ abbildet.
+\end{remark}
+
+\begin{definition}[Determinationsproblem]
+\graphics{pics/determinationsProblem.png}{Determinationsproblem}
+Gegeben ein $f$ und ein $h$, was sind alle $g$ so es welche gibt,
+dass $g ∘ f = h$?
+\begin{analogon}[Logik]
+Zum Beweis einer Transitivität fehlt die zweite Implikation.
+\end{analogon}
+\begin{analogon}[Multiplikation auf $N$]
+Der vordere Faktor unbekannt: $? * g = h$.
+\end{analogon}
+\end{definition}
+
+\begin{remark}
+Das Determinationsproblem entspricht dem Finden eines Morphismus' $g$ der 
+gemäß $h$ von den Repräsentaten von $C$ in $B$ auf $B$ abbildet.
+\end{remark}
+
+% ------------------------------------------------------------------------------
+% Spezielle Wahlprobleme: Sektionsproblem und Retraktionsproblem
+
+\subsection{Lösungen des spezielle Wahl- und Determinationsproblems: Sektion und Retraktion}
+
+\begin{definition}[Spezielles Wahlproblem / Sektion]
+\graphics{pics/sektionsProblem.png}{Sektionsproblem}
+Beim spezielle Wahlproblemen gilt $h = 1_B$.
+Lösungen dieses Problems sind Morphismen $s$ für die gilt $f ∘ s = 1_B$. 
+Morphismen mit dieser Eigenschaft werden als Sektion von $f$ bezeichnet.
+\end{definition}
+
+\begin{definition}[Retraktion]
+\graphics{pics/retraktionsProblem.png}{Retraktionsproblem}
+Beim speziellen Determinationsproblem gilt $h = 1_A$.
+Lösungen dieses Problems sind Morphismen $r$ für die gilt $r ∘ f = 1_A$.
+Morphismen mit dieser Eigenschaft werden als Retraktionen von $f$ bezeichnet.
+\end{definition}
+
+\begin{remark}
+Sektionen und Retraktionen sind weder eindeutig, noch existieren sie für jeden 
+Morphismus. wie die folgenden Sätze belegen.
+\end{remark}
+
+\begin{theorem}[Nicht jede Abbildung hat eine Sektion]\label{thm:SektionNotNecessary}
+Eine Abbildung $f$ hat nicht notwendig eine Sektion $s$.
+\end{theorem}
+\begin{proof}
+% TODO
+\end{proof}
+
+\begin{theorem}[Nicht jede Abbildung hat eine Retrakion]\label{thm:RetractionNotNecessary}
+Eine Abbildung $f: A → B$ hat nicht notwendig eine Retraktion 
+\end{theorem}
+\begin{proof}
+\end{proof}
+
+\begin{theorem}\label{thm:SectionNotUnique}
+Eine Abbildung $f$ kann mehrere Sektionen haben.
+\end{theorem}
+\begin{proof}
+% TODO
+\end{proof}
+
+\begin{theorem}\label{thm:RetractionNotUnique}
+Eine Abbildung $f$ kann mehrere Retraktionen haben.
+\end{theorem}
+\begin{proof}
+Analog \ref{thm:SectionNotUnique}.
+\end{proof}
+
+\begin{remark}
+Manche Abbildungen haben Sektionen aber keine Retraktionen, manche Retraktionen
+aber keine Sektionen, viele haben nichts von beidem.
+\end{remark}
+
+% ------------------------------------------------------------------------------
+% Mit Sektionen lassen sich immer Lösungen des allgemeinen Wahlproblems konstruieren
+\newpage
+\subsection{Sektionen zur Lösung das allgemeine Wahlproblems}
+
+\begin{remark}
+Existiert zu einer Abbildung $f$ eine Sektion $s$ lassen sich damit immer 
+Lösungen des allgemeinen Wahlproblems konstruieren, wie der nächste Satz belegt.
+\end{remark}
+
+\begin{theorem}[Sektionen lösen das allgemeine Wahlproblem]\label{thm:IfSectionLiftgingSolution}
+\graphics{pics/sektionsProblem2.png}{Lösung des allgemeinen Wahlproblems}
+Wenn eine Abbildung $f: B → A$ eine Sektion hat,
+dann gibt es für jedes $T$ und für alle Abbildungen $y: T → B$ eine Abbildung
+$x: T → B$ für die gilt: $f ∘ x = y$.
+\end{theorem}
+\begin{proof}
+% TODO
+\end{proof}
+
+\begin{remark}
+Theorem \ref{thm:IfSectionLiftingSolution} besagt, dass wenn das Sektionsproblem
+als spezielles Entscheidungsproblem eine Lösung hat, dann haben alle 
+allgemeineren strukturgleichen Entscheidungsprobleme eine Lösung.
+
+\doublegraphics%
+	{pics/sektionsProblem.png}{Spezielles Entscheidungsproblem}%
+	{pics/sektionsProblem2.png}{Allgemeines Entscheidungsproblem}
+\end{remark}
+
+\begin{analogon}[Reziprokale]
+Sei $x = \frac{1}{3}$ das Reziprokal der Gleichung $3 * s = 1$,
+dann kann $3 * x = 5$ gelöst werden durch $x = s * 5 = \frac{1}{3} * 5$.
+\end{analogon}
+
+% das ist doch eher eine Definition oder?
+\begin{theorem}[$f$ ist surjektiv für Abbildungen aus $T$]
+Eine Abbildung $f$ ist surjektive für eine Abbildung aus $T$ wenn gilt:
+für jedes $y$ gibt es ein $x$, so dass $f ∘ x = y$.
+\end{theorem}
+\begin{proof}
+%TODO
+\end{proof}
+
+\begin{remark}[Sektionen als Zuweisungen von Repräsentaten]
+Sektionen können auch als Zuweisungen von Repräsentaten in $A$ zu den Elementen
+von $B$ verstanden werden.
+
+\graphics{pics/sektionAlsRepraesentant.png}{Sektion als Repräsentant}
+\end{remark}
+
+% ------------------------------------------------------------------------------
+% Mit Retraktionen sich Lösungen für das allgemeine Determinationsproblem konstruieren
+\newpage
+\subsection{Retraktionen zur Lösungen des allgemeine Determinationsproblems}
+
+\begin{theorem}\label{thm:IfRestrictionDeterminationSolution}
+Wenn eine Abbildung $f: A → B$ eine Retraktion hat,
+dann gibt es für jede Abbildung $y: A → T$ eine Abbildung $t: B → T$ mit 
+$t ∘ f = y$.
+\end{theorem}
+
+\begin{remark}
+Theorem \ref{thm:IfRestricionAllSolution} besagt, dass wenn das Retraktionsproblem
+als spezielles Determinationsproblem eine Lösung hat, dann haben alle 
+allgemeineren strukturgleichen Determinationsprobleme eine Lösung.
+
+\doublegraphics%
+	{pics/retraktionsProblem.png}{Spezielles Determinationsproblem}%
+	{pics/retraktionsProblem2.png}{Allgemeines Determinationsproblem}
+\end{remark}
+
+% ------------------------------------------------------------------------------
+% Streichungseigenschaft 1, Monomorphismus
+\newpage
+\subsection{Eindeutigkeit, Injektivität, Monomorphismus}
+
+\begin{definition}[Eindeutigkeitseigenschaft I]
+Eine Abbildung $f: A → B$ besitzt die Eindeutigkeitseigenschaft I für ein 
+Objekt $T$ und je zwei Morphismen $t₁: T → A$ und $t₂: T → A$ gilt:
+$$\text{wenn\ } f ∘ t₁ = f ∘ t₂ \text{\ dann\ } x₁ = x₂$$
+
+\graphics{pics/cancellationLeft.png}{Eindeutigkeit I}
+\end{definition}
+
+\begin{definition}[$f$ ist injektiv von $T$]
+Wenn für eine Abbildung $f$ und ein $T$ gilt, 
+die Eindeutigkeitseigenschaft I gilt nennt man $f$
+\definiendum{injektiv für Abbildungen von $T$}.
+\end{definition}
+
+\begin{definition}[Monomorphimus]
+Gilt für beliebeige $T$ und jede $t₁: T → A$ und $t₂: T → A$,
+Eindeutigkeitseigenschaft I ist $f$ ein Monomorphismus (injektive Abbildung).
+\end{definition}
+
+\begin{theorem}[Retraktion impliziert Injektivität]\label{th:RetractionImpliesCancellation1}
+Angenommen $f: A → B$ hat eine Retraktion.
+Dann gilt je zwei Morphismen $x₁: T → A$ und $x₂: T → A$ von einem beliebigen 
+Objekt $T$ die Streichungseigenschaft I, und $f$ ist ein Monomorphismus:
+
+\graphics{pics/retraktionsEindeutigkeit.png}{Eindeutigkeit bei Retraktion}
+\end{theorem}
+\begin{proof}
+%TODO
+\end{proof}
+
+
+% ------------------------------------------------------------------------------
+% Streichungseigenschaft II und Epimorphismus
+\newpage
+\subsection{Eindeutigkeit II, Surjektivität, Epimorphismus}
+
+\begin{definition}[Eindeutigkeitseigenschaft II]
+Eine Abbildung $f: A → B$ besitzt die Eindeutigkeitseigenschaft II, wenn gilt:
+$$\text{wenn\ } t₁ ∘ f = t₂ ∘ f \text{\ dann\ } t₁=t₂$$
+
+\graphics{pics/cancellationRight.png}{Eindeutigkeit II}
+\end{definition}
+
+\begin{theorem}
+Angenommen $f: A → B$ hat eine Sektion. Dann gilt für jedes Objekt $T$ und 
+zwei Abbildungen $t₁: B → T$ und $t₂: B → T$, die Eindeutigkeitseigenschaft II:
+$$\text{wenn\ } t₁ ∘ f = t₂ ∘ f \text{\ dann\ } t₁=t₂$$
+
+\graphics{pics/sektionsEindeutigkeit.png}{Eindeutigkeit bei Sektion}
+\end{theorem}
+\begin{proof}
+%TODO
+\end{proof}
+
+\begin{definition}[Epimorphismus]
+Ein Morphismus $f$ mit dieser Streichungseigenschaft 
+(wenn $t₁ ∘ f = t₂ ∘ f$ dann $t₁ = t₂$) für beliebige $T$ wird 
+\definiendum{Epimorphismus} genannt.
+\end{definition}
+
+
+% ------------------------------------------------------------------------------
+% Sektionen und Retraktionen sind abgeschlossen unter Komposition
+\newpage
+\subsection{Sektionen und Retraktionen sind abgeschlossen unter Komposition}
+
+\begin{theorem}[Retraktionen sind abgeschlossen unter Komposition]
+Wenn $f: A → B$ eine Retraktion hat, und $g: B → C$ eine Retraktion hat,
+dann hat $g ∘ f: A → C$ eine Retraktion.
+\end{theorem}
+\begin{proof}
+%TODO
+\end{proof}
+
+\begin{theorem}[Sektionen sind abgeschlossen unter Komposition]
+Wenn $f: A → B$ eine Sektion hat, und $g: B → C$ eine Sektion hat,
+dann hat $g ∘ f: A → C$ eine Sektion.
+\end{theorem}
+\begin{proof}
+% TODO
+\end{proof}
+
+% ------------------------------------------------------------------------------
+\newpage
+\subsection{Idempotenz}
+
+\begin{definition}[Idempotenz]
+Ein Endomorphismus heißt \definiendum{idempotent}, wenn $e ∘ e = e$.
+\end{definition}
+
+
+% ------------------------------------------------------------------------------
+% Isomorphismen lassen sich auch über Sektionen und Retraktionen definieren
+
+\newpage
+\subsection{Isomorphismus definiert über Sektion und Retraktion}
+
+\begin{theorem}[Gibt es Sektion und Retrakion sind diese identisch]\label{thm:SectionAndRetractionIdentical}
+Wenn $f: A → B$ sowohl eine Sektion $s$ als auch eine Retraktion $r$ hat,
+dann $r = s$.
+\end{theorem}
+\begin{proof}
+\end{proof}
+
+\begin{definition}[Isomorphismus]
+Ein Morphismus $f$ wird \definiendum{Isomorphismus} genannt, 
+wenn es einen Morphismus $f^{-1}$ gibt, der sowohl Retraktion als auch Sektion
+für $f$ ist.
+\begin{align*}
+f ∘ f^{-1} = 1_B \\
+f^{-1} ∘ f = 1_A
+\end{align*}
+Der Morphismus $f^{-1}$ wir dann \concept{Inverse} von $f$ genannt;
+die Inverse ist, so sie existiert eindeutig nach \ref{thm:SectionAndRetracionIdentical}.
+\end{definition}
+
+
+\begin{theorem}[Isomorphismen sind abgeschlossen unter Komposition]
+Wenn $f: A → B$ und $g: B → C$ Isomorphismen sind, 
+dann auch $g ∘ f: A → C$ mit der Inversen $(g ∘ f)^{-1} = f^{-1} ∘ g^{-1}$.
+\end{theorem}
+\begin{proof}
+\end{proof}
+
+\begin{theorem}[Isomorphismen erfüllen beide Eindeutigkeitseigenschaften]
+Wenn $f$ einen inversen Morphismus hat, dann gelten die folgenden 
+\informal{Eindeutigkeitseigenschaften}: %cancellation vll. auch Annulierung
+\begin{enumerate}
+\item Wenn $f ∘ g = f ∘ h$, dann $g = h$.
+\item Wenn $g ∘ f = h ∘ k$, dann $g = h$.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+%TODO
+\end{proof}
+
+\begin{remark}[Bedeutung von Isomorphismen]
+Was bedeutet es wenn zwei Objekte isomorph sind?
+In der Kategorie \category{SET} bedeutet es, dass sie die gleiche Kardinalität
+haben --- durch Isomorphie von Mengen wird ein Konzept der Mächtigkeit definiertm
+dass ohne einen Zahlbegriff auskommt.
+Andere Kategorien enthalten in der Regel Objekte mit mehr Struktur;
+hier bedeutet Isomorphie, dass die Struktur der Objekte bei der Abbildung 
+erhalten bleibt.
+\end{remark}
+
+% ------------------------------------------------------------------------------
+% Endomorphismus & Isomorphismus: Automorphismus
+\newpage
+\subsection{Automorphismus}
+
+\begin{definition}[Automorphismus]
+Ein Endomorphismus $f: A → A$ der auch ein Isomorphismus ist,
+wird \definiendum{Automorphismus} genannt.
+\end{definition}
+
+\begin{theorem}
+Wenn es Isomorphismen $f: A → B$ gibt, ist ihre Anzahl gleich mit der 
+Anzahl der Automorhpismen $a: A → A$.
+\end{theorem}
+\begin{proof}
+\end{proof}
+
+\begin{remark}
+Ein Automorphismus in \category{SET} wird traditionell \concept{Permutation}
+genannt.
+\end{remark}
+
+% Hier: Kategorie der Permutationen
+
+\end{document}
+
+
